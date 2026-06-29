@@ -139,7 +139,7 @@ const FloatingChatbot = () => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Open Chat Assistant"
-        className="flex items-center gap-3 px-4 py-2.5 rounded-full text-white transition-all duration-300 hover:scale-105 shadow-lg font-sans cursor-pointer"
+        className="flex items-center justify-center p-3 rounded-full text-white transition-all duration-300 hover:scale-105 shadow-lg font-sans cursor-pointer"
         style={{
           background: '#d97706',
           boxShadow: '0 4px 15px rgba(217, 119, 6, 0.4)',
@@ -153,10 +153,6 @@ const FloatingChatbot = () => {
             <MessageSquareText size={16} />
           )}
         </div>
-
-        <span className="text-[12.5px] font-extrabold tracking-wide uppercase">
-          {isOpen ? 'Close Chat' : 'Live Chat'}
-        </span>
       </button>
     </div>
   );

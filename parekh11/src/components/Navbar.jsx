@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone, ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const FacebookIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
@@ -52,6 +53,14 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
   const mainLinks = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
@@ -64,11 +73,12 @@ export default function Navbar() {
     { name: 'e-Quotation', path: '/e-quotation' },
     { name: 'e-Auction', path: '/e-auction' },
     { name: 'Trade Circular', path: '/trade-circular' },
-    { name: 'Blog Page', path: '/blog' },
+    { name: 'Blog', path: '/blog' },
     { name: 'Notice Board', path: '/notice-board' },
-    { name: 'Career Page', path: '/career' },
+    { name: 'Career', path: '/career' },
     { name: 'Customer Review', path: '/reviews' },
     { name: 'Business Media Gallery', path: '/gallery' },
+    { name: 'FAQ', path: '/faq' },
   ];
 
   const isMoreActive = moreLinks.some(l => location.pathname === l.path);
@@ -79,7 +89,7 @@ export default function Navbar() {
       <div className="bg-[#3D4A3C] text-white py-2 px-4 sm:px-6 lg:px-8 border-b border-[#2C362B]/20 hidden md:block">
         <div className="max-w-[90rem] mx-auto flex justify-between items-center text-xs font-semibold tracking-wider">
           <div className="flex items-center gap-2">
-            <span>🎁 FESTIVAL OFFER: Flat 15% OFF on Premium Collections</span>
+            <span>✨ Welcome to Sandhya Textile Mall - India's Premium Textile Destination</span>
             <Link to="/products" className="bg-white text-[#3D4A3C] px-3 py-0.5 rounded-full font-bold text-[10px] uppercase ml-2 hover:bg-[#F5EFE6] transition-colors">
               Explore Now &rarr;
             </Link>
@@ -233,61 +243,90 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Drawer */}
-        {isOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100 max-h-[85vh] overflow-y-auto shadow-lg">
-            <div className="px-4 py-5 space-y-1">
-              {mainLinks.map((link) => {
-                const isActive = location.pathname === link.path;
-                return (
-                  <Link
-                    key={link.name}
-                    to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`flex items-center gap-2 px-4 py-3 rounded-lg text-[13px] font-bold tracking-wide uppercase transition-all ${
-                      isActive
-                        ? 'bg-[#5F6F5E]/10 text-[#5F6F5E] border-l-2 border-[#5F6F5E]'
-                        : 'text-[#2C362B] hover:bg-gray-50 hover:text-[#5F6F5E]'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                );
-              })}
-
-              {/* Trade Enquiry Mobile CTA */}
-              <Link
-                to="/trade-enquiry"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 mt-3 px-4 py-3 rounded-full text-[12px] font-bold tracking-wider uppercase btn-primary shadow-md w-full"
-              >
-                <Phone size={13} />
-                Trade Enquiry
-              </Link>
-
-              {/* More Section */}
-              <div className="mt-4 pt-4 border-t border-gray-100">
-                <p className="px-4 text-[9px] font-bold text-[#7E857E] tracking-[0.2em] uppercase mb-2">More Pages</p>
-                {moreLinks.map((link) => {
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="lg:hidden absolute top-full left-0 w-full h-[100dvh] bg-[#FAF8F5] border-t border-[#EAE3D9]/60 overflow-y-auto pb-32"
+            >
+              <div className="px-6 py-8 flex flex-col gap-3">
+                {mainLinks.map((link, idx) => {
                   const isActive = location.pathname === link.path;
                   return (
-                    <Link
+                    <motion.div
                       key={link.name}
-                      to={link.path}
-                      onClick={() => setIsOpen(false)}
-                      className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-[12.5px] font-bold tracking-wide transition-all ${
-                        isActive
-                          ? 'bg-[#5F6F5E]/10 text-[#5F6F5E]'
-                          : 'text-[#8A6F4E] hover:bg-gray-50 hover:text-[#2C362B]'
-                      }`}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 + idx * 0.05 }}
                     >
-                      {link.name}
-                    </Link>
+                      <Link
+                        to={link.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`group flex items-center justify-between px-4 py-3.5 rounded-xl text-[14px] font-bold tracking-widest uppercase transition-all duration-300 ${
+                          isActive
+                            ? 'bg-[#5F6F5E] text-white shadow-md shadow-[#5F6F5E]/20'
+                            : 'bg-white border border-[#EAE3D9] text-[#2C362B] hover:bg-[#FDFBF7] hover:border-[#5F6F5E]/30 hover:text-[#5F6F5E]'
+                        }`}
+                      >
+                        {link.name}
+                        <ArrowRight size={16} className={`transition-transform duration-300 ${isActive ? 'translate-x-1' : 'group-hover:translate-x-1 opacity-50 group-hover:opacity-100'}`} />
+                      </Link>
+                    </motion.div>
                   );
                 })}
+
+                {/* Trade Enquiry Mobile CTA */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 + mainLinks.length * 0.05 }}
+                  className="pt-2"
+                >
+                  <Link
+                    to="/trade-enquiry"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-center gap-2 px-4 py-4 rounded-xl text-[13px] font-bold tracking-widest uppercase text-[#3D4A3C] bg-white border-2 border-[#EAE3D9] hover:bg-[#FDFBF7] hover:border-[#3D4A3C] transition-all duration-300 shadow-sm"
+                  >
+                    <Phone size={15} />
+                    Trade Enquiry
+                  </Link>
+                </motion.div>
+
+                {/* More Section */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="mt-6 pt-6 border-t border-[#EAE3D9]/60"
+                >
+                  <p className="px-4 text-[10px] font-extrabold text-[#8A6F4E] tracking-[0.25em] uppercase mb-4">More Pages</p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {moreLinks.map((link) => {
+                      const isActive = location.pathname === link.path;
+                      return (
+                        <Link
+                          key={link.name}
+                          to={link.path}
+                          onClick={() => setIsOpen(false)}
+                          className={`flex items-center justify-center text-center px-2 py-3 rounded-xl text-[12px] font-bold tracking-wide transition-all ${
+                            isActive
+                              ? 'bg-[#5F6F5E]/10 text-[#5F6F5E]'
+                              : 'bg-white border border-[#EAE3D9] text-[#5D645D] hover:bg-[#F5EFE6] hover:text-[#2C362B]'
+                          }`}
+                        >
+                          {link.name}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </motion.div>
               </div>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   );

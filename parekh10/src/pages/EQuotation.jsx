@@ -32,12 +32,26 @@ const EQuotation = () => {
               Active Quotation Requests
             </h2>
           </div>
-          <div className="rounded-2xl py-16 flex flex-col items-center justify-center bg-white"
-            style={{ border: '1.5px solid #E8E3D9' }}>
-            <Inbox size={40} className="mb-4" color="#5F6F5E" strokeWidth={1} />
-            <p className="text-[12px] font-bold tracking-widest text-[#5D645D]">
-              ( At present, No e-Quotation request published )
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+            {[
+              { id: 1, title: 'Cotton Shirting Material - 10,000 Meters', desc: 'Seeking bulk quotation for premium quality 100% cotton shirting fabrics in assorted pastel colors. Delivery expected within 45 days.', date: 'July 10, 2026' },
+              { id: 2, title: 'Designer Saree Blouses - 5,000 Units', desc: 'Requirement for ready-made designer saree blouses in various sizes and embroidery patterns. Vendors must have prior experience.', date: 'July 18, 2026' },
+            ].map(quote => (
+              <div key={quote.id} className="group rounded-2xl p-6 bg-white transition-all duration-300 hover:shadow-md" style={{ border: '1.5px solid #E8E3D9' }}>
+                <div className="flex items-start justify-between mb-4">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'rgba(95,111,94,0.1)', border: '1px solid rgba(95,111,94,0.2)' }}>
+                    <FileText size={22} color="#5F6F5E" />
+                  </div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#7E857E]">{quote.date}</span>
+                </div>
+                <h3 className="text-[16px] font-bold leading-snug mb-2 text-[#2C362B]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  {quote.title}
+                </h3>
+                <p className="text-[12.5px] leading-relaxed text-[#5D645D] font-medium line-clamp-3 mb-4">
+                  {quote.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </motion.div>
 
@@ -115,15 +129,6 @@ const EQuotation = () => {
               >
                 <Send size={16} /> Submit Quotation Request
               </button>
-
-              <div className="pt-2 text-center flex items-center justify-center gap-2">
-                <Mail size={14} color="#5F6F5E" />
-                <a href="mailto:info@sandhyatextilemall.com"
-                  className="text-[11px] font-bold tracking-widest hover:underline text-[#5F6F5E]"
-                >
-                  info@sandhyatextilemall.com
-                </a>
-              </div>
             </form>
           </div>
         </motion.div>

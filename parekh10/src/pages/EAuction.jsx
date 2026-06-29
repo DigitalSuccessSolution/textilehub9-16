@@ -30,17 +30,33 @@ const EAuction = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8 text-left">
           <div className="flex items-center gap-3 mb-4">
             <Gavel size={20} color="#5F6F5E" />
-            <h2 className="font-bold text-lg uppercase tracking-wide text-[#2C362B]"
+            <h2 className="font-bold text-lg  tracking-wide text-[#2C362B]"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               Active e-Auctions
             </h2>
           </div>
-          <div className="rounded-2xl py-16 flex flex-col items-center justify-center bg-white"
-            style={{ border: '1.5px solid #E8E3D9' }}>
-            <Inbox size={40} className="mb-4" color="#5F6F5E" strokeWidth={1} />
-            <p className="text-[12px] font-bold tracking-widest text-[#5D645D]">
-              At present, No e-Auction published
-            </p>
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left">
+            {[
+              { id: 1, title: 'Surplus Premium Cotton Fabric Roll Lot', desc: 'Liquidation of 500+ premium cotton fabric rolls from our recent surplus inventory. Bidding starts at base price.', date: 'July 15, 2026', image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80' },
+              { id: 2, title: 'Unstitched Ethnic Dress Materials Stock', desc: 'Complete lot of 1,000+ unstitched ethnic dress materials. Ideal for retail stores and bulk distributors.', date: 'July 20, 2026', image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&auto=format&fit=crop&q=80' },
+            ].map(auction => (
+              <div key={auction.id} className="group rounded-2xl overflow-hidden bg-white transition-all duration-300 hover:shadow-md flex flex-col" style={{ border: '1.5px solid #E8E3D9' }}>
+                <div className="w-full h-32 sm:h-40 overflow-hidden relative">
+                  <img src={auction.image} alt={auction.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter saturate-[0.9]" />
+                  <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-white/90 backdrop-blur-sm px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-[#2C362B]">
+                    {auction.date}
+                  </div>
+                </div>
+                <div className="p-3 sm:p-5 flex flex-col flex-grow">
+                  <h3 className="text-[13px] sm:text-[16px] font-bold leading-tight sm:leading-snug mb-1.5 sm:mb-2 text-[#2C362B] line-clamp-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    {auction.title}
+                  </h3>
+                  <p className="text-[10px] sm:text-[12.5px] leading-relaxed text-[#5D645D] font-medium line-clamp-3 sm:line-clamp-2">
+                    {auction.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
 
@@ -92,11 +108,11 @@ const EAuction = () => {
               {/* Upload */}
               <div>
                 <label className="block text-[11px] uppercase tracking-widest font-bold mb-3 text-[#454B45]">
-                  Upload GST Certificate
+                  Upload GST Certificate *
                 </label>
                 <label className="w-full border-2 border-dashed rounded-2xl py-12 flex flex-col items-center justify-center cursor-pointer transition-all hover:opacity-80"
                   style={{ borderColor: '#E8E3D9', background: '#FAF8F5' }}>
-                  <input type="file" className="hidden" accept=".pdf,.jpg,.jpeg,.png" />
+                  <input type="file" required className="hidden" accept=".pdf,.jpg,.jpeg,.png" />
                   <UploadCloud size={32} className="mb-3" color="#5F6F5E" strokeWidth={1.5} />
                   <p className="text-sm font-semibold text-[#5D645D]">Click to upload GST Certificate</p>
                   <p className="text-[10px] uppercase tracking-widest font-bold mt-1 text-[#7E857E]">PDF, JPG, PNG Accepted</p>
@@ -108,13 +124,6 @@ const EAuction = () => {
               >
                 <Send size={16} /> Submit Registration
               </button>
-
-              <div className="pt-2 text-center flex items-center justify-center gap-2">
-                <Mail size={14} color="#5F6F5E" />
-                <a href="mailto:info@sandhyatextilemall.com" className="text-[11px] font-bold tracking-widest hover:underline text-[#5F6F5E]">
-                  info@sandhyatextilemall.com
-                </a>
-              </div>
             </form>
           </div>
         </motion.div>

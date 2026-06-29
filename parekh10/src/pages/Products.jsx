@@ -11,12 +11,18 @@ const categories = [
 ];
 
 const allProducts = [
-  { id: 101, name: 'Premium Silk Saree', category: 'Sarees', image: 'https://images.unsplash.com/photo-1609748340041-f5d61e061ebc?w=600&auto=format&fit=crop&q=60' },
-  { id: 105, name: 'Embroidered Silk Saree', category: 'Sarees', image: 'https://images.unsplash.com/photo-1610189013233-0498b89d4fb9?w=600&auto=format&fit=crop&q=60' },
-  { id: 102, name: 'Designer Kurti Set', category: 'Kurtis', image: 'https://images.unsplash.com/photo-1741847639057-b51a25d42892?w=600&auto=format&fit=crop&q=60' },
-  { id: 106, name: 'Printed Cotton Kurti', category: 'Kurtis', image: 'https://images.unsplash.com/photo-1745313452052-0e4e341f326c?w=600&auto=format&fit=crop&q=60' },
-  { id: 103, name: 'Luxury Cotton Bedsheet', category: 'Bedsheets & Linen', image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&auto=format&fit=crop&q=60' },
-  { id: 104, name: 'Classic Men Suit Fabric', category: 'Suiting', image: 'https://images.unsplash.com/photo-1611937663641-5cef5189d71b?w=600&auto=format&fit=crop&q=60' },
+  { id: 101, name: 'Premium Silk Saree', category: 'Sarees', image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&auto=format&fit=crop&q=80' },
+  { id: 102, name: 'Activewear Lycra Leggings', category: 'Leggings', image: 'https://images.pexels.com/photos/16701772/pexels-photo-16701772.jpeg' },
+  { id: 103, name: 'Designer Cotton Kurti', category: 'Kurtis', image: 'https://images.pexels.com/photos/28512787/pexels-photo-28512787.jpeg' },
+  { id: 104, name: 'Elegant Dress Suit', category: 'Dress Suits', image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&auto=format&fit=crop&q=80' },
+  { id: 105, name: 'Luxury Cotton Bedsheet', category: 'Bedsheets & Linen', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&auto=format&fit=crop&q=80' },
+  { id: 106, name: 'Premium Hosiery Wear', category: 'Hosiery Items', image: 'https://images.unsplash.com/photo-1582966772680-860e372bb558?w=600&auto=format&fit=crop&q=80' },
+  { id: 107, name: 'Classic Men Suiting Fabric', category: 'Suiting', image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&auto=format&fit=crop&q=80' },
+  { id: 108, name: 'Premium Cotton Shirting', category: 'Shirting', image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&auto=format&fit=crop&q=80' },
+  { id: 109, name: 'Designer Lehenga Choli', category: 'Formal & Ethnic Wear for Women', image: 'https://images.pexels.com/photos/9900510/pexels-photo-9900510.jpeg' },
+  { id: 110, name: 'Classic Ethnic Sherwani', category: 'Formal & Ethnic Wear for Men', image: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&auto=format&fit=crop&q=80' },
+  { id: 111, name: 'Kids Ethnic Wear', category: 'Formal & Ethnic Wear for Children', image: 'https://images.unsplash.com/photo-1622290319146-7b63df48a635?w=600&auto=format&fit=crop&q=80' },
+  { id: 112, name: 'Luxury Upholstery', category: 'Home Upholstery & Furnishing', image: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&auto=format&fit=crop&q=80' },
 ];
 
 export default function Products() {
@@ -114,7 +120,7 @@ export default function Products() {
 
             {/* Products Grid */}
             {filteredProducts.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-left">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 text-left">
                 {filteredProducts.map(product => (
                   <motion.div
                     key={product.id}

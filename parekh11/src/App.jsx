@@ -14,8 +14,10 @@ import NoticeBoard from './pages/NoticeBoard';
 import Career from './pages/Career';
 import CustomerReview from './pages/CustomerReview';
 import BusinessMediaGallery from './pages/BusinessMediaGallery';
+import FAQ from './pages/FAQ';
 import Preloader from './components/Preloader';
 import ScrollToTop from './components/ScrollToTop';
+import Popup from './components/Popup';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -48,9 +50,11 @@ function App() {
           <Route path="career" element={<Career />} />
           <Route path="reviews" element={<CustomerReview />} />
           <Route path="gallery" element={<BusinessMediaGallery />} />
+          <Route path="faq" element={<FAQ />} />
         </Route>
       </Routes>
       {loading && <Preloader />}
+      {!loading && <Popup />}
     </Router>
   );
 }

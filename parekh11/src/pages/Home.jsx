@@ -43,7 +43,6 @@ const quickAccessItems = [
 const trustBadges = [
   { text: '100% Genuine Products', icon: ShieldCheck },
   { text: 'Secure Payments', icon: CreditCard },
-  { text: 'Pan India Delivery', icon: Truck },
   { text: 'Dedicated Support', icon: Headphones },
   { text: 'Easy Return Policy', icon: RotateCcw },
   { text: 'Trusted by Thousands', icon: Users },
@@ -92,8 +91,8 @@ export default function Home() {
       <section className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           
-          {/* LEFT SIDEBAR: Shop by Category */}
-          <aside className="lg:col-span-1 flex flex-col justify-between bg-white rounded-3xl border border-[#EAE3D9] overflow-hidden shadow-sm h-[520px]">
+          {/* LEFT SIDEBAR: Shop by Category (Hidden on mobile) */}
+          <aside className="hidden lg:flex lg:col-span-1 flex-col justify-between bg-white rounded-3xl border border-[#EAE3D9] overflow-hidden shadow-sm h-[520px]">
             <div className="p-5 flex items-center gap-3 border-b border-[#EAE3D9]/60 bg-[#FDFBF7]">
               <Menu size={18} className="text-[#4E6C50]" />
               <h3 className="font-extrabold text-base tracking-wide text-[#2C362B] uppercase" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -123,19 +122,13 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="p-4 bg-[#FDFBF7] border-t border-[#EAE3D9]/60">
-              <Link
-                to="/products"
-                className="w-full py-3 px-4 rounded-xl text-xs font-bold text-center text-white bg-[#4E6C50] hover:bg-[#3D4A3C] transition-all flex items-center justify-center gap-2 tracking-wider uppercase"
-              >
-                View All Categories <ArrowRight size={13} />
-              </Link>
-            </div>
+
           </aside>
 
           {/* RIGHT HERO SLIDER */}
-          <div className="lg:col-span-3 relative rounded-3xl overflow-hidden shadow-sm h-[520px] bg-[#EAE3D9]">
-            <AnimatePresence mode="popLayout">
+          <div className="lg:col-span-3 relative rounded-3xl shadow-sm h-[320px] sm:h-[400px] lg:h-[520px] bg-[#EAE3D9]">
+            <div className="absolute inset-0 rounded-3xl overflow-hidden">
+              <AnimatePresence mode="popLayout">
               <motion.div
                 key={currentSlide}
                 initial={{ x: '100%' }}
@@ -161,34 +154,34 @@ export default function Home() {
                 {/* Slider Inner Content */}
                 <div className="absolute inset-0 flex flex-col justify-between p-8 sm:p-12 md:p-16 text-left z-10 max-w-2xl">
                   
-                  <div className="mt-8">
-                    <p className="text-[#8A6F4E] text-[11px] font-extrabold tracking-[0.25em] uppercase mb-3">
+                  <div className="mt-16 sm:mt-8">
+                    <p className="hidden sm:block text-[#8A6F4E] text-[11px] font-extrabold tracking-[0.25em] uppercase mb-3">
                       Welcome to Textile Mall
                     </p>
                     
                     <h1 className="leading-[1.1] mb-5 flex flex-col text-left">
-                      <span className="text-[#2C362B] text-4xl sm:text-5xl md:text-6xl font-normal tracking-wide" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      <span className="text-[#2C362B] text-3xl sm:text-5xl md:text-6xl font-normal tracking-wide" style={{ fontFamily: "'Playfair Display', serif" }}>
                         {heroSlides[currentSlide].titleMain}
                       </span>
-                      <span className="text-[#8A6F4E] text-4xl sm:text-5xl md:text-6xl font-light italic mt-1" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      <span className="text-[#8A6F4E] text-3xl sm:text-5xl md:text-6xl font-light italic mt-1" style={{ fontFamily: "'Playfair Display', serif" }}>
                         {heroSlides[currentSlide].titleAccent}
                       </span>
                     </h1>
 
-                    <p className="text-[#5D645D] text-xs sm:text-sm font-semibold tracking-wide leading-relaxed mb-8 max-w-md">
+                    <p className="hidden sm:block text-[#5D645D] text-xs sm:text-sm font-semibold tracking-wide leading-relaxed mb-8 max-w-md">
                       India's most trusted textile destination for quality, variety and value. Weaving heritage craftsmanship with contemporary style.
                     </p>
 
                     <div className="flex flex-wrap items-center gap-4">
                       <Link
                         to="/products"
-                        className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-xs font-extrabold tracking-wider uppercase text-white bg-[#4E6C50] hover:bg-[#3D4A3C] transition-all hover:scale-105 shadow-md shadow-[#4E6C50]/20"
+                        className="inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl text-[10px] sm:text-xs font-extrabold tracking-wider uppercase text-white bg-[#4E6C50] hover:bg-[#3D4A3C] transition-all hover:scale-105 shadow-md shadow-[#4E6C50]/20"
                       >
                         Explore Collections &rarr;
                       </Link>
                       <Link
                         to="/trade-enquiry"
-                        className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-xs font-extrabold tracking-wider uppercase text-[#2C362B] bg-white border-2 border-[#EAE3D9] hover:bg-[#FDFBF7] transition-all hover:scale-105"
+                        className="inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-xl text-[10px] sm:text-xs font-extrabold tracking-wider uppercase text-[#2C362B] bg-white border-2 border-[#EAE3D9] hover:bg-[#FDFBF7] transition-all hover:scale-105"
                       >
                         Trade Enquiry
                       </Link>
@@ -198,25 +191,26 @@ export default function Home() {
                 </div>
               </motion.div>
             </AnimatePresence>
+            </div>
 
             {/* Slider Navigation Arrows */}
             <button
               onClick={handlePrevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/95 border border-[#EAE3D9] flex items-center justify-center shadow-md hover:scale-105 hover:bg-[#FDFBF7] transition-all z-20 cursor-pointer"
+              className="absolute -left-3 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/95 border border-[#EAE3D9] flex items-center justify-center shadow-md hover:scale-105 hover:bg-[#FDFBF7] transition-all z-20 cursor-pointer"
               aria-label="Previous slide"
             >
               <ChevronLeft size={18} className="text-[#2C362B]" />
             </button>
             <button
               onClick={handleNextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/95 border border-[#EAE3D9] flex items-center justify-center shadow-md hover:scale-105 hover:bg-[#FDFBF7] transition-all z-20 cursor-pointer"
+              className="absolute -right-3 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/95 border border-[#EAE3D9] flex items-center justify-center shadow-md hover:scale-105 hover:bg-[#FDFBF7] transition-all z-20 cursor-pointer"
               aria-label="Next slide"
             >
               <ChevronRight size={18} className="text-[#2C362B]" />
             </button>
 
             {/* Pagination Indicators "01 02 03" */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 lg:left-16 lg:translate-x-0 z-20 flex items-center gap-4 text-xs font-bold text-[#2C362B]">
+            <div className="hidden sm:flex absolute bottom-6 left-1/2 -translate-x-1/2 lg:left-16 lg:translate-x-0 z-20 items-center gap-4 text-xs font-bold text-[#2C362B]">
               {heroSlides.map((_, i) => {
                 const isActive = i === currentSlide;
                 return (
@@ -324,11 +318,11 @@ export default function Home() {
 
       {/* ── TRUST BADGES ROW BANNER ── */}
       <section className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-8 border-y border-[#EAE3D9]/60 my-4 bg-white shadow-sm">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 justify-center">
+        <div className="flex flex-wrap items-center justify-center gap-6 lg:gap-10">
           {trustBadges.map((badge, idx) => {
             const Icon = badge.icon;
             return (
-              <div key={idx} className="flex items-center gap-3 justify-center md:justify-start">
+              <div key={idx} className="flex items-center gap-3 justify-center w-[calc(50%-0.75rem)] sm:w-auto">
                 <div className="w-9 h-9 rounded-full bg-[#8A6F4E]/10 text-[#8A6F4E] flex items-center justify-center shrink-0">
                   <Icon size={16} />
                 </div>

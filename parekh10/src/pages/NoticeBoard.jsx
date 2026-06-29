@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 import { Bell, ChevronRight } from 'lucide-react';
 
 const notices = [
-  { id: 1, title: 'Annual General Meeting 2026', date: 'Nov 01, 2026', isNew: true },
-  { id: 2, title: 'Warehouse Closure Notice for Maintenance (Mumbai Depot)', date: 'Oct 20, 2026', isNew: true },
-  { id: 3, title: 'Introduction of e-Way Bill Integration in Partner Portal', date: 'Sep 15, 2026', isNew: true },
-  { id: 4, title: 'Recruitment Drive for Zonal Sales Managers', date: 'Aug 22, 2026', isNew: true },
+  { id: 1, title: 'Annual General Meeting 2026', date: 'Nov 01, 2026', description: 'The Annual General Meeting of Sandhya Textile Mall is scheduled to be held on November 1st at the registered corporate office. All stakeholders are requested to attend.' },
+  { id: 2, title: 'Warehouse Closure Notice for Maintenance (Mumbai Depot)', date: 'Oct 20, 2026', description: 'Our Mumbai warehouse depot will remain closed for bi-annual maintenance and inventory audits. Business operations will resume standard schedules from Oct 22.' },
+  { id: 3, title: 'Introduction of e-Way Bill Integration in Partner Portal', date: 'Sep 15, 2026', description: 'To streamline B2B dispatches, all registered distributors are requested to complete their e-way bill registration in the partner portal.' },
+  { id: 4, title: 'Recruitment Drive for Zonal Sales Managers', date: 'Aug 22, 2026', description: 'We are inviting applications for Zonal Sales Managers across South and West India regions. Interested candidates can apply via our Careers page.' },
 ];
 
 const NoticeBoard = () => {
@@ -27,37 +27,23 @@ const NoticeBoard = () => {
           {notices.map((notice) => (
             <div
               key={notice.id}
-              className="group rounded-2xl p-5 bg-white cursor-pointer flex flex-col justify-between transition-all duration-300 hover:shadow-md"
-              style={{
-                border: notice.isNew ? '1.5px solid rgba(95,111,94,0.3)' : '1.5px solid #E8E3D9',
-                borderTop: notice.isNew ? '4px solid #5F6F5E' : '1.5px solid #E8E3D9',
-              }}
+              className="group rounded-2xl p-6 bg-white cursor-pointer transition-all duration-300 hover:shadow-md flex flex-col"
+              style={{ border: '1.5px solid #E8E3D9' }}
             >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ background: notice.isNew ? 'rgba(95,111,94,0.12)' : 'rgba(95,111,94,0.06)', border: '1px solid rgba(95,111,94,0.2)' }}>
-                    <Bell size={18} color={notice.isNew ? '#5F6F5E' : '#7E857E'} />
-                  </div>
-                  {notice.isNew && (
-                    <span className="text-[9px] px-2.5 py-1 rounded-full font-bold uppercase tracking-widest text-[#5F6F5E] bg-[#ECF2EC]"
-                      >
-                      NEW
-                    </span>
-                  )}
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                  style={{ background: 'rgba(95,111,94,0.1)', border: '1px solid rgba(95,111,94,0.2)' }}>
+                  <Bell size={18} color="#5F6F5E" />
                 </div>
-                <div className="flex flex-col mb-4">
-                  <span className="text-[11px] font-bold uppercase tracking-wider mb-2 text-[#7E857E]">{notice.date}</span>
-                  <h3 className="text-[14px] font-bold leading-snug transition-colors line-clamp-3 text-[#2C362B]"
-                    style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    {notice.title}
-                  </h3>
-                </div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-[#7E857E]">{notice.date}</span>
               </div>
-              <div className="flex items-center justify-between pt-4 border-t border-[#E8E3D9]/60 mt-auto">
-                 <span className="text-[11px] font-bold tracking-wide text-[#5F6F5E]">Read More</span>
-                 <ChevronRight size={16} className="shrink-0 transition-transform group-hover:translate-x-1" color="#5F6F5E" />
-              </div>
+              <h3 className="text-[15px] font-bold leading-snug mb-3 text-[#2C362B]"
+                style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                {notice.title}
+              </h3>
+              <p className="text-[12.5px] leading-relaxed text-[#5D645D] font-medium">
+                {notice.description}
+              </p>
             </div>
           ))}
         </motion.div>

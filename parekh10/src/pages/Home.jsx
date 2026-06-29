@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const shopCategories = [
   { name: 'Sarees', imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=180&h=180&fit=crop&q=80' },
-  { name: 'Kurtis', imageUrl: 'https://images.unsplash.com/photo-1608748010899-18f300247112?w=180&h=180&fit=crop&q=80' },
+  { name: 'Kurtis', imageUrl: 'https://images.pexels.com/photos/28512787/pexels-photo-28512787.jpeg' },
   { name: 'Leggings', imageUrl: 'https://images.unsplash.com/photo-1506152983158-b4a74a01c721?w=180&h=180&fit=crop&q=80' },
   { name: 'Dress Suits', imageUrl: 'https://images.unsplash.com/photo-1596783074918-c84cb06531ca?w=180&h=180&fit=crop&q=80' },
   { name: 'Bedsheets & Linen', imageUrl: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=180&h=180&fit=crop&q=80' },
@@ -64,9 +64,9 @@ const promoBanners = [
 ];
 
 const quickLinks = [
-  { name: 'e-Quotation', icon: FileText, path: '/e-quotation', desc: 'Get instant quotes' },
+
   { name: 'e-Auction', icon: Gavel, path: '/e-auction', desc: 'Participate in live auctions' },
-  { name: 'Trade Enquiry', icon: Phone, path: '/trade-enquiry', desc: 'Connect with our expert team' },
+
   { name: 'Retail Management', icon: Users, path: '/retail-management', desc: 'Smart solutions for retailers' },
   { name: 'Trade Circular', icon: LinkIcon, path: '/trade-circular', desc: 'Latest updates & announcements' },
 ];
@@ -97,7 +97,7 @@ export default function Home() {
     <div className="w-full pb-10" style={{ background: '#FAF8F5', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
 
       {/* ── HERO BANNER ── */}
-      <section className="relative w-full h-[380px] sm:h-[450px] lg:h-[520px] overflow-hidden flex items-center justify-center">
+      <section className="relative w-full h-[260px] sm:h-[450px] lg:h-[520px] overflow-hidden flex items-center justify-center">
         <img
           src="/images/heromenwomen.png"
           alt="Sandhya Textile Mall Banner"
@@ -113,17 +113,17 @@ export default function Home() {
            
           </div>
 
-          <h1 className="leading-[1.2] mb-6 flex flex-col items-center">
+          <h1 className="leading-[1.2] mb-5 sm:mb-6 flex flex-col items-center text-center">
             <span className="text-white text-3xl sm:text-5xl lg:text-6xl font-normal tracking-[0.2em] uppercase" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              Threads That
+              Threads <br className="block sm:hidden" /> That
             </span>
-            <span className="text-[#BCA374] text-4xl sm:text-6xl lg:text-7xl font-light italic mt-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              Define Elegance
+            <span className="text-[#BCA374] text-4xl sm:text-6xl lg:text-7xl font-light italic mt-1 sm:mt-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              Define <br className="block sm:hidden" /> Elegance
             </span>
           </h1>
 
-          <p className="text-white/95 text-xs sm:text-sm md:text-base leading-relaxed mb-8 max-w-2xl font-medium tracking-wide">
-            Experience unmatched quality, timeless traditions and trendsetting collections under one roof. Weaving heritage craftsmanship with contemporary designs to define your personal style.
+          <p className="hidden sm:block text-white/95 text-xs sm:text-sm md:text-base leading-relaxed mb-8 max-w-2xl font-medium tracking-wide">
+            Experience unmatched quality, timeless traditions and <br/>trendsetting collections under one roof. Weaving heritage<br/> craftsmanship with contemporary designs to define your <br/>personal style.
           </p>
 
           <div className="flex justify-center">
@@ -150,7 +150,7 @@ export default function Home() {
         </div>
 
         {/* Premium Grid layout with double ring frame */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-5 sm:gap-6 justify-center items-start">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6 gap-5 sm:gap-6 justify-center items-start">
           {shopCategories.map((cat, idx) => (
             <Link
               to={`/products?category=${encodeURIComponent(cat.name)}`}
@@ -158,7 +158,7 @@ export default function Home() {
               className="group flex flex-col items-center text-center transition-all duration-300"
             >
               <div
-                className="w-22 h-22 rounded-full overflow-hidden transition-all duration-300 group-hover:scale-105 shadow-sm border border-[#E8E3D9]"
+                className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 mx-auto rounded-full overflow-hidden transition-all duration-300 group-hover:scale-105 shadow-sm border border-[#E8E3D9]"
               >
                 <img
                   src={cat.imageUrl}
@@ -176,21 +176,21 @@ export default function Home() {
 
       {/* ── QUICK LINKS SECTION (GRID BANNER) ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-12">
-        <div className="bg-[#ECF2EC]/80 border border-[#5F6F5E]/10 rounded-3xl p-6 grid grid-cols-2 md:grid-cols-5 gap-6 md:divide-x md:divide-[#5F6F5E]/15 shadow-sm">
+        <div className="bg-[#ECF2EC]/80 border border-[#5F6F5E]/10 rounded-2xl md:rounded-3xl p-4 md:p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 md:gap-6 md:divide-x md:divide-[#5F6F5E]/15 shadow-sm">
           {quickLinks.map((item, idx) => {
             const Icon = item.icon;
             return (
               <Link
                 key={idx}
                 to={item.path}
-                className="flex items-start gap-3 px-4 first:pl-0 hover:opacity-85 transition-opacity text-left"
+                className="flex items-center gap-4 md:gap-3 px-4 py-3 md:py-0 md:px-4 md:first:pl-0 hover:opacity-85 transition-all text-left bg-white md:bg-transparent rounded-xl md:rounded-none border border-[#5F6F5E]/10 md:border-none shadow-sm md:shadow-none"
               >
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-[#5F6F5E]/10 text-[#5F6F5E] shrink-0">
+                <div className="w-10 h-10 md:w-9 md:h-9 rounded-xl flex items-center justify-center bg-[#5F6F5E]/10 text-[#5F6F5E] shrink-0">
                   <Icon size={18} />
                 </div>
                 <div>
                   <h3 className="text-[13px] font-bold text-[#2C362B] tracking-wide leading-none">{item.name}</h3>
-                  <p className="text-[10px] text-[#5D645D] font-medium leading-tight mt-1">{item.desc}</p>
+                  <p className="text-[10px] text-[#5D645D] font-medium leading-tight mt-1.5 md:mt-1">{item.desc}</p>
                 </div>
               </Link>
             );
@@ -369,25 +369,25 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {blogPosts.map((post, idx) => (
             <Link
               key={idx}
               to="/blog"
               className="bg-white rounded-2xl overflow-hidden border border-[#E8E3D9] hover:border-[#5F6F5E] shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group text-left"
             >
-              <div className="h-44 w-full relative overflow-hidden">
+              <div className="h-28 sm:h-44 w-full relative overflow-hidden">
                 <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
-              <div className="p-5 flex flex-col justify-between flex-grow">
+              <div className="p-3 sm:p-5 flex flex-col justify-between flex-grow">
                 <div>
-                  <span className="text-[10px] font-bold text-[#8A6F4E] uppercase tracking-wider">{post.date}</span>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-lg font-bold text-[#2C362B] mt-1 line-clamp-2 leading-snug uppercase group-hover:text-[#5F6F5E] transition-colors">
+                  <span className="text-[9px] sm:text-[10px] font-bold text-[#8A6F4E] uppercase tracking-wider">{post.date}</span>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-[13px] sm:text-lg font-bold text-[#2C362B] mt-1 line-clamp-2 leading-tight sm:leading-snug uppercase group-hover:text-[#5F6F5E] transition-colors">
                     {post.title}
                   </h3>
                 </div>
-                <div className="mt-4 flex items-center gap-1 text-[11px] font-bold text-[#5F6F5E] tracking-wider uppercase">
-                  READ MORE <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                <div className="mt-3 sm:mt-4 flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-[#5F6F5E] tracking-wider uppercase">
+                  READ MORE <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform sm:w-[13px]" />
                 </div>
               </div>
             </Link>

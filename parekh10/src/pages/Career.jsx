@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 import { Briefcase, MapPin, Mail } from 'lucide-react';
 
 const jobs = [
-  { id: 1, title: 'Retail Operations Manager', location: 'Mumbai, India', type: 'Full-time', experience: '5-8 Years', description: 'Oversee daily store operations, manage staff, and ensure a premium customer experience across our flagship retail outlets.' },
-  { id: 2, title: 'Senior Fabric Technologist', location: 'Surat, India', type: 'Full-time', experience: '7+ Years', description: 'Lead quality control for incoming fabrics, develop new textile blends, and maintain our high standards of material excellence.' },
-  { id: 3, title: 'B2B Sales Executive', location: 'Delhi, India', type: 'Full-time', experience: '2-4 Years', description: 'Expand our wholesale network, acquire new B2B accounts, and maintain strong relationships with our key clients.' },
-  { id: 4, title: 'Digital Marketing Specialist', location: 'Remote', type: 'Full-time', experience: '3+ Years', description: 'Drive our online presence, manage social media campaigns, and optimize e-commerce conversion rates.' },
+  { id: 1, title: 'Retail Operations Manager', location: 'Mumbai, India', type: 'Full-time', salary: '₹8,00,000 - ₹12,00,000 PA', description: 'Oversee daily store operations, manage staff, and ensure a premium customer experience across our flagship retail outlets.' },
+  { id: 2, title: 'Senior Fabric Technologist', location: 'Surat, India', type: 'Full-time', salary: '₹10,00,000 - ₹15,00,000 PA', description: 'Lead quality control for incoming fabrics, develop new textile blends, and maintain our high standards of material excellence.' },
+  { id: 3, title: 'B2B Sales Executive', location: 'Delhi, India', type: 'Full-time', salary: '₹4,00,000 - ₹7,00,000 PA', description: 'Expand our wholesale network, acquire new B2B accounts, and maintain strong relationships with our key clients.' },
+  { id: 4, title: 'Digital Marketing Specialist', location: 'Remote', type: 'Full-time', salary: '₹5,00,000 - ₹9,00,000 PA', description: 'Drive our online presence, manage social media campaigns, and optimize e-commerce conversion rates.' },
 ];
 
 const Career = () => {
@@ -44,7 +44,7 @@ const Career = () => {
                     <MapPin size={14} color="#5F6F5E" /> {job.location}
                   </div>
                   <div className="flex items-center gap-2 text-[13px] font-semibold text-[#5D645D]">
-                    <Briefcase size={14} color="#5F6F5E" /> {job.type} · {job.experience}
+                    <Briefcase size={14} color="#5F6F5E" /> {job.type} · {job.salary}
                   </div>
                   <div className="flex items-center gap-2 text-[13px] font-semibold text-[#5D645D]">
                     <Mail size={14} color="#5F6F5E" />

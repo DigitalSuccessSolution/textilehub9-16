@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 const shopCategories = [
   { name: 'Sarees', imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=180&h=180&fit=crop&q=80' },
   { name: 'Leggings', imageUrl: 'https://images.unsplash.com/photo-1506152983158-b4a74a01c721?w=180&h=180&fit=crop&q=80' },
-  { name: 'Kurtis', imageUrl: 'https://images.unsplash.com/photo-1608748010899-18f300247112?w=180&h=180&fit=crop&q=80' },
+  { name: 'Kurtis', imageUrl: 'https://images.pexels.com/photos/28512787/pexels-photo-28512787.jpeg' },
   { name: 'Dress Suits', imageUrl: 'https://images.unsplash.com/photo-1596783074918-c84cb06531ca?w=180&h=180&fit=crop&q=80' },
   { name: 'Bedsheets & Linen', imageUrl: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=180&h=180&fit=crop&q=80' },
   { name: 'Hosiery Items', imageUrl: 'https://images.unsplash.com/photo-1582966772680-860e372bb558?w=180&h=180&fit=crop&q=80' },

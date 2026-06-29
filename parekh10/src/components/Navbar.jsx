@@ -64,11 +64,12 @@ export default function Navbar() {
     { name: 'e-Quotation', path: '/e-quotation' },
     { name: 'e-Auction', path: '/e-auction' },
     { name: 'Trade Circular', path: '/trade-circular' },
-    { name: 'Blog Page', path: '/blog' },
+    { name: 'Blog', path: '/blog' },
     { name: 'Notice Board', path: '/notice-board' },
-    { name: 'Career Page', path: '/career' },
+    { name: 'Career', path: '/career' },
     { name: 'Customer Review', path: '/reviews' },
     { name: 'Business Media Gallery', path: '/gallery' },
+    { name: 'FAQ', path: '/faq' },
   ];
 
   const isMoreActive = moreLinks.some(l => location.pathname === l.path);
@@ -222,8 +223,8 @@ export default function Navbar() {
 
         {/* Mobile Drawer */}
         {isOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100 max-h-[85vh] overflow-y-auto shadow-lg">
-            <div className="px-4 py-5 space-y-1">
+          <div className="lg:hidden absolute top-full left-0 w-full h-[calc(100vh-75px)] bg-white border-t border-gray-100 overflow-y-auto">
+            <div className="px-4 py-5 space-y-1 pb-10">
               {mainLinks.map((link) => {
                 const isActive = location.pathname === link.path;
                 return (

@@ -32,12 +32,22 @@ const EQuotation = () => {
               Active Quotation Requests
             </h2>
           </div>
-          <div className="rounded-3xl py-12 flex flex-col items-center justify-center bg-white"
-            style={{ border: '1.5px solid #EAE3D9' }}>
-            <Inbox size={36} className="mb-3 text-[#4E6C50]" strokeWidth={1.2} />
-            <p className="text-[11px] font-extrabold tracking-widest text-[#7E857E] ">
-              At present, No e-Quotation request published
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { id: 1, title: 'Bulk Cotton Procurement', description: 'Looking for 1000m of premium cotton for summer collection.', date: 'Oct 15, 2026' },
+              { id: 2, name: 'Silk Saree Export', description: 'Quotation for 500 pieces of pure silk sarees for export.', date: 'Nov 02, 2026' },
+            ].map(quote => (
+              <div key={quote.id} className="p-6 rounded-2xl bg-white flex items-start gap-4 transition-all hover:shadow-md" style={{ border: '1.5px solid #EAE3D9' }}>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#4E6C50]/10 border border-[#4E6C50]/20 shrink-0">
+                   <FileText size={20} className="text-[#4E6C50]" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-[#2C362B] mb-1">{quote.title || quote.name}</h3>
+                  <p className="text-sm text-[#5D645D] mb-3 line-clamp-2">{quote.description}</p>
+                  <p className="text-[10px] font-bold text-[#8A6F4E] uppercase tracking-wider">{quote.date}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
 
@@ -114,15 +124,6 @@ const EQuotation = () => {
               >
                 <Send size={14} /> Submit Quotation Request
               </button>
-
-              <div className="pt-2 text-center flex items-center justify-center gap-2">
-                <Mail size={14} className="text-[#4E6C50]" />
-                <a href="mailto:info@textilemall.com"
-                  className="text-[11px] font-bold tracking-widest hover:underline text-[#4E6C50]"
-                >
-                  info@textilemall.com
-                </a>
-              </div>
             </form>
           </div>
         </motion.div>

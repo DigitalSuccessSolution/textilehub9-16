@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 import { Bell, ChevronRight } from 'lucide-react';
 
 const notices = [
-  { id: 1, title: 'Annual General Meeting 2026', date: 'Nov 01, 2026', isNew: true },
-  { id: 2, title: 'Warehouse Closure Notice for Maintenance (Mumbai Depot)', date: 'Oct 20, 2026', isNew: true },
-  { id: 3, title: 'Introduction of e-Way Bill Integration in Partner Portal', date: 'Sep 15, 2026', isNew: true },
-  { id: 4, title: 'Recruitment Drive for Zonal Sales Managers', date: 'Aug 22, 2026', isNew: true },
+  { id: 1, title: 'Annual General Meeting 2026', date: 'Nov 01, 2026', description: 'Join us for our Annual General Meeting to discuss yearly performance and future plans.' },
+  { id: 2, title: 'Warehouse Closure Notice for Maintenance (Mumbai Depot)', date: 'Oct 20, 2026', description: 'The Mumbai depot will remain closed for scheduled maintenance operations.' },
+  { id: 3, title: 'Introduction of e-Way Bill Integration in Partner Portal', date: 'Sep 15, 2026', description: 'We have integrated e-Way bill generation directly into the partner portal.' },
+  { id: 4, title: 'Recruitment Drive for Zonal Sales Managers', date: 'Aug 22, 2026', description: 'We are expanding our sales team across all zones. Apply within.' },
 ];
 
 const NoticeBoard = () => {
@@ -29,29 +29,25 @@ const NoticeBoard = () => {
               key={notice.id}
               className="group rounded-2xl p-5 bg-white cursor-pointer flex flex-col justify-between transition-all duration-300 hover:shadow-md"
               style={{
-                border: notice.isNew ? '1.5px solid rgba(95,111,94,0.3)' : '1.5px solid #E8E3D9',
-                borderTop: notice.isNew ? '4px solid #5F6F5E' : '1.5px solid #E8E3D9',
+                border: '1.5px solid #E8E3D9',
               }}
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ background: notice.isNew ? 'rgba(95,111,94,0.12)' : 'rgba(95,111,94,0.06)', border: '1px solid rgba(95,111,94,0.2)' }}>
-                    <Bell size={18} color={notice.isNew ? '#5F6F5E' : '#7E857E'} />
+                    style={{ background: 'rgba(95,111,94,0.06)', border: '1px solid rgba(95,111,94,0.2)' }}>
+                    <Bell size={18} color={'#7E857E'} />
                   </div>
-                  {notice.isNew && (
-                    <span className="text-[9px] px-2.5 py-1 rounded-full font-bold uppercase tracking-widest text-[#5F6F5E] bg-[#ECF2EC]"
-                      >
-                      NEW
-                    </span>
-                  )}
                 </div>
                 <div className="flex flex-col mb-4">
                   <span className="text-[11px] font-bold uppercase tracking-wider mb-2 text-[#7E857E]">{notice.date}</span>
-                  <h3 className="text-[14px] font-bold leading-snug transition-colors line-clamp-3 text-[#2C362B]"
+                  <h3 className="text-[14px] font-bold leading-snug transition-colors line-clamp-2 text-[#2C362B] mb-2"
                     style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     {notice.title}
                   </h3>
+                  <p className="text-[12px] text-[#5D645D] line-clamp-3 leading-relaxed">
+                    {notice.description}
+                  </p>
                 </div>
               </div>
               <div className="flex items-center justify-between pt-4 border-t border-[#E8E3D9]/60 mt-auto">

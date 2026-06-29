@@ -35,12 +35,22 @@ const EAuction = () => {
               Active e-Auctions
             </h2>
           </div>
-          <div className="rounded-3xl py-12 flex flex-col items-center justify-center bg-white"
-            style={{ border: '1.5px solid #EAE3D9' }}>
-            <Inbox size={36} className="mb-3 text-[#4E6C50]" strokeWidth={1.2} />
-            <p className="text-[11px] font-extrabold tracking-widest text-[#7E857E] ">
-              At present, No e-Auction published
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { id: 1, title: 'Surplus Fabric Liquidation', description: 'Liquidation of 5000m assorted surplus cotton blends.', date: 'Oct 20, 2026', image: 'https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?auto=format&fit=crop&w=400&q=80' },
+              { id: 2, title: 'Machinery Auction', description: 'Used industrial sewing machines in working condition.', date: 'Nov 05, 2026', image: 'https://images.pexels.com/photos/4614116/pexels-photo-4614116.jpeg' },
+            ].map(auction => (
+              <div key={auction.id} className="overflow-hidden rounded-2xl bg-white transition-all hover:shadow-md flex flex-col" style={{ border: '1.5px solid #EAE3D9' }}>
+                <div className="h-40 w-full relative">
+                  <img src={auction.image} alt={auction.title} className="w-full h-full object-cover" />
+                </div>
+                <div className="p-5 flex-grow">
+                  <h3 className="font-bold text-[#2C362B] mb-2 text-lg">{auction.title}</h3>
+                  <p className="text-sm text-[#5D645D] mb-4 line-clamp-2">{auction.description}</p>
+                  <p className="text-[10px] font-bold text-[#8A6F4E] uppercase tracking-wider">{auction.date}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
 
@@ -91,11 +101,11 @@ const EAuction = () => {
               {/* Upload */}
               <div>
                 <label className="block text-[11px] uppercase tracking-widest font-extrabold mb-3 text-[#454B45]">
-                  Upload GST Certificate
+                  Upload GST Certificate *
                 </label>
                 <label className="w-full border-2 border-dashed rounded-2xl py-10 flex flex-col items-center justify-center cursor-pointer transition-all hover:opacity-80 bg-[#FDFBF7]"
                   style={{ borderColor: '#EAE3D9' }}>
-                  <input type="file" className="hidden" accept=".pdf,.jpg,.jpeg,.png" />
+                  <input type="file" required className="hidden" accept=".pdf,.jpg,.jpeg,.png" />
                   <UploadCloud size={28} className="mb-3 text-[#4E6C50]" strokeWidth={1.2} />
                   <p className="text-xs font-bold text-[#5D645D]">Click to upload GST Certificate</p>
                   <p className="text-[9px] uppercase tracking-widest font-bold mt-1 text-[#7E857E]">PDF, JPG, PNG Accepted</p>
@@ -107,13 +117,6 @@ const EAuction = () => {
               >
                 <Send size={14} /> Submit Registration
               </button>
-
-              <div className="pt-2 text-center flex items-center justify-center gap-2">
-                <Mail size={14} className="text-[#4E6C50]" />
-                <a href="mailto:info@textilemall.com" className="text-[11px] font-bold tracking-widest hover:underline text-[#4E6C50]">
-                  info@textilemall.com
-                </a>
-              </div>
             </form>
           </div>
         </motion.div>

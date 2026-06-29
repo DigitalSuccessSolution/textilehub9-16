@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 import { Briefcase, MapPin, Mail } from 'lucide-react';
 
 const jobs = [
-  { id: 1, title: 'Retail Operations Manager', location: 'Mumbai, India', type: 'Full-time', experience: '5-8 Years', description: 'Oversee daily store operations, manage staff, and ensure a premium customer experience across our flagship retail outlets.' },
-  { id: 2, title: 'Senior Fabric Technologist', location: 'Surat, India', type: 'Full-time', experience: '7+ Years', description: 'Lead quality control for incoming fabrics, develop new textile blends, and maintain our high standards of material excellence.' },
-  { id: 3, title: 'B2B Sales Executive', location: 'Delhi, India', type: 'Full-time', experience: '2-4 Years', description: 'Expand our wholesale network, acquire new B2B accounts, and maintain strong relationships with our key clients.' },
-  { id: 4, title: 'Digital Marketing Specialist', location: 'Remote', type: 'Full-time', experience: '3+ Years', description: 'Drive our online presence, manage social media campaigns, and optimize e-commerce conversion rates.' },
+  { id: 1, title: 'Retail Operations Manager', location: 'Mumbai, India', experience: '₹5,00,000 - ₹8,00,000 / Year', description: 'Oversee daily store operations, manage staff, and ensure a premium customer experience across our flagship retail outlets.' },
+  { id: 2, title: 'Senior Fabric Technologist', location: 'Surat, India', experience: '₹6,00,000 - ₹9,00,000 / Year', description: 'Lead quality control for incoming fabrics, develop new textile blends, and maintain our high standards of material excellence.' },
+  { id: 3, title: 'B2B Sales Executive', location: 'Delhi, India', experience: '₹3,00,000 - ₹5,00,000 / Year', description: 'Expand our wholesale network, acquire new B2B accounts, and maintain strong relationships with our key clients.' },
+  { id: 4, title: 'Digital Marketing Specialist', location: 'Remote', experience: '₹4,00,000 - ₹6,00,000 / Year', description: 'Drive our online presence, manage social media campaigns, and optimize e-commerce conversion rates.' },
 ];
 
 const Career = () => {
@@ -23,43 +23,43 @@ const Career = () => {
       </div>
 
       <div className="pb-16 max-w-7xl mx-auto px-4 py-10">
-        <div className="flex flex-col gap-5 text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
           {jobs.map((job, idx) => (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
               key={job.id}
-              className="group flex flex-col lg:flex-row items-start lg:items-center justify-between rounded-2xl bg-white transition-all duration-300 hover:shadow-md p-6 md:p-8"
+              className="group flex flex-col justify-between rounded-2xl bg-white transition-all duration-300 hover:shadow-md p-6"
               style={{ border: '1.5px solid #E8E3D9' }}
             >
-              <div className="flex-grow max-w-4xl lg:pr-8">
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 leading-tight text-[#2C362B]"
+              <div className="flex-grow">
+                <h3 className="text-xl font-bold mb-4 leading-snug text-[#2C362B]"
                   style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   {job.title}
                 </h3>
 
-                <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-4">
-                  <div className="flex items-center gap-2 text-[13px] font-semibold text-[#5D645D]">
-                    <MapPin size={14} color="#5F6F5E" /> {job.location}
+                <div className="flex flex-col gap-3 mb-5">
+                  <div className="flex items-center gap-2 text-[12px] font-semibold text-[#5D645D]">
+                    <MapPin size={14} color="#5F6F5E" className="shrink-0" /> {job.location}
                   </div>
-                  <div className="flex items-center gap-2 text-[13px] font-semibold text-[#5D645D]">
-                    <Briefcase size={14} color="#5F6F5E" /> {job.type} · {job.experience}
+                  <div className="flex items-center gap-2 text-[12px] font-semibold text-[#5D645D]">
+                    <Briefcase size={14} color="#5F6F5E" className="shrink-0" />{job.experience}
                   </div>
-                  <div className="flex items-center gap-2 text-[13px] font-semibold text-[#5D645D]">
-                    <Mail size={14} color="#5F6F5E" />
-                    <a href="mailto:careers@sandhyatextilemall.com" className="hover:underline text-[#5F6F5E]">
+                  <div className="flex items-center gap-2 text-[12px] font-semibold text-[#5D645D]">
+                    <Mail size={14} color="#5F6F5E" className="shrink-0" />
+                    <a href="mailto:careers@sandhyatextilemall.com" className="hover:underline text-[#5F6F5E] truncate">
                       careers@sandhyatextilemall.com
                     </a>
                   </div>
                 </div>
 
-                <p className="text-[13.5px] leading-relaxed mb-6 lg:mb-0 text-[#454B45] font-medium">{job.description}</p>
+                <p className="text-[13px] leading-relaxed mb-6 text-[#454B45] font-medium line-clamp-4">{job.description}</p>
               </div>
 
-              <div className="w-full lg:w-auto shrink-0 border-t lg:border-t-0 lg:border-l pt-5 lg:pt-0 lg:pl-8 border-[#E8E3D9]/60">
+              <div className="w-full shrink-0 border-t pt-4 border-[#E8E3D9]/60 mt-auto">
                 <button
-                  className="w-full lg:w-44 py-3.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-200 hover:opacity-95 text-white btn-primary shadow-sm animate-none"
+                  className="w-full py-3 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-200 hover:opacity-95 text-white btn-primary shadow-sm animate-none"
                 >
                   Apply Now
                 </button>
