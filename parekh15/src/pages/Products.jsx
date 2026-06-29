@@ -11,12 +11,18 @@ export default function Products() {
   ];
 
   const allProducts = [
-    { id: 101, name: 'Premium Silk Saree', category: 'Sarees', image: 'https://images.unsplash.com/photo-1609748340041-f5d61e061ebc?w=600&auto=format&fit=crop&q=60' },
-    { id: 105, name: 'Embroidered Silk Saree', category: 'Sarees', image: 'https://images.unsplash.com/photo-1610189013233-0498b89d4fb9?w=600&auto=format&fit=crop&q=60' },
-    { id: 102, name: 'Designer Kurti Set', category: 'Kurtis', image: 'https://images.unsplash.com/photo-1741847639057-b51a25d42892?w=600&auto=format&fit=crop&q=60' },
-    { id: 106, name: 'Printed Cotton Kurti', category: 'Kurtis', image: 'https://images.unsplash.com/photo-1745313452052-0e4e341f326c?w=600&auto=format&fit=crop&q=60' },
-    { id: 103, name: 'Luxury Cotton Bedsheet', category: 'Bedsheets & Linen', image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&auto=format&fit=crop&q=60' },
-    { id: 104, name: 'Classic Men Suit Fabric', category: 'Suiting', image: 'https://images.unsplash.com/photo-1611937663641-5cef5189d71b?w=600&auto=format&fit=crop&q=60' },
+    { id: 101, name: 'Royal Kanjivaram Silk Saree', category: 'Sarees', image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&auto=format&fit=crop&q=60' },
+    { id: 102, name: 'Premium Cotton Leggings', category: 'Leggings', image: 'https://images.unsplash.com/photo-1506152983158-b4a74a01c721?w=600&auto=format&fit=crop&q=60' },
+    { id: 103, name: 'Artisanal Designer Kurti', category: 'Kurtis', image: 'https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?w=600&auto=format&fit=crop&q=60' },
+    { id: 104, name: 'Elegant Salwar Kameez Suit', category: 'Dress Suits', image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=600&auto=format&fit=crop&q=60' },
+    { id: 105, name: 'Luxury Cotton Bedsheet Set', category: 'Bedsheets & Linen', image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&auto=format&fit=crop&q=60' },
+    { id: 106, name: 'Soft-Knit Hosiery Collection', category: 'Hosiery Items', image: 'https://images.unsplash.com/photo-1619134778706-7015533a6150?w=600&auto=format&fit=crop&q=60' },
+    { id: 107, name: 'Premium Blazer & Suiting Fabric', category: 'Suiting', image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&auto=format&fit=crop&q=60' },
+    { id: 108, name: 'Classic Linen Shirting Fabric', category: 'Shirting', image: 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&auto=format&fit=crop&q=60' },
+    { id: 109, name: 'Bridal Heritage Lehenga Choli', category: 'Formal & Ethnic Wear for Women', image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600&auto=format&fit=crop&q=60' },
+    { id: 110, name: 'Handcrafted Men Sherwani Set', category: 'Formal & Ethnic Wear for Men', image: 'https://images.unsplash.com/photo-1617626002779-51a866bdd2d1?w=600&auto=format&fit=crop&q=60' },
+    { id: 111, name: 'Kids Festive Kurta Pajama', category: 'Formal & Ethnic Wear for Children', image: 'https://images.unsplash.com/photo-1607990283143-e81e7a2c93ab?w=600&auto=format&fit=crop&q=60' },
+    { id: 112, name: 'Luxury Drapes & Cushion Covers', category: 'Home Upholstery & Furnishing', image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&auto=format&fit=crop&q=60' }
   ];
 
   const categoryDetails = {
@@ -288,7 +294,7 @@ export default function Products() {
       <div className="space-y-16">
         {activeCategory === "All" ? (
           <div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               {filteredProducts.map(product => (
                 <motion.div 
                   key={product.id}
@@ -320,7 +326,7 @@ export default function Products() {
           Object.entries(groupedProducts).map(([categoryName, products]) => (
             <div key={categoryName}>
               <h2 className="font-playfair text-xl text-gray-900 font-semibold uppercase tracking-wider mb-6 border-b border-gray-200 pb-2">{categoryName}</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                 {products.map(product => (
                   <motion.div 
                     key={product.id}

@@ -87,11 +87,11 @@ export default function Home() {
     <div className="space-y-16">
       {/* Hero Section with compact spacing - No Top Action Bar */}
       <div className="-mt-6 lg:-mt-10">
-        {/* Hero Section Split Layout (No Overlay Shadows and No Box Shadows) */}
-        <section className="relative min-h-[480px] overflow-hidden group border border-gray-200 bg-[#01312b] p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        {/* Hero Section Split Layout with fixed heights to prevent layout shifts during slide changes */}
+        <section className="relative h-[580px] sm:h-[520px] md:h-[480px] overflow-hidden group border border-gray-200 bg-[#01312b] p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-8 md:gap-12">
           
-          {/* Left Column (Text Content) */}
-          <div className="w-full md:w-7/12 flex flex-col justify-center z-10 text-left text-white">
+          {/* Left Column (Text Content) with min-height to prevent collapsing during slide transitions */}
+          <div className="w-full md:w-7/12 flex flex-col justify-center z-10 text-left text-white min-h-[260px] sm:min-h-[200px] md:min-h-[280px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -239,7 +239,7 @@ export default function Home() {
           <img
             src="/equotation_banner.png"
             alt="e-Quotation"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-pearl-100/95 via-pearl-100/85 to-transparent flex flex-col justify-center p-8 md:p-12" />
           <div className="absolute inset-0 flex flex-col justify-center p-8 md:p-12">
@@ -263,7 +263,7 @@ export default function Home() {
           <img
             src="/eauction_banner.png"
             alt="e-Auction"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/70 to-transparent flex flex-col justify-center p-8 md:p-12" />
           <div className="absolute inset-0 flex flex-col justify-center p-8 md:p-12">

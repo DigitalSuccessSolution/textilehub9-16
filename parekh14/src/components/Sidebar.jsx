@@ -12,18 +12,18 @@ export default function Sidebar({ closeSidebar }) {
     { name: 'Home', path: '/', icon: Globe },
     { name: 'About Us', path: '/about', icon: Users },
     { name: 'Contact Us', path: '/contact', icon: Phone },
-    { name: 'Product Page', path: '/products', icon: ShoppingBag },
+    { name: 'Product', path: '/products', icon: ShoppingBag },
     { name: 'Our Retail Management', path: '/retail-management', icon: Users },
     { name: 'Trade Enquiry', path: '/trade-enquiry', icon: MessageSquare },
     { name: 'e-Quotation', path: '/e-quotation', icon: FileText },
     { name: 'e-Auction', path: '/e-auction', icon: FileText },
     { name: 'Trade Circular', path: '/trade-circular', icon: FileText },
-    { name: 'Blog Page', path: '/blog', icon: MessageSquare },
+    { name: 'Blog', path: '/blog', icon: MessageSquare },
     { name: 'Notice Board', path: '/notice-board', icon: Clipboard },
-    { name: 'Career Page', path: '/career', icon: Briefcase },
+    { name: 'Career', path: '/career', icon: Briefcase },
     { name: 'Customer Review', path: '/reviews', icon: Star },
     { name: 'Business Media Gallery', path: '/gallery', icon: ImageIcon },
-    { name: 'FAQ Page', path: '/faq', icon: HelpCircle },
+    { name: 'FAQ', path: '/faq', icon: HelpCircle },
   ];
 
   return (

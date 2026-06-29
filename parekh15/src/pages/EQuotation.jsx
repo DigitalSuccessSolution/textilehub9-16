@@ -1,8 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ClipboardCheck, Inbox, FileText, Send, Mail } from 'lucide-react';
+import { ClipboardCheck, FileText, Send } from 'lucide-react';
 
 const EQuotation = () => {
+  const activeQuotations = [
+    {
+      id: 1,
+      title: "Wholesale Cotton Shirting Fabrics Supply",
+      description: "Requesting competitive price quotes for premium grade long-staple cotton fabrics, 150-180 GSM, multiple color weaves.",
+      date: "Published: 2026-06-25",
+    },
+    {
+      id: 2,
+      title: "Bulk Designer Kurti Set Manufacturing",
+      description: "Inviting quotations for contract manufacturing of 5,000 units of handloom cotton kurti sets. Technical specs attached.",
+      date: "Published: 2026-06-28",
+    }
+  ];
+
   return (
     <div className="pb-20 -mt-6 lg:-mt-10 max-w-5xl mx-auto px-4 md:px-8">
       {/* Page Header Banner */}
@@ -24,11 +39,23 @@ const EQuotation = () => {
             <h2 className="text-gray-900 font-semibold text-lg uppercase tracking-wider">Active Quotation Requests</h2>
           </div>
 
-          <div className="bg-white py-16 flex flex-col items-center justify-center border border-gray-200 shadow-sm">
-            <Inbox size={40} className="text-gray-300 mb-4 stroke-1" />
-            <p className="text-rosegold-500 font-semibold text-xs tracking-widest ">
-              ( At present, No e-Quotation published )
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {activeQuotations.map((quote) => (
+              <div 
+                key={quote.id} 
+                className="bg-white p-6 border border-gray-200 shadow-sm hover:border-rosegold-500 hover:shadow-md transition-all duration-300 flex items-start gap-4"
+              >
+                {/* Logo file icon remains */}
+                <div className="w-12 h-12 bg-rosegold-500/10 flex items-center justify-center shrink-0">
+                  <FileText size={22} className="text-rosegold-500" />
+                </div>
+                <div>
+                  <span className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider block mb-1">{quote.date}</span>
+                  <h3 className="text-sm font-playfair font-semibold text-gray-900 mb-2 uppercase tracking-wide leading-snug">{quote.title}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">{quote.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
 
@@ -48,20 +75,20 @@ const EQuotation = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
               <div>
                 <label className="block text-[10px] uppercase tracking-widest text-gray-700 font-bold mb-2">
-                  Name of the Trader <span className="text-rosegold-500">*</span>
+                  Name of the Trader *
                 </label>
                 <input type="text" className="w-full px-4 py-3 bg-pearl-100 border border-gray-200 focus:outline-none focus:border-rosegold-500 transition-colors" required />
               </div>
               <div>
                 <label className="block text-[10px] uppercase tracking-widest text-gray-700 font-bold mb-2">
-                  Business Name <span className="text-rosegold-500">*</span>
+                  Business Name *
                 </label>
                 <input type="text" className="w-full px-4 py-3 bg-pearl-100 border border-gray-200 focus:outline-none focus:border-rosegold-500 transition-colors" required />
               </div>
 
               <div>
                 <label className="block text-[10px] uppercase tracking-widest text-gray-700 font-bold mb-2">
-                  Business Address with PIN Code <span className="text-rosegold-500">*</span>
+                  Business Address with Pin Code *
                 </label>
                 <input type="text" className="w-full px-4 py-3 bg-pearl-100 border border-gray-200 focus:outline-none focus:border-rosegold-500 transition-colors" required />
               </div>
@@ -74,13 +101,13 @@ const EQuotation = () => {
 
               <div>
                 <label className="block text-[10px] uppercase tracking-widest text-gray-700 font-bold mb-2">
-                  Mobile No. <span className="text-rosegold-500">*</span>
+                  Mobile No. *
                 </label>
                 <input type="tel" className="w-full px-4 py-3 bg-pearl-100 border border-gray-200 focus:outline-none focus:border-rosegold-500 transition-colors" required />
               </div>
               <div>
                 <label className="block text-[10px] uppercase tracking-widest text-gray-700 font-bold mb-2">
-                  Email ID <span className="text-rosegold-500">*</span>
+                  Email ID *
                 </label>
                 <input type="email" className="w-full px-4 py-3 bg-pearl-100 border border-gray-200 focus:outline-none focus:border-rosegold-500 transition-colors" required />
               </div>
@@ -88,7 +115,7 @@ const EQuotation = () => {
 
             <div className="pt-2">
               <label className="block text-[10px] uppercase tracking-widest text-gray-700 font-bold mb-2">
-                Options <span className="text-rosegold-500">*</span>
+                Options *
               </label>
               <select className="w-full px-4 py-3 bg-pearl-100 border border-gray-200 focus:outline-none focus:border-rosegold-500 transition-colors appearance-none text-sm text-gray-750" required>
                 <option value="" disabled selected>Select Option</option>
@@ -100,7 +127,7 @@ const EQuotation = () => {
 
             <div className="pt-2">
               <label className="block text-[10px] uppercase tracking-widest text-gray-700 font-bold mb-2">
-                Particulars of the Products <span className="text-rosegold-500">*</span>
+                Particulars of the Products *
               </label>
               <textarea
                 rows="4"
@@ -117,13 +144,6 @@ const EQuotation = () => {
               >
                 <Send size={14} /> Submit Quotation Request
               </button>
-            </div>
-
-            <div className="pt-6 text-center flex items-center justify-center gap-2">
-              <Mail size={14} className="text-rosegold-500" />
-              <a href="mailto:info@urbantextilehub.com" className="text-rosegold-500 text-[10px] font-semibold tracking-widest hover:underline uppercase">
-                info@urbantextilehub.com
-              </a>
             </div>
           </form>
         </motion.div>

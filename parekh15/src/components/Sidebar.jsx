@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Globe, Users, Phone, ShoppingBag, Image as ImageIcon,
-  MessageSquare, FileText, Briefcase, Star, Clipboard
+  MessageSquare, FileText, Briefcase, Star, Clipboard, HelpCircle
 } from 'lucide-react';
 
 export default function Sidebar({ closeSidebar }) {
@@ -23,6 +23,7 @@ export default function Sidebar({ closeSidebar }) {
     { name: 'Career Page', path: '/career', icon: Briefcase },
     { name: 'Customer Review', path: '/reviews', icon: Star },
     { name: 'Business Media Gallery', path: '/gallery', icon: ImageIcon },
+    { name: 'FAQ Page', path: '/faq', icon: HelpCircle },
   ];
 
   return (

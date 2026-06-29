@@ -54,11 +54,24 @@ export default function Chatbot() {
       {/* Floating Chat Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-rosegold-500 hover:bg-rosegold-400 text-white flex items-center justify-center shadow-2xl hover:scale-105 transition-all duration-300 border border-rosegold-300/20 cursor-pointer"
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-rosegold-500 hover:bg-rosegold-400 text-white flex items-center justify-center shadow-2xl hover:scale-105 transition-all duration-300 border border-rosegold-300/20 cursor-pointer"
         title="Chat with Assistant"
       >
-        {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
+        {isOpen ? <X size={20} /> : <MessageCircle size={20} />}
       </button>
+
+      {/* Floating WhatsApp Button (next to chatbot button) */}
+      <a
+        href="https://wa.me/916353778329"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-[80px] z-50 w-12 h-12 bg-[#25D366] hover:bg-[#20ba5a] text-white flex items-center justify-center shadow-2xl hover:scale-105 transition-all duration-300 rounded-none border border-green-300/20 cursor-pointer"
+        title="Chat on WhatsApp"
+      >
+        <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.488 1.459 5.416 1.46 5.538 0 10.043-4.508 10.046-10.048.002-2.684-1.04-5.207-2.936-7.106C17.276 1.562 14.757.519 12.01.519c-5.542 0-10.048 4.512-10.05 10.051-.001 1.996.523 3.948 1.52 5.657l-.999 3.65 3.737-.98c1.6.878 3.434 1.342 5.288 1.343zm12.306-7.37c-.305-.153-1.805-.89-2.083-.992-.279-.101-.482-.153-.684.153-.203.305-.786.992-.963 1.194-.178.203-.355.228-.66.076-.304-.153-1.286-.474-2.45-1.511-.905-.808-1.516-1.806-1.694-2.112-.178-.305-.019-.47.133-.621.137-.137.305-.355.457-.533.152-.178.203-.305.305-.508.102-.203.051-.381-.025-.533-.076-.153-.684-1.65-.937-2.26-.247-.595-.499-.515-.684-.524-.178-.008-.381-.01-.584-.01-.203 0-.533.076-.813.381-.279.305-1.066 1.042-1.066 2.542 0 1.5 1.091 2.946 1.243 3.149.153.203 2.148 3.28 5.204 4.602.727.314 1.294.502 1.737.643.73.232 1.393.2 1.918.12.585-.087 1.805-.738 2.059-1.452.254-.715.254-1.328.178-1.452-.076-.124-.279-.203-.584-.356z" />
+        </svg>
+      </a>
 
       {/* Chatbox Panel */}
       <AnimatePresence>
@@ -68,7 +81,7 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed bottom-24 right-6 w-80 sm:w-96 h-[480px] bg-white border border-gray-200 shadow-2xl z-50 flex flex-col overflow-hidden"
+            className="fixed bottom-24 right-6 w-80 sm:w-96 h-[380px] sm:h-[480px] bg-white border border-gray-200 shadow-2xl z-50 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-rosegold-500 text-white px-6 py-4 flex items-center justify-between shadow-md shrink-0">
@@ -120,7 +133,7 @@ export default function Chatbot() {
                   <button
                     key={i}
                     onClick={() => handleSend(reply.reply)}
-                    className="text-[10px] uppercase tracking-wider font-bold border border-rosegold-500/30 text-rosegold-500 hover:bg-rosegold-500/5 px-2.5 py-1.5 transition-colors cursor-pointer"
+                    className="text-[10px]  tracking-wider font-bold border border-rosegold-500/30 text-rosegold-500 hover:bg-rosegold-500/5 px-2.5 py-1.5 transition-colors cursor-pointer"
                   >
                     {reply.text}
                   </button>
