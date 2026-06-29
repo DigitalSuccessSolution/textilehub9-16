@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const FacebookIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
@@ -44,11 +45,14 @@ export default function Navbar() {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
     return () => {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     };
   }, [isOpen]);
 
@@ -69,6 +73,7 @@ export default function Navbar() {
     { name: 'Career Page', path: '/career' },
     { name: 'Customer Review', path: '/reviews' },
     { name: 'Business Media Gallery', path: '/gallery' },
+    { name: 'FAQ', path: '/faq' },
   ];
 
   const isMoreActive = moreLinks.some(l => location.pathname === l.path);
@@ -105,9 +110,9 @@ export default function Navbar() {
         style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
       >
         <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-[75px]">
+          <div className="flex justify-between items-center h-[75px] relative">
             {/* Mobile Left: Hamburger */}
-            <div className="flex items-center lg:hidden">
+            <div className="absolute left-4 flex items-center lg:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-[#3C3430] hover:text-[#A24E51] focus:outline-none p-1 shrink-0"
@@ -223,61 +228,69 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Drawer */}
-        {isOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100 max-h-[85vh] overflow-y-auto shadow-lg">
-            <div className="px-4 py-5 space-y-1">
-              {mainLinks.map((link) => {
-                const isActive = location.pathname === link.path;
-                return (
-                  <Link
-                    key={link.name}
-                    to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`flex items-center gap-2 px-4 py-3 rounded-lg text-[13px] font-bold tracking-wide uppercase transition-all ${
-                      isActive
-                        ? 'bg-[#A24E51]/10 text-[#A24E51] border-l-2 border-[#A24E51]'
-                        : 'text-[#3C3430] hover:bg-gray-50 hover:text-[#A24E51]'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                );
-              })}
-
-              {/* Trade Enquiry Mobile CTA */}
-              <Link
-                to="/trade-enquiry"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 mt-3 px-4 py-3 rounded-full text-[12px] font-bold tracking-wider uppercase btn-primary shadow-md w-full"
-              >
-                <Phone size={13} />
-                Trade Enquiry
-              </Link>
-
-              {/* More Section */}
-              <div className="mt-4 pt-4 border-t border-gray-100">
-                <p className="px-4 text-[9px] font-bold text-[#908882] tracking-[0.2em] uppercase mb-2">More Pages</p>
-                {moreLinks.map((link) => {
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25, ease: 'easeInOut' }}
+              className="lg:hidden fixed inset-x-0 bottom-0 top-[75px] md:top-[107px] z-[45] bg-white border-t border-gray-100 overflow-y-auto h-[calc(100vh-75px)] md:h-[calc(100vh-107px)] pb-24 shadow-lg"
+            >
+              <div className="px-4 py-5 space-y-1">
+                {mainLinks.map((link) => {
                   const isActive = location.pathname === link.path;
                   return (
                     <Link
                       key={link.name}
                       to={link.path}
                       onClick={() => setIsOpen(false)}
-                      className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-[12.5px] font-bold tracking-wide transition-all ${
+                      className={`flex items-center gap-2 px-4 py-3 rounded-lg text-[13px] font-bold tracking-wide uppercase transition-all ${
                         isActive
-                          ? 'bg-[#A24E51]/10 text-[#A24E51]'
-                          : 'text-[#6F5547] hover:bg-gray-50 hover:text-[#3C3430]'
+                          ? 'bg-[#A24E51]/10 text-[#A24E51] border-l-2 border-[#A24E51]'
+                          : 'text-[#3C3430] hover:bg-gray-50 hover:text-[#A24E51]'
                       }`}
                     >
                       {link.name}
                     </Link>
                   );
                 })}
+
+                {/* Trade Enquiry Mobile CTA */}
+                <Link
+                  to="/trade-enquiry"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center gap-2 mt-3 px-4 py-3 rounded-full text-[12px] font-bold tracking-wider uppercase btn-primary shadow-md w-full"
+                >
+                  <Phone size={13} />
+                  Trade Enquiry
+                </Link>
+
+                {/* More Section */}
+                <div className="mt-4 pt-4 border-t border-gray-100">
+                  <p className="px-4 text-[9px] font-bold text-[#908882] tracking-[0.2em] uppercase mb-2">More Pages</p>
+                  {moreLinks.map((link) => {
+                    const isActive = location.pathname === link.path;
+                    return (
+                      <Link
+                        key={link.name}
+                        to={link.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`flex items-center gap-2 px-6 py-2.5 rounded-lg text-[12.5px] font-bold tracking-wide transition-all ${
+                          isActive
+                            ? 'bg-[#A24E51]/10 text-[#A24E51]'
+                            : 'text-[#6F5547] hover:bg-gray-50 hover:text-[#3C3430]'
+                        }`}
+                      >
+                        {link.name}
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   );

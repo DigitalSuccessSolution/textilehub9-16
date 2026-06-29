@@ -1,19 +1,46 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
 const posts = [
-  { title: "The Future of Sustainable Weaving", date: "June 10, 2026", category: "Innovation", author: "Priya Sharma", readTime: "5 min read", image: "https://images.unsplash.com/photo-1705412877691-70f6913aaa1e?w=600&auto=format&fit=crop&q=60" },
-  { title: "Elegance in Threads: The Fall Collection", date: "May 28, 2026", category: "Collections", author: "Rajiv Kapoor", readTime: "4 min read", image: "https://images.unsplash.com/photo-1599753931952-654e960af582?w=600&auto=format&fit=crop&q=60" },
-  { title: "Behind the Scenes: Crafting the Perfect Saree", date: "May 15, 2026", category: "Craftsmanship", author: "Ananya Patel", readTime: "6 min read", image: "https://plus.unsplash.com/premium_photo-1669977749819-d8737b4408f7?w=600&auto=format&fit=crop&q=60" },
-  { title: "Trends to Watch in Home Furnishing", date: "Apr 22, 2026", category: "Trends", author: "Neha Gupta", readTime: "4 min read", image: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=600&auto=format&fit=crop&q=60" },
+  { 
+    title: "Preserving the Art of Handloom Weaving", 
+    date: "June 12, 2026", 
+    category: "Heritage", 
+    author: "Aarav Sen", 
+    description: "Explore the intricate journey of Indian handloom fabrics and our collaborative efforts to preserve these traditional artisanal crafts.", 
+    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&auto=format&fit=crop&q=80" 
+  },
+  { 
+    title: "Eco-Friendly Textile Innovations in 2026", 
+    date: "May 30, 2026", 
+    category: "Sustainability", 
+    author: "Dr. Meera Iyer", 
+    description: "How organic cotton fibers, natural plant-based dyes, and zero-waste patterns are redefining modern textile retail operations.", 
+    image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80" 
+  },
+  { 
+    title: "Modern B2B Strategies for Retailers", 
+    date: "May 10, 2026", 
+    category: "Business", 
+    author: "Karan Malhotra", 
+    description: "Analyzing the transition to digital B2B quotation systems and transparent e-Auction models to streamline vendor logistics.", 
+    image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&auto=format&fit=crop&q=80" 
+  }
 ];
 
 export default function Blog() {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredPosts = activeCategory === "All"
+    ? posts
+    : posts.filter(p => p.category === activeCategory);
+
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: '#FCF5F0' }}>
 
       {/* Hero Banner */}
-      <div className="relative pt-16 sm:pt-24 pb-10 flex flex-col items-center justify-center text-center">
+      <div className="relative pt-16 sm:pt-24 pb-6 flex flex-col items-center justify-center text-center">
         <div className="max-w-4xl mx-auto px-6 sm:px-10 w-full flex flex-col items-center">
           <h1 className="font-bold text-4xl sm:text-5xl text-[#3C3430] mb-6"
             style={{ fontFamily: "'Marcellus', serif" }}>
@@ -41,9 +68,28 @@ export default function Blog() {
         </div>
       </div>
 
-      <div className="pb-20 max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {posts.map((post, idx) => (
+      <div className="pb-20 max-w-7xl mx-auto px-4 py-6">
+    
+
+        {/* Category Filter Pills */}
+        <div className="flex justify-center flex-wrap gap-2 mb-10">
+          {['All', 'Heritage', 'Sustainability', 'Business'].map(cat => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className="px-4 py-2 rounded-full text-[12px] font-bold transition-all duration-200 cursor-pointer"
+              style={activeCategory === cat
+                ? { background: 'linear-gradient(135deg, #A24E51, #C37E80)', color: '#fff', boxShadow: '0 4px 12px rgba(162,78,81,0.3)' }
+                : { background: '#FFFFFF', color: '#554D48', border: '1.5px solid #EADCD2' }
+              }
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          {filteredPosts.map((post, idx) => (
             <motion.article
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -61,21 +107,20 @@ export default function Blog() {
                   {post.category}
                 </div>
               </div>
-              <div className="p-5 flex flex-col flex-1 text-left">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[11px] font-semibold text-[#908882]">{post.date}</span>
-                  <span className="w-1 h-1 rounded-full bg-[#A24E51]" />
-                  <span className="text-[11px] font-semibold text-[#908882]">{post.readTime}</span>
-                </div>
-                <h3 className="font-bold text-lg mb-2 leading-snug group-hover:text-[#A24E51] transition-colors"
+              <div className="p-3 sm:p-5 flex flex-col flex-1 text-left">
+                <p className="text-[9px] sm:text-[10px] uppercase tracking-widest font-bold mb-1.5 text-[#A24E51]">
+                  {post.category}
+                </p>
+                <h3 className="font-bold text-sm sm:text-lg mb-1 sm:mb-2 leading-snug group-hover:text-[#A24E51] transition-colors"
                   style={{ fontFamily: "'Marcellus', serif", color: '#3C3430' }}>
                   {post.title}
                 </h3>
-                <p className="text-[12px] mb-4 text-[#706863] font-semibold">By {post.author}</p>
-                <div className="mt-auto pt-3 border-t border-[#EADCD2]">
-                  <span className="flex items-center gap-1.5 text-[12px] font-bold tracking-wide text-[#A24E51]">
-                    Read More <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-200" />
-                  </span>
+                <p className="text-[11.5px] sm:text-[13.5px] leading-relaxed text-[#706863] mb-4 sm:mb-5 font-medium flex-grow line-clamp-3 sm:line-clamp-none">
+                  {post.description}
+                </p>
+                <div className="flex items-center justify-between pt-2 sm:pt-3 border-t border-[#EADCD2] text-[9.5px] sm:text-[11px] font-bold text-[#908882]">
+                  <span>By {post.author}</span>
+                  <span>{post.date}</span>
                 </div>
               </div>
             </motion.article>

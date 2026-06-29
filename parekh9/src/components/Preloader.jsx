@@ -56,7 +56,7 @@ export default function Preloader() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-4xl sm:text-5xl font-bold tracking-[0.2em] text-[#772629] mb-2"
+            className="text-3xl sm:text-5xl font-bold tracking-[0.2em] text-[#772629] mb-2"
             style={{ fontFamily: "'Marcellus', serif" }}
           >
             VASTRAMALL

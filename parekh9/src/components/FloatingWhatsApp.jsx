@@ -24,16 +24,16 @@ const FloatingWhatsApp = () => {
 
       {/* Button */}
       <div
-        className="w-[52px] h-[52px] rounded-full flex items-center justify-center shadow-2xl"
+        className="w-11 h-11 sm:w-[52px] sm:h-[52px] rounded-full flex items-center justify-center shadow-2xl"
         style={{
-          background: 'linear-gradient(135deg, #A24E51 0%, #772629 100%)',
+          background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
           border: '2px solid rgba(255,255,255,0.3)',
-          boxShadow: '0 6px 20px rgba(162,78,81,0.35)',
+          boxShadow: '0 6px 20px rgba(37, 211, 102, 0.35)',
         }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-7 w-7 relative z-10"
+          className="h-5 w-5 sm:h-7 sm:w-7 relative z-10"
           fill="white"
           viewBox="0 0 24 24"
         >

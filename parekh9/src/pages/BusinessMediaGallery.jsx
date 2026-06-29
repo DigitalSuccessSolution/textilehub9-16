@@ -1,15 +1,21 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const galleryItems = [
-  { title: "Global Textile Summit 2026", desc: "Our leadership team presenting the future of sustainable fabrics to international delegates and industry leaders.", category: "Event", image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=60" },
-  { title: "New Manufacturing Unit Inauguration", desc: "Expanding our footprint with a state-of-the-art facility in Gujarat, boosting our production capacity by 40%.", category: "Infrastructure", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&auto=format&fit=crop&q=60" },
-  { title: "Award for Excellence in Exports", desc: "Receiving the national award for outstanding contribution to textile exports from the Ministry of Commerce.", category: "Achievement", image: "https://images.unsplash.com/photo-1561489422-45de3d015e3e?w=800&auto=format&fit=crop&q=60" },
-  { title: "Annual Retailers Meet", desc: "Celebrating success and building stronger bonds with our 50,000+ retail partners across India.", category: "Community", image: "https://images.unsplash.com/photo-1515169067868-5387ec356754?w=800&auto=format&fit=crop&q=60" },
-  { title: "Launch of Eco-Weave Collection", desc: "A milestone event marking our commitment to 100% organic materials and environmentally friendly dyes.", category: "Product Launch", image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&auto=format&fit=crop&q=60" },
-  { title: "Skill Development Workshop", desc: "Empowering local artisans and weavers with modern textile technologies to preserve heritage crafts.", category: "CSR Initiative", image: "https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?w=800&auto=format&fit=crop&q=60" },
+  { title: "Banarasi Silk Exhibition", category: "Heritage", date: "June 15, 2026", image: "https://images.pexels.com/photos/5377395/pexels-photo-5377395.jpeg" },
+  { title: "Linen Fabrics Showcase", category: "Linen", date: "May 20, 2026", image: "https://images.pexels.com/photos/18359540/pexels-photo-18359540.jpeg" },
+  { title: "Cotton Prints Launch", category: "Cotton", date: "Apr 10, 2026", image: "https://images.pexels.com/photos/37608683/pexels-photo-37608683.jpeg" },
+  { title: "Designer Kurtis Collection", category: "Kurtis", date: "Mar 02, 2026", image: "https://images.pexels.com/photos/20702676/pexels-photo-20702676.jpeg" },
+  { title: "Premium Suiting Fabrics", category: "Suiting", date: "Feb 18, 2026", image: "https://images.pexels.com/photos/16199169/pexels-photo-16199169.jpeg?auto=compress&cs=tinysrgb&w=600" }
 ];
 
 export default function BusinessMediaGallery() {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredItems = activeCategory === "All"
+    ? galleryItems
+    : galleryItems.filter(item => item.category === activeCategory);
+
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: '#FCF5F0' }}>
 
@@ -23,16 +29,39 @@ export default function BusinessMediaGallery() {
         </div>
       </div>
 
-      <div className="pb-20 max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-          {galleryItems.map((item, idx) => (
+      <div className="pb-20 max-w-7xl mx-auto px-4 py-6">
+
+        {/* Intro Paragraph */}
+        <p className="text-center text-sm font-medium text-[#706863] max-w-xl mx-auto mb-6">
+          Browse through our latest premium clothing exhibitions, designer fabric showcases, and ethnic collection launches.
+        </p>
+
+        {/* Category Filter Pills */}
+        <div className="flex justify-center flex-wrap gap-2 mb-10">
+          {['All', 'Heritage', 'Linen', 'Cotton', 'Kurtis', 'Suiting'].map(cat => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className="px-4 py-2 rounded-full text-[12px] font-bold transition-all duration-200 cursor-pointer"
+              style={activeCategory === cat
+                ? { background: 'linear-gradient(135deg, #A24E51, #C37E80)', color: '#fff', boxShadow: '0 4px 12px rgba(162,78,81,0.3)' }
+                : { background: '#FFFFFF', color: '#554D48', border: '1.5px solid #EADCD2' }
+              }
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left">
+          {filteredItems.map((item, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.08 }}
-              className="group rounded-2xl overflow-hidden flex flex-col bg-white cursor-pointer transition-all duration-300 hover:shadow-md"
+              className="group rounded-2xl overflow-hidden flex flex-col bg-white hover:shadow-md transition-all duration-300"
               style={{ border: '1.5px solid #EADCD2' }}
             >
               <div className="relative w-full aspect-[4/3] overflow-hidden">
@@ -41,20 +70,19 @@ export default function BusinessMediaGallery() {
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute top-2 left-2 px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest text-[#A24E51]"
-                  style={{ background: 'rgba(162,78,81,0.1)', border: '1px solid rgba(162,78,81,0.3)', backdropFilter: 'blur(8px)' }}>
-                  {item.category}
-                </div>
               </div>
 
-              <div className="p-4 flex flex-col flex-1">
-                <h3 className="font-bold text-base mb-1.5 leading-snug transition-colors text-[#3C3430]"
+              <div className="p-3 sm:p-4 flex flex-col flex-1">
+                <span className="text-[9px] sm:text-[10px] uppercase tracking-widest font-bold mb-1 text-[#A24E51]">
+                  {item.category}
+                </span>
+                <h3 className="font-bold text-sm sm:text-base mb-2 leading-snug transition-colors text-[#3C3430]"
                   style={{ fontFamily: "'Marcellus', serif" }}>
                   {item.title}
                 </h3>
-                <p className="text-[12px] leading-relaxed line-clamp-3 text-[#554D48] font-medium">
-                  {item.desc}
-                </p>
+                <div className="text-[10px] sm:text-[11px] font-semibold text-[#908882] mt-auto pt-2 border-t border-gray-100">
+                  {item.date}
+                </div>
               </div>
             </motion.div>
           ))}

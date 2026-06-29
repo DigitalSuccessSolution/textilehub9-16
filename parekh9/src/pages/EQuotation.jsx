@@ -32,12 +32,31 @@ const EQuotation = () => {
               Active Quotation Requests
             </h2>
           </div>
-          <div className="rounded-2xl py-16 flex flex-col items-center justify-center bg-white"
-            style={{ border: '1.5px solid #EADCD2' }}>
-            <Inbox size={40} className="mb-4" color="#A24E51" strokeWidth={1} />
-            <p className="text-[12px] font-bold tracking-widest text-[#706863]">
-              ( At present, No e-Quotation published )
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { id: 1, title: 'Premium Silk Yarn Supply', desc: 'Seeking supplier quotes for 500kg organic Mulberry silk yarns in white/cream.', date: 'Oct 30, 2026' },
+              { id: 2, title: 'Combed Cotton Fabric', desc: 'Requesting wholesale pricing for 5,000 meters of premium 180 GSM combed cotton.', date: 'Nov 12, 2026' },
+              { id: 3, title: 'Ethnic Kurtis Manufacturing', desc: 'Looking for a verified retail manufacturer for a run of 1,200 Georgette Kurtis.', date: 'Dec 05, 2026' }
+            ].map(card => (
+              <div key={card.id} className="p-6 rounded-2xl bg-white flex flex-col justify-between"
+                style={{ border: '1.5px solid #EADCD2' }}>
+                <div>
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center mb-4 bg-[#F8ECE9] border border-[#A24E51]/20">
+                    <ClipboardCheck size={16} color="#A24E51" />
+                  </div>
+                  <h3 className="font-bold text-base mb-1.5 text-[#3C3430]" style={{ fontFamily: "'Marcellus', serif" }}>
+                    {card.title}
+                  </h3>
+                  <p className="text-[12.5px] leading-relaxed text-[#706863] mb-4 font-medium">
+                    {card.desc}
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-gray-100 flex justify-between items-center text-[10.5px] font-bold text-[#908882]">
+                  <span>REF: EQ/{2026}/{card.id}</span>
+                  <span>{card.date}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
 
@@ -65,7 +84,7 @@ const EQuotation = () => {
                 {[
                   { label: 'Name of the Trader *', type: 'text', req: true },
                   { label: 'Business Name *', type: 'text', req: true },
-                  { label: 'Business Address with PIN Code *', type: 'text', req: true },
+                  { label: 'Business Address with Pin Code *', type: 'text', req: true },
                   { label: 'GST No.', type: 'text', req: false },
                   { label: 'Mobile No. *', type: 'tel', req: true },
                   { label: 'Email ID *', type: 'email', req: true },
@@ -115,15 +134,6 @@ const EQuotation = () => {
               >
                 <Send size={16} /> Submit Quotation Request
               </button>
-
-              <div className="pt-2 text-center flex items-center justify-center gap-2">
-                <Mail size={14} color="#A24E51" />
-                <a href="mailto:info@textilemall.com"
-                  className="text-[11px] font-bold tracking-widest hover:underline text-[#A24E51]"
-                >
-                  info@textilemall.com
-                </a>
-              </div>
             </form>
           </div>
         </motion.div>

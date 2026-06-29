@@ -93,36 +93,35 @@ export default function Home() {
     <div className="w-full pb-10" style={{ background: '#FCF5F0', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
 
       {/* ── HERO BANNER ── */}
-      <section className="relative w-full h-[380px] sm:h-[450px] lg:h-[520px] overflow-hidden">
+      <section className="relative w-full h-[270px] sm:h-[450px] lg:h-[520px] overflow-hidden">
         <img
           src="/images/heromens.png"
           alt="VASTRAMALL Textile Banner"
           className="absolute inset-0 w-full h-full object-cover object-top"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/35 to-black/10 sm:from-transparent sm:via-transparent sm:to-transparent" />
 
-        <div className="relative z-10 h-full max-w-7xl mx-auto px-6 sm:px-10 flex items-center">
-          <div className="max-w-xl bg-white/50 backdrop-blur-[6px] border border-white/40 p-6 sm:p-8 rounded-3xl shadow-lg flex flex-col items-start text-left">
+        <div className="relative z-10 h-full max-w-7xl mx-auto px-6 sm:px-10 flex items-end sm:items-center pb-8 sm:pb-0">
+          <div className="max-w-[290px] sm:max-w-xl bg-transparent sm:bg-white/50 backdrop-blur-none sm:backdrop-blur-[6px] border-none sm:border sm:border-white/40 p-0 sm:p-8 rounded-none sm:rounded-3xl shadow-none sm:shadow-lg flex flex-col items-start text-left">
             <h1
-              className="leading-[1.15] mb-4 text-[#3C3430]"
-              style={{
-                fontFamily: "'Marcellus', serif",
-                fontSize: 'clamp(2.5rem, 4.5vw, 4.2rem)',
-              }}
+              className="leading-[1.15] mb-2 sm:mb-4 text-white sm:text-[#3C3430] text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold"
+              style={{ fontFamily: "'Marcellus', serif" }}
             >
               Threads that<br />
-              <span className="italic text-[#A24E51]">Tell Stories</span>
+              <span className="italic text-[#F5C2C4] sm:text-[#A24E51]">Tell Stories</span>
             </h1>
 
-            <p className="text-[#3C3430] text-[14px] sm:text-[16px] leading-[1.6] mb-8 font-semibold max-w-md">
-              Discover unmatched quality, timeless traditions and trendsetting collections under one roof. Our exclusive range weaves luxury into every celebration.
+            <p className="text-white/90 sm:text-[#3C3430] text-[12px] sm:text-[16px] leading-[1.5] mb-4 sm:mb-8 font-semibold max-w-xs sm:max-w-md">
+              <span className="sm:hidden">Premium collections weaving luxury into celebrations.</span>
+              <span className="hidden sm:inline">Discover unmatched quality, timeless traditions and trendsetting collections under one roof. Our exclusive range weaves luxury into every celebration.</span>
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
               <Link
                 to="/products"
-                className="inline-flex items-center justify-center px-7 py-3 rounded-full text-[12px] font-bold tracking-[0.08em] uppercase transition-all duration-300 hover:-translate-y-0.5 shadow-md hover:shadow-lg text-white btn-primary"
+                className="inline-flex items-center justify-center px-5 py-2.5 sm:px-7 sm:py-3 rounded-full text-[10px] sm:text-[12px] font-bold tracking-[0.08em] uppercase transition-all duration-300 hover:-translate-y-0.5 shadow-md hover:shadow-lg text-white btn-primary"
               >
-                EXPLORE COLLECTIONS <ArrowRight size={15} className="ml-2" />
+                EXPLORE COLLECTIONS <ArrowRight size={13} className="ml-1.5" />
               </Link>
             </div>
           </div>
@@ -142,7 +141,7 @@ export default function Home() {
         </div>
 
         {/* Circular Grid layout */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-5 sm:gap-6 justify-center items-start">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-x-2 gap-y-6 sm:gap-6 justify-center items-start">
           {shopCategories.map((cat, idx) => (
             <Link
               to={`/products?category=${encodeURIComponent(cat.name)}`}
@@ -161,7 +160,7 @@ export default function Home() {
                   className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-300"
                 />
               </div>
-              <span className="text-[11px] sm:text-[12px] font-bold text-[#3C3430] tracking-wide mt-3 group-hover:text-[#A24E51] transition-colors leading-tight">
+              <span className="text-[10px] sm:text-[12px] font-bold text-[#3C3430] tracking-wide mt-2 group-hover:text-[#A24E51] transition-colors leading-tight px-1 line-clamp-2">
                 {cat.name}
               </span>
             </Link>
@@ -279,9 +278,9 @@ export default function Home() {
 
       {/* ── STATS SECTION ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 border-y border-[#EADCD2] my-4">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+        <div className="flex flex-wrap justify-center md:grid md:grid-cols-5 gap-6 text-center">
           {stats.map((stat, idx) => (
-            <div key={idx} className="flex flex-col items-center">
+            <div key={idx} className="flex flex-col items-center min-w-[40%] sm:min-w-[30%] md:min-w-0">
               <span className="text-2xl sm:text-3xl font-bold text-[#A24E51]" style={{ fontFamily: "'Marcellus', serif" }}>
                 {stat.value}
               </span>
@@ -295,18 +294,17 @@ export default function Home() {
 
       {/* ── FEATURED COLLECTIONS ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-        <div className="relative flex items-center justify-center mb-8 border-b border-[#EADCD2]/60 pb-5">
+        <div className="flex justify-between items-end mb-8 border-b border-[#EADCD2]/60 pb-5">
           <h2
-            className="text-xl sm:text-2xl font-bold text-[#3C3430] uppercase tracking-widest flex items-center justify-center gap-3"
+            className="text-lg sm:text-2xl font-bold text-[#3C3430] uppercase tracking-widest flex items-center gap-2"
             style={{ fontFamily: "'Marcellus', serif" }}
           >
-            <span className="text-[#A24E51]/40">♦</span>
+            <span className="text-[#A24E51]/40 hidden xs:inline">♦</span>
             Featured Collections
-            <span className="text-[#A24E51]/40">♦</span>
           </h2>
           <Link
             to="/products"
-            className="absolute right-0 text-[10.5px] font-bold text-[#A24E51] hover:text-white hover:bg-[#A24E51] transition-all border border-[#A24E51]/30 rounded-lg px-4 py-1.5 uppercase tracking-wider shrink-0"
+            className="text-[10.5px] font-bold text-[#A24E51] hover:text-white hover:bg-[#A24E51] transition-all border border-[#A24E51]/30 rounded-lg px-3 py-1.5 sm:px-4 sm:py-1.5 uppercase tracking-wider shrink-0"
           >
             VIEW ALL
           </Link>
@@ -378,18 +376,17 @@ export default function Home() {
 
       {/* ── LATEST BLOGS SECTION ── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-        <div className="relative flex items-center justify-center mb-8 border-b border-[#EADCD2]/60 pb-5">
+        <div className="flex justify-between items-end mb-8 border-b border-[#EADCD2]/60 pb-5">
           <h2
-            className="text-xl sm:text-2xl font-bold text-[#3C3430] uppercase tracking-widest flex items-center justify-center gap-3"
+            className="text-lg sm:text-2xl font-bold text-[#3C3430] uppercase tracking-widest flex items-center gap-2"
             style={{ fontFamily: "'Marcellus', serif" }}
           >
-            <span className="text-[#A24E51]/40">♦</span>
+            <span className="text-[#A24E51]/40 hidden xs:inline">♦</span>
             Latest Blogs
-            <span className="text-[#A24E51]/40">♦</span>
           </h2>
           <Link
             to="/blog"
-            className="absolute right-0 text-[10.5px] font-bold text-[#A24E51] hover:text-white hover:bg-[#A24E51] transition-all border border-[#A24E51]/30 rounded-lg px-4 py-1.5 uppercase tracking-wider shrink-0"
+            className="text-[10.5px] font-bold text-[#A24E51] hover:text-white hover:bg-[#A24E51] transition-all border border-[#A24E51]/30 rounded-lg px-3 py-1.5 sm:px-4 sm:py-1.5 uppercase tracking-wider shrink-0"
           >
             VIEW ALL
           </Link>

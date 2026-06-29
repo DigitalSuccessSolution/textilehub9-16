@@ -9,7 +9,7 @@ const FloatingChatbot = () => {
     <div className="fixed bottom-6 right-5 z-50 flex flex-col items-end" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
       {isOpen && (
         <div
-          className="mb-4 w-[340px] sm:w-[370px] rounded-2xl overflow-hidden shadow-2xl"
+          className="mb-4 w-[calc(100vw-32px)] sm:w-[370px] max-w-[370px] rounded-2xl overflow-hidden shadow-2xl"
           style={{
             border: '1.5px solid #EADCD2',
             background: '#FFFFFF',
@@ -139,7 +139,7 @@ const FloatingChatbot = () => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Open Chat Assistant"
-        className="w-[52px] h-[52px] rounded-full flex items-center justify-center shadow-2xl cursor-pointer"
+        className="w-11 h-11 sm:w-[52px] sm:h-[52px] rounded-full flex items-center justify-center shadow-2xl cursor-pointer"
         style={{
           background: isOpen
             ? 'linear-gradient(135deg, #772629 0%, #A24E51 100%)'
@@ -149,9 +149,9 @@ const FloatingChatbot = () => {
         }}
       >
         {isOpen ? (
-          <X size={22} color="white" />
+          <X className="w-5 h-5 sm:w-[22px] sm:h-[22px] text-white" />
         ) : (
-          <MessageSquareText size={22} color="white" />
+          <MessageSquareText className="w-5 h-5 sm:w-[22px] sm:h-[22px] text-white" />
         )}
       </button>
     </div>
