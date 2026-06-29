@@ -64,11 +64,12 @@ export default function Navbar() {
     { name: 'e-Quotation', path: '/e-quotation' },
     { name: 'e-Auction', path: '/e-auction' },
     { name: 'Trade Circular', path: '/trade-circular' },
-    { name: 'Blog Page', path: '/blog' },
+    { name: 'Blog', path: '/blog' },
     { name: 'Notice Board', path: '/notice-board' },
-    { name: 'Career Page', path: '/career' },
+    { name: 'Career', path: '/career' },
     { name: 'Customer Review', path: '/reviews' },
     { name: 'Business Media Gallery', path: '/gallery' },
+    { name: 'FAQs', path: '/faq' },
   ];
 
   const isMoreActive = moreLinks.some(l => location.pathname === l.path);
@@ -79,7 +80,7 @@ export default function Navbar() {
       <div className="bg-[#1C032B] text-white py-2 px-4 sm:px-6 lg:px-8 border-b border-[#C5A059]/20 hidden md:block">
         <div className="max-w-[90rem] mx-auto flex justify-between items-center text-xs font-semibold tracking-wider">
           <div className="flex items-center gap-2">
-            <span className="text-[#EADBC8]">👑 ROYAL HERITAGE FESTIVAL: Flat 15% OFF on Premium Silk Collections</span>
+            <span className="text-[#EADBC8]">✨ HERITAGE TEXTILES: Explore India's Finest Traditional Weaves & Premium Showroom Collections</span>
             <Link to="/products" className="bg-[#C5A059] text-[#1C032B] px-3 py-0.5 font-bold text-[10px] uppercase ml-2 hover:bg-[#D4AF37] transition-colors">
               Explore Now &rarr;
             </Link>
@@ -226,58 +227,102 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Drawer */}
+        {/* Mobile Drawer Overlay */}
         {isOpen && (
-          <div className="lg:hidden bg-[#2A083E] border-t border-[rgba(197,160,89,0.3)] max-h-[85vh] overflow-y-auto shadow-lg">
-            <div className="px-4 py-5 space-y-1">
-              {mainLinks.map((link) => {
-                const isActive = location.pathname === link.path;
-                return (
-                  <Link
-                    key={link.name}
-                    to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`flex items-center gap-2 px-4 py-3 text-[13px] font-bold tracking-wide uppercase transition-all ${
-                      isActive
-                        ? 'bg-[#C5A059]/10 text-[#C5A059] border-l-2 border-[#C5A059]'
-                        : 'text-[#FAF6F0] hover:bg-[#1C032B] hover:text-[#C5A059]'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                );
-              })}
-
-              {/* Trade Enquiry Mobile CTA */}
-              <Link
-                to="/trade-enquiry"
+          <div className="fixed inset-0 lg:hidden bg-[#2A083E] z-[100] flex flex-col h-screen w-screen overflow-y-auto">
+            {/* Header inside the Overlay */}
+            <div className="flex items-center justify-between px-6 h-[75px] border-b border-[rgba(197,160,89,0.2)] shrink-0">
+              <span style={{ fontFamily: "'Cormorant Garamond', serif" }} className="text-[#FAF6F0] text-xl font-bold tracking-[0.05em]">
+                MAYURA ROYAL
+              </span>
+              <button
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 mt-3 px-4 py-3 text-[12px] font-bold tracking-wider uppercase btn-primary shadow-md w-full"
+                className="text-[#FAF6F0] hover:text-[#C5A059] focus:outline-none p-1"
               >
-                <Phone size={13} />
-                Trade Enquiry
-              </Link>
-
-              {/* More Section */}
-              <div className="mt-4 pt-4 border-t border-[rgba(197,160,89,0.3)]">
-                <p className="px-4 text-[9px] font-bold text-[#D2B4DE] tracking-[0.2em] uppercase mb-2">More Pages</p>
-                {moreLinks.map((link) => {
+                <X size={26} />
+              </button>
+            </div>
+            
+            <div className="flex-grow px-6 py-8 flex flex-col justify-between">
+              {/* Main Links */}
+              <div className="space-y-1">
+                {mainLinks.map((link) => {
                   const isActive = location.pathname === link.path;
                   return (
                     <Link
                       key={link.name}
                       to={link.path}
                       onClick={() => setIsOpen(false)}
-                      className={`flex items-center gap-2 px-6 py-2.5 text-[12.5px] font-bold tracking-wide transition-all ${
+                      className={`flex items-center justify-between px-4 py-3.5 text-[15px] font-bold tracking-wide uppercase transition-all duration-200 border-b border-[rgba(197,160,89,0.1)] ${
                         isActive
-                          ? 'bg-[#C5A059]/10 text-[#C5A059]'
-                          : 'text-[#C5A059] hover:bg-[#1C032B] hover:text-[#FAF6F0]'
+                          ? 'text-[#C5A059]'
+                          : 'text-[#FAF6F0] hover:text-[#C5A059]'
                       }`}
                     >
-                      {link.name}
+                      <span>{link.name}</span>
+                      <span className="text-[#C5A059]/60 font-light">&rarr;</span>
                     </Link>
                   );
                 })}
+              </div>
+
+              {/* More Pages Grid */}
+              <div className="mt-8">
+                <p className="px-4 text-[10px] font-extrabold text-[#D2B4DE] tracking-[0.25em] uppercase mb-4">
+                  More Portals & Categories
+                </p>
+                <div className="grid grid-cols-2 gap-3 px-2">
+                  {moreLinks.map((link) => {
+                    const isActive = location.pathname === link.path;
+                    return (
+                      <Link
+                        key={link.name}
+                        to={link.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`px-4 py-3 text-xs font-semibold transition-all duration-200 rounded-xl border text-center ${
+                          isActive
+                            ? 'bg-[#C5A059]/20 text-[#C5A059] border-[#C5A059]/40'
+                            : 'bg-[#1C032B]/40 text-[#FAF6F0]/90 border-[rgba(197,160,89,0.15)] hover:border-[#C5A059]'
+                        }`}
+                      >
+                        {link.name}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Bottom Footer Section of Menu */}
+              <div className="mt-10 pt-6 border-t border-[rgba(197,160,89,0.2)] flex flex-col items-center">
+                {/* Trade Enquiry Button */}
+                <Link
+                  to="/trade-enquiry"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-extrabold tracking-wider uppercase btn-primary shadow-md w-full rounded-xl mb-6"
+                >
+                  <Phone size={13} />
+                  Trade Enquiry
+                </Link>
+
+                {/* Social Links */}
+                <div className="flex items-center gap-6 text-[#EADBC8] mb-4">
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#C5A059] transition-all p-1" aria-label="Facebook">
+                    <FacebookIcon />
+                  </a>
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#C5A059] transition-all p-1" aria-label="Instagram">
+                    <InstagramIcon />
+                  </a>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#C5A059] transition-all p-1" aria-label="Twitter">
+                    <TwitterIcon />
+                  </a>
+                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#C5A059] transition-all p-1" aria-label="YouTube">
+                    <YoutubeIcon />
+                  </a>
+                </div>
+                
+                <span className="text-[10px] text-[#FAF6F0]/40 tracking-wider">
+                  © 2026 Mayura Royal Textile Mall
+                </span>
               </div>
             </div>
           </div>

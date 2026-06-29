@@ -28,7 +28,7 @@ export default function Preloader() {
       animate={{ y: '-100%' }}
       transition={{ delay: 2.6, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
       className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden"
-      style={{ background: '#0A0A0C' }}
+      style={{ background: '#1A1B23' }}
     >
       {/* Background Decorative Grid lines (Very Subtle) */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#C89B5F_1px,transparent_1px)] [background-size:24px_24px]" />
@@ -82,7 +82,7 @@ export default function Preloader() {
         </motion.div>
 
         {/* Progress Bar Container */}
-        <div className="w-56 sm:w-64 h-[2px] bg-[#24252F] overflow-hidden relative">
+        <div className="w-56 sm:w-64 h-[2px] bg-[#343545] overflow-hidden relative">
           <div
             className="h-full bg-[#C89B5F]"
             style={{ width: `${progress}%` }}

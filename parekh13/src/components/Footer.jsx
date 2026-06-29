@@ -41,7 +41,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {[
                 { name: 'About Us', path: '/about' },
-                { name: 'Product Page', path: '/products' },
+                { name: 'Product', path: '/products' },
                 { name: 'Trade Enquiry', path: '/trade-enquiry' },
                 { name: 'Contact Us', path: '/contact' },
               ].map(link => (
@@ -65,7 +65,7 @@ export default function Footer() {
                 { name: 'e-Quotation', path: '/e-quotation' },
                 { name: 'e-Auction', path: '/e-auction' },
                 { name: 'Trade Circular', path: '/trade-circular' },
-                { name: 'Blog Page', path: '/blog' },
+                { name: 'Blog', path: '/blog' },
               ].map(link => (
                 <li key={link.name}>
                   <Link to={link.path}
@@ -103,9 +103,7 @@ export default function Footer() {
         <div className="mt-12 pt-6 border-t flex flex-col sm:flex-row justify-between items-center gap-3"
           style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
           {/* Phone number placed on the left, copyright on the right */}
-          <a href="tel:+916353778329" className="text-[#C5A059] hover:underline text-xs font-bold flex items-center gap-1.5 order-2 sm:order-1">
-            <Phone size={12} /> Call Us: +91 6353778329
-          </a>
+   
           <p className="text-[#FAF6F0]/70 text-xs tracking-wide font-semibold order-1 sm:order-2">
             © 2026 · All Rights Reserved · Mayura Royal Textile Mall
           </p>

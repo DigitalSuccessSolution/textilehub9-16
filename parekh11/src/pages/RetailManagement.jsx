@@ -29,7 +29,7 @@ const RetailManagement = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto text-center"
+          className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 max-w-4xl mx-auto text-center"
         >
           {teamMembers.map((member, idx) => (
             <motion.div 
@@ -38,7 +38,7 @@ const RetailManagement = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
-              className="group relative overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-700 rounded-[2rem]"
+              className="group relative overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-700 rounded-[1rem] sm:rounded-[2rem]"
               style={{ border: '1.5px solid #EAE3D9' }}
             >
               
@@ -54,17 +54,17 @@ const RetailManagement = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2C362B]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 {/* Hover Contact Icon */}
-                <div className="absolute bottom-6 right-6 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-10">
-                  <a href="#" className="w-12 h-12 rounded-full flex items-center justify-center bg-white text-[#2C362B] shadow-xl hover:bg-[#4E6C50] hover:text-white transition-colors">
-                    <Mail size={18} />
+                <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-10">
+                  <a href="#" className="w-8 h-8 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-white text-[#2C362B] shadow-xl hover:bg-[#4E6C50] hover:text-white transition-colors">
+                    <Mail className="w-3 sm:w-auto h-3 sm:h-auto" />
                   </a>
                 </div>
               </div>
 
               {/* Text Content */}
-              <div className="p-7 text-center border-t border-[#EAE3D9] bg-white relative z-20">
-                <p className="text-[10px] uppercase tracking-[0.25em] font-extrabold text-[#8A6F4E] mb-2">{member.role}</p>
-                <h3 className="text-2xl font-bold text-[#2C362B]" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <div className="p-3 sm:p-7 text-center border-t border-[#EAE3D9] bg-white relative z-20">
+                <p className="text-[8px] sm:text-[10px] uppercase tracking-widest sm:tracking-[0.25em] font-extrabold text-[#8A6F4E] mb-1 sm:mb-2 line-clamp-1">{member.role}</p>
+                <h3 className="text-[13px] sm:text-2xl font-bold text-[#2C362B] leading-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
                   {member.name}
                 </h3>
               </div>

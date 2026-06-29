@@ -13,7 +13,7 @@ export default function About() {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white shadow-xl flex flex-col md:flex-row overflow-hidden border-l-[10px] border-rosegold-500"
+          className="bg-white shadow-xl flex flex-col md:flex-row overflow-hidden border border-gray-200"
         >
           {/* Text Content */}
           <div className="md:w-1/2 p-8 md:p-14 flex flex-col justify-center">

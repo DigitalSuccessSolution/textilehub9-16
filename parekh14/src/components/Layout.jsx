@@ -1,19 +1,33 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import SocialSidebar from './SocialSidebar';
 import Chatbot from './Chatbot';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 export default function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  // Prevent background scrolling when mobile sidebar is open
+  useEffect(() => {
+    if (isSidebarOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isSidebarOpen]);
+
   return (
     <div className="flex min-h-screen bg-pearl-100 text-gray-800">
       {/* Mobile Header / Hamburger */}
       <div className="lg:hidden fixed top-0 w-full bg-pearl-50 text-sapphire-900 z-50 flex items-center justify-between px-6 py-4 shadow-sm border-b border-gray-200">
-        <span className="font-playfair text-lg tracking-wider font-bold text-rosegold-500 border-b-0 pb-0 mb-0">HERITAGE GARMENTS</span>
+        <Link to="/" className="font-playfair text-lg tracking-wider font-bold text-rosegold-500 hover:opacity-85 transition-opacity border-b-0 pb-0 mb-0">
+          HERITAGE GARMENTS
+        </Link>
         <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="text-gray-600">
           {isSidebarOpen ? <X size={28} /> : <Menu size={28} />}
         </button>

@@ -32,12 +32,24 @@ const EQuotation = () => {
               Active Quotation Requests
             </h2>
           </div>
-          <div className="py-12 flex flex-col items-center justify-center bg-white rounded-2xl"
-            style={{ border: '1.5px solid #EADBC8' }}>
-            <Inbox size={36} className="mb-3 text-[#C5A059]" strokeWidth={1.2} />
-            <p className="text-[11px] font-extrabold tracking-widest text-[#786B80]">
-              At present, No e-Quotation request published
-            </p>
+          <div className="grid grid-cols-1 gap-6">
+            <div className="p-6 bg-white rounded-2xl flex flex-col md:flex-row items-start gap-4"
+              style={{ border: '1.5px solid #EADBC8' }}>
+              <div className="w-12 h-12 flex items-center justify-center shrink-0 text-[#C5A059] bg-[#C5A059]/10 border border-[#C5A059]/30 rounded-full">
+                <Inbox size={24} strokeWidth={1.5} />
+              </div>
+              <div className="flex-grow text-left">
+                <h3 className="font-extrabold text-lg text-[#2A083E] mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  Bulk Silk Saree Procurement
+                </h3>
+                <p className="text-[13px] text-[#504257] leading-relaxed mb-3">
+                  Request for quotation for premium silk sarees in bulk quantities of 500+ units for the upcoming festive season.
+                </p>
+                <div className="text-[10px] uppercase tracking-widest font-extrabold text-[#786B80]">
+                  Published: 2026-06-29
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
 
@@ -64,7 +76,7 @@ const EQuotation = () => {
                 {[
                   { label: 'Name of the Trader *', type: 'text', req: true },
                   { label: 'Business Name *', type: 'text', req: true },
-                  { label: 'Business Address with PIN Code *', type: 'text', req: true },
+                  { label: 'Business Address with Pin Code *', type: 'text', req: true },
                   { label: 'GST No.', type: 'text', req: false },
                   { label: 'Mobile No. *', type: 'tel', req: true },
                   { label: 'Email ID *', type: 'email', req: true },
@@ -114,15 +126,6 @@ const EQuotation = () => {
               >
                 <Send size={14} /> Submit Quotation Request
               </button>
-
-              <div className="pt-2 text-center flex items-center justify-center gap-2">
-                <Mail size={14} className="text-[#C5A059]" />
-                <a href="mailto:info@mayuraroyaltextile.com"
-                  className="text-[11px] font-bold tracking-widest hover:underline text-[#C5A059]"
-                >
-                  info@mayuraroyaltextile.com
-                </a>
-              </div>
             </form>
           </div>
         </motion.div>

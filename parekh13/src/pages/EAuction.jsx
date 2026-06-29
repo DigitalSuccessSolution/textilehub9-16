@@ -30,17 +30,55 @@ const EAuction = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10 text-left">
           <div className="flex items-center gap-3 mb-4">
             <Gavel size={20} className="text-[#C5A059]" />
-            <h2 className="font-extrabold text-lg uppercase tracking-wide text-[#2A083E]"
+            <h2 className="font-extrabold text-lg  tracking-wide text-[#2A083E]"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               Active e-Auctions
             </h2>
           </div>
-          <div className="py-12 flex flex-col items-center justify-center bg-white rounded-2xl"
-            style={{ border: '1.5px solid #EADBC8' }}>
-            <Inbox size={36} className="mb-3 text-[#C5A059]" strokeWidth={1.2} />
-            <p className="text-[11px] font-extrabold tracking-widest text-[#786B80]">
-              At present, No e-Auction published
-            </p>
+          <div className="grid grid-cols-1 gap-6">
+            <div className="p-6 bg-white rounded-2xl flex flex-col md:flex-row items-center gap-6 overflow-hidden"
+              style={{ border: '1.5px solid #EADBC8' }}>
+              <div className="w-full md:w-32 h-32 shrink-0 rounded-xl overflow-hidden bg-[#FAF6F0]">
+                <img
+                  src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=600&auto=format&fit=crop&q=80"
+                  alt="Auction Item"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex-grow text-left">
+                <h3 className="font-extrabold text-lg text-[#2A083E] mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  Surplus Silk Yarn & Raw Cotton Auction
+                </h3>
+                <p className="text-[13px] text-[#504257] leading-relaxed mb-3">
+                  Online auction for surplus premium-grade raw cotton and organic dyed silk yarn bundles from our Surat manufacturing mill.
+                </p>
+                <div className="text-[10px] uppercase tracking-widest font-extrabold text-[#786B80]">
+                  Auction Date: 2026-07-15
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 bg-white rounded-2xl flex flex-col md:flex-row items-center gap-6 overflow-hidden"
+              style={{ border: '1.5px solid #EADBC8' }}>
+              <div className="w-full md:w-32 h-32 shrink-0 rounded-xl overflow-hidden bg-[#FAF6F0]">
+                <img
+                  src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800&auto=format&fit=crop&q=80"
+                  alt="Auction Item"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex-grow text-left">
+                <h3 className="font-extrabold text-lg text-[#2A083E] mb-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  Premium Handloom Jacquard & Brocade Lots
+                </h3>
+                <p className="text-[13px] text-[#504257] leading-relaxed mb-3">
+                  Clearance e-auction of high-end handloom silk jacquard fabrics, brocades, and design borders from our Varanasi heritage inventory.
+                </p>
+                <div className="text-[10px] uppercase tracking-widest font-extrabold text-[#786B80]">
+                  Auction Date: 2026-07-28
+                </div>
+              </div>
+            </div>
           </div>
         </motion.div>
 
@@ -69,7 +107,7 @@ const EAuction = () => {
                 {[
                   { label: 'Name of the Participant *', type: 'text', req: true },
                   { label: 'Legal Name of Business *', type: 'text', req: true },
-                  { label: 'Business Address with PIN Code *', type: 'text', req: true },
+                  { label: 'Business Address with Pin Code *', type: 'text', req: true },
                   { label: 'GST No.', type: 'text', req: false },
                   { label: 'Mobile No. *', type: 'tel', req: true },
                   { label: 'Email ID *', type: 'email', req: true },
@@ -91,11 +129,11 @@ const EAuction = () => {
               {/* Upload */}
               <div>
                 <label className="block text-[11px] uppercase tracking-widest font-extrabold mb-3 text-[#504257]">
-                  Upload GST Certificate
+                  Upload GST Certificate *
                 </label>
                 <label className="w-full border-2 border-dashed py-10 flex flex-col items-center justify-center cursor-pointer transition-all hover:opacity-80 bg-[#FAF6F0] rounded-lg animate-none"
                   style={{ borderColor: '#EADBC8' }}>
-                  <input type="file" className="hidden" accept=".pdf,.jpg,.jpeg,.png" />
+                  <input type="file" className="hidden" accept=".pdf,.jpg,.jpeg,.png" required />
                   <UploadCloud size={28} className="mb-3 text-[#C5A059]" strokeWidth={1.2} />
                   <p className="text-xs font-bold text-[#504257]">Click to upload GST Certificate</p>
                   <p className="text-[9px] uppercase tracking-widest font-bold mt-1 text-[#786B80]">PDF, JPG, PNG Accepted</p>
@@ -107,13 +145,6 @@ const EAuction = () => {
               >
                 <Send size={14} /> Submit Registration
               </button>
-
-              <div className="pt-2 text-center flex items-center justify-center gap-2">
-                <Mail size={14} className="text-[#C5A059]" />
-                <a href="mailto:info@mayuraroyaltextile.com" className="text-[11px] font-bold tracking-widest hover:underline text-[#C5A059]">
-                  info@mayuraroyaltextile.com
-                </a>
-              </div>
             </form>
           </div>
         </motion.div>

@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 import { Bell, ChevronRight } from 'lucide-react';
 
 const notices = [
-  { id: 1, title: 'Annual General Meeting 2026', date: 'Nov 01, 2026', isNew: true },
-  { id: 2, title: 'Warehouse Closure Notice for Maintenance (Mumbai Depot)', date: 'Oct 20, 2026', isNew: true },
-  { id: 3, title: 'Introduction of e-Way Bill Integration in Partner Portal', date: 'Sep 15, 2026', isNew: true },
-  { id: 4, title: 'Recruitment Drive for Zonal Sales Managers', date: 'Aug 22, 2026', isNew: true },
+  { id: 1, title: 'Annual General Meeting 2026', date: 'Nov 01, 2026', description: 'The annual meeting for stakeholders to discuss the fiscal performance and future growth strategies of Mayura Royal.' },
+  { id: 2, title: 'Warehouse Closure Notice for Maintenance (Mumbai Depot)', date: 'Oct 20, 2026', description: 'Our Mumbai distribution center will be temporarily closed for 48 hours starting from Oct 20th for annual audit and maintenance.' },
+  { id: 3, title: 'Introduction of e-Way Bill Integration in Partner Portal', date: 'Sep 15, 2026', description: 'We have launched direct API integration for e-Way bills to streamline B2B orders and logistics for all distributors.' },
+  { id: 4, title: 'Recruitment Drive for Zonal Sales Managers', date: 'Aug 22, 2026', description: 'Looking for dynamic leaders with 5+ years of experience in retail expansion to manage our growing South-Indian market footprint.' },
 ];
 
 const NoticeBoard = () => {
@@ -27,36 +27,27 @@ const NoticeBoard = () => {
           {notices.map((notice) => (
             <div
               key={notice.id}
-              className="group p-5 bg-white cursor-pointer flex flex-col justify-between transition-all duration-300 hover:shadow-md rounded-2xl"
+              className="group p-5 bg-white flex flex-col justify-between transition-all duration-300 hover:shadow-md rounded-2xl animate-none"
               style={{
-                border: notice.isNew ? '1.5px solid rgba(197, 160, 89, 0.4)' : '1.5px solid #EADBC8',
-                borderTop: notice.isNew ? '4px solid #C5A059' : '1.5px solid #EADBC8',
+                border: '1.5px solid #EADBC8',
               }}
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-10 h-10 flex items-center justify-center shrink-0 rounded-lg"
-                    style={{ background: notice.isNew ? 'rgba(197, 160, 89, 0.12)' : 'rgba(197, 160, 89, 0.06)', border: '1px solid rgba(197, 160, 89, 0.2)' }}>
-                    <Bell size={18} color={notice.isNew ? '#C5A059' : '#786B80'} />
+                  <div className="w-10 h-10 flex items-center justify-center shrink-0 rounded-lg bg-[rgba(197,160,89,0.08)] border border-[rgba(197,160,89,0.2)]">
+                    <Bell size={18} color="#C5A059" />
                   </div>
-                  {notice.isNew && (
-                    <span className="text-[9px] px-2.5 py-1 font-bold uppercase tracking-widest text-[#C5A059] bg-[#C5A059]/10 rounded"
-                      >
-                      NEW
-                    </span>
-                  )}
                 </div>
-                <div className="flex flex-col mb-4">
+                <div className="flex flex-col mb-2">
                   <span className="text-[11px] font-bold uppercase tracking-wider mb-2 text-[#786B80]">{notice.date}</span>
-                  <h3 className="text-[14px] font-bold leading-snug transition-colors line-clamp-3 text-[#2A083E]"
+                  <h3 className="text-[16px] font-bold leading-snug transition-colors text-[#2A083E] mb-2"
                     style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     {notice.title}
                   </h3>
+                  <p className="text-[12.5px] leading-relaxed text-[#504257] font-medium">
+                    {notice.description}
+                  </p>
                 </div>
-              </div>
-              <div className="flex items-center justify-between pt-4 border-t border-[#EADBC8] mt-auto">
-                 <span className="text-[11px] font-bold tracking-wide text-[#C5A059]">Read More</span>
-                 <ChevronRight size={16} className="shrink-0 transition-transform group-hover:translate-x-1" color="#C5A059" />
               </div>
             </div>
           ))}

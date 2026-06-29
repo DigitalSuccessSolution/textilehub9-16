@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function Contact() {
   return (
-    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: '#0A0A0C' }}>
+    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: '#1A1B23' }}>
 
       {/* Hero Banner */}
       <div className="relative h-36 sm:h-44 overflow-hidden flex items-center justify-center text-center">
@@ -24,7 +24,7 @@ export default function Contact() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             className="overflow-hidden shadow-sm text-left"
-            style={{ background: '#121216', border: '1.5px solid #24252F' }}
+            style={{ background: '#242530', border: '1.5px solid #343545' }}
           >
             <div className="p-8 lg:p-10">
               <h2 className="font-bold text-3xl text-[#F3F4F6] mb-2"
@@ -67,7 +67,7 @@ export default function Contact() {
             className="h-full w-full"
           >
             <div className="w-full h-full overflow-hidden shadow-sm min-h-[350px]"
-              style={{ border: '1.5px solid #24252F' }}>
+              style={{ border: '1.5px solid #343545' }}>
               <iframe
                 src="https://maps.google.com/maps?q=Surat%20Textile%20Market&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"

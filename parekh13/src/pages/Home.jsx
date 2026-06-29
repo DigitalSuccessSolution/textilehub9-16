@@ -83,7 +83,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           
           {/* LEFT SIDEBAR: Shop by Category */}
-          <aside className="lg:col-span-1 flex flex-col justify-between bg-[#2A083E] border border-[rgba(197,160,89,0.3)] overflow-hidden shadow-sm h-[520px] rounded-2xl">
+          <aside className="hidden lg:flex lg:col-span-1 flex-col justify-between bg-[#2A083E] border border-[rgba(197,160,89,0.3)] overflow-hidden shadow-sm h-[520px] rounded-2xl">
             <div className="p-5 flex items-center gap-3 border-b border-[rgba(197,160,89,0.2)] bg-[#1C032B]">
               <Menu size={18} className="text-[#C5A059]" />
               <h3 className="font-extrabold text-base tracking-wide text-white uppercase" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
@@ -97,7 +97,7 @@ export default function Home() {
                 {categories.map((cat, idx) => (
                   <li key={idx}>
                     <Link
-                      to={`/products?category=${encodeURIComponent(cat.name)}`}
+                       to={`/products?category=${encodeURIComponent(cat.name)}`}
                       className="flex items-center gap-3 px-4 py-2.5 hover:bg-[#1C032B]/50 transition-colors group text-left rounded-lg"
                     >
                       <div className="w-8 h-8 bg-[#C5A059]/10 text-[#C5A059] flex items-center justify-center shrink-0 border border-[rgba(197,160,89,0.2)] group-hover:bg-[#C5A059] group-hover:text-[#1C032B] transition-colors duration-200 rounded-md">
@@ -112,88 +112,82 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-
-            <div className="p-4 bg-[#1C032B] border-t border-[rgba(197,160,89,0.2)]">
-              <Link
-                to="/products"
-                className="w-full py-3 px-4 text-xs font-bold text-center text-[#1C032B] bg-[#C5A059] hover:bg-[#D4AF37] transition-all flex items-center justify-center gap-2 tracking-wider uppercase rounded-lg"
-              >
-                View All Categories <ArrowRight size={13} />
-              </Link>
-            </div>
           </aside>
 
-          {/* RIGHT HERO SLIDER */}
-          <div className="lg:col-span-3 relative rounded-2xl overflow-hidden shadow-sm h-[520px] bg-[#FAF6F0] border border-[#EADBC8]">
-            <AnimatePresence mode="popLayout">
-              <motion.div
-                key={currentSlide}
-                initial={{ x: '100%' }}
-                animate={{ x: 0 }}
-                exit={{ x: '-100%' }}
-                transition={{ type: 'tween', ease: 'easeInOut', duration: 0.6 }}
-                className="absolute inset-0 w-full h-full"
-              >
-                <img
-                  src={heroSlides[currentSlide].image}
-                  alt="Textile Mall Banner"
-                  className="absolute inset-0 w-full h-full object-cover object-center filter saturate-[0.95]"
-                />
-                
-                {/* Visual Premium Gradient Mask */}
-                <div 
-                  className="absolute inset-0" 
-                  style={{
-                    background: 'linear-gradient(to right, rgba(28, 3, 43, 0.95) 0%, rgba(28, 3, 43, 0.5) 60%, rgba(28, 3, 43, 0.1) 100%)'
-                  }} 
-                />
-                <div className="absolute inset-0 bg-black/25 pointer-events-none" />
-
-                {/* Slider Inner Content */}
-                <div className="absolute inset-0 flex flex-col justify-between p-8 sm:p-12 md:p-16 text-left z-10 max-w-2xl">
+          {/* RIGHT HERO SLIDER WRAPPER */}
+          <div className="lg:col-span-3 relative h-[230px] sm:h-[380px] lg:h-[520px]">
+            {/* SLIDER INNER CONTAINER WITH OVERFLOW HIDDEN */}
+            <div className="w-full h-full relative rounded-2xl overflow-hidden shadow-sm bg-[#FAF6F0] border border-[#EADBC8]">
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ x: '100%' }}
+                  animate={{ x: 0 }}
+                  exit={{ x: '-100%' }}
+                  transition={{ type: 'tween', ease: 'easeInOut', duration: 0.6 }}
+                  className="absolute inset-0 w-full h-full"
+                >
+                  <img
+                    src={heroSlides[currentSlide].image}
+                    alt="Textile Mall Banner"
+                    className="absolute inset-0 w-full h-full object-cover object-center filter saturate-[0.95]"
+                  />
                   
-                  <div className="mt-8">
-                    <p className="text-[#C5A059] text-[11px] font-extrabold tracking-[0.25em] uppercase mb-3">
-                      Welcome to Mayura Royal Textile Mall
-                    </p>
+                    {/* Visual Premium Gradient Mask */}
+                    <div 
+                      className="absolute inset-0" 
+                      style={{
+                        background: 'linear-gradient(to right, rgba(127, 92, 147, 0.95) 0%, rgba(138, 94, 163, 0.5) 60%, rgba(102, 45, 135, 0.1) 100%)'
+                      }} 
+                    />
+                  <div className="absolute inset-0 bg-black/25 pointer-events-none" />
+
+                  {/* Slider Inner Content */}
+                  <div className="absolute inset-0 flex flex-col justify-center p-6 sm:p-12 md:p-16 text-left z-10 max-w-2xl">
                     
-                    <h1 className="leading-[1.1] mb-5 flex flex-col text-left">
-                      <span className="text-[#FAF6F0] text-4xl sm:text-5xl md:text-6xl font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                        {heroSlides[currentSlide].titleMain}
-                      </span>
-                      <span className="text-[#C5A059] text-4xl sm:text-5xl md:text-6xl font-light italic mt-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                        {heroSlides[currentSlide].titleAccent}
-                      </span>
-                    </h1>
+                    <div>
+                      <p className="hidden sm:block text-[#C5A059] text-[9px] sm:text-[11px] font-extrabold tracking-[0.25em] uppercase mb-2">
+                        Welcome to Mayura Royal Textile Mall
+                      </p>
+                      
+                      <h1 className="leading-[1.1] mb-3 sm:mb-5 flex flex-col text-left">
+                        <span className="text-[#FAF6F0] text-2xl sm:text-5xl md:text-6xl font-normal tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                          {heroSlides[currentSlide].titleMain}
+                        </span>
+                        <span className="text-[#C5A059] text-2xl sm:text-5xl md:text-6xl font-light italic mt-1" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                          {heroSlides[currentSlide].titleAccent}
+                        </span>
+                      </h1>
 
-                    <p className="text-[#FAF6F0]/80 text-xs sm:text-sm font-light tracking-wide leading-relaxed mb-8 max-w-md">
-                      India's most trusted heritage textile destination for quality, variety and value. Weaving royal craftsmanship with contemporary style.
-                    </p>
+                      <p className="hidden sm:block text-[#FAF6F0]/80 text-xs sm:text-sm font-light tracking-wide leading-relaxed mb-6 sm:mb-8 max-w-md">
+                        India's most trusted heritage textile destination for quality, variety and value. Weaving royal craftsmanship with contemporary style.
+                      </p>
 
-                    <div className="flex flex-wrap items-center gap-4">
-                      <Link
-                        to="/products"
-                        className="inline-flex items-center justify-center px-6 py-3.5 text-xs font-extrabold tracking-wider uppercase text-[#1C032B] bg-[#C5A059] hover:bg-[#D4AF37] transition-all hover:scale-105 shadow-md shadow-[#C5A059]/20 rounded-lg"
-                      >
-                        Explore Collections &rarr;
-                      </Link>
-                      <Link
-                        to="/trade-enquiry"
-                        className="inline-flex items-center justify-center px-6 py-3.5 text-xs font-extrabold tracking-wider uppercase text-[#FAF6F0] bg-[#2A083E] border-2 border-[rgba(197,160,89,0.3)] hover:bg-[#1C032B] transition-all hover:scale-105 rounded-lg"
-                      >
-                        Trade Enquiry
-                      </Link>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <Link
+                          to="/products"
+                          className="inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3.5 text-[10px] sm:text-xs font-extrabold tracking-wider uppercase text-[#1C032B] bg-[#C5A059] hover:bg-[#D4AF37] transition-all hover:scale-105 shadow-md shadow-[#C5A059]/20 rounded-lg"
+                        >
+                          Explore &rarr;
+                        </Link>
+                        <Link
+                          to="/trade-enquiry"
+                          className="inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3.5 text-[10px] sm:text-xs font-extrabold tracking-wider uppercase text-[#FAF6F0] bg-[#2A083E] border-2 border-[rgba(197,160,89,0.3)] hover:bg-[#1C032B] transition-all hover:scale-105 rounded-lg"
+                        >
+                          Enquiry
+                        </Link>
+                      </div>
                     </div>
-                  </div>
 
-                </div>
-              </motion.div>
-            </AnimatePresence>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
             {/* Slider Navigation Arrows */}
             <button
               onClick={handlePrevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center shadow-md transition-all z-20 cursor-pointer hover:scale-110 rounded-full"
+              className="absolute left-[-12px] sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shadow-md transition-all z-20 cursor-pointer hover:scale-110 rounded-full"
               style={{
                 background: '#1C032B',
                 border: '1.5px solid #C5A059',
@@ -201,11 +195,11 @@ export default function Home() {
               }}
               aria-label="Previous slide"
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={16} />
             </button>
             <button
               onClick={handleNextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center shadow-md transition-all z-20 cursor-pointer hover:scale-110 rounded-full"
+              className="absolute right-[-12px] sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center shadow-md transition-all z-20 cursor-pointer hover:scale-110 rounded-full"
               style={{
                 background: '#1C032B',
                 border: '1.5px solid #C5A059',
@@ -213,11 +207,11 @@ export default function Home() {
               }}
               aria-label="Next slide"
             >
-              <ChevronRight size={20} />
+              <ChevronRight size={16} />
             </button>
 
             {/* Pagination Indicators "01 02 03" */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 lg:left-16 lg:translate-x-0 z-20 flex items-center gap-4 text-xs font-bold text-[#FAF6F0]">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 lg:left-16 lg:translate-x-0 z-20 hidden sm:flex items-center gap-4 text-xs font-bold text-[#FAF6F0]">
               {heroSlides.map((_, i) => {
                 const isActive = i === currentSlide;
                 return (
@@ -319,7 +313,6 @@ export default function Home() {
             </div>
 
           </div>
-
         </div>
       </section>
 
@@ -342,94 +335,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── BOTTOM CARDS GRID (B2B PORTALS) ── */}
+      {/* ── RETAIL MANAGEMENT FULL-WIDTH BANNER ── */}
       <section className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          {/* Card 1: E-Quotation */}
-          <div className="border border-[rgba(197,160,89,0.3)] overflow-hidden flex flex-row items-center justify-between shadow-sm h-60 hover:shadow-md transition-all duration-300 relative group bg-gradient-to-r from-[#2A083E] to-[#1C032B] rounded-2xl">
-            <div className="w-[55%] h-full flex flex-col justify-between p-6 sm:p-8 relative z-10 text-left">
-              <div>
-                <h3 className="font-extrabold text-xl sm:text-2xl text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  e-Quotation
-                </h3>
-                <p className="text-xs text-[#FAF6F0]/90 font-light leading-relaxed">
-                  Get instant wholesale prices in seconds.
-                </p>
-              </div>
-              <Link
-                to="/e-quotation"
-                className="inline-flex items-center justify-center gap-1.5 px-5 py-3 text-xs font-bold bg-[#C5A059] text-[#1C032B] border border-[#C5A059] hover:bg-[#D4AF37] transition-all self-start shadow-sm rounded-lg"
-              >
-                Get Quote &rarr;
-              </Link>
-            </div>
-            <div className="w-[45%] h-full relative overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&fit=crop&q=80"
-                alt="e-Quotation clipboard"
-                className="absolute inset-0 w-full h-full object-cover object-left"
-              />
-              <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#1C032B] to-transparent z-10" />
-            </div>
+        <div className="relative rounded-2xl overflow-hidden h-52 sm:h-64 bg-[#FAF6F0] border border-[#EADBC8]">
+          <img
+            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&auto=format&fit=crop&q=80"
+            alt="Retail Showroom"
+            className="absolute inset-0 w-full h-full object-cover filter saturate-[0.8]"
+          />
+          <div 
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(to right, rgba(78, 55, 92, 0.9) 0%, rgba(42, 8, 62, 0.6) 60%, rgba(42, 8, 62, 0.2) 100%)'
+            }}
+          />
+          <div className="absolute inset-0 flex flex-col justify-center p-8 sm:p-12 text-left z-10 text-white max-w-xl">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              Retail Management
+            </h3>
+            <p className="text-xs sm:text-sm text-[#FAF6F0]/90 font-light leading-relaxed mb-4 max-w-md">
+              Mayura Royal Textile Mall is administered and governed by highly skilled, experienced and qualified professionals ensuring excellence in service.
+            </p>
+            <Link
+              to="/retail-management"
+              className="inline-flex items-center justify-center px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-[#1C032B] bg-[#C5A059] hover:bg-[#D4AF37] transition-all rounded-lg self-start"
+            >
+              View Team Details
+            </Link>
           </div>
-
-          {/* Card 2: E-Auction */}
-          <div className="border border-[rgba(197,160,89,0.3)] overflow-hidden flex flex-row items-center justify-between shadow-sm h-60 hover:shadow-md transition-all duration-300 relative group bg-gradient-to-r from-[#2A083E] to-[#1C032B] rounded-2xl">
-            <div className="w-[55%] h-full flex flex-col justify-between p-6 sm:p-8 relative z-10 text-left text-white">
-              <div>
-                <h3 className="font-extrabold text-xl sm:text-2xl text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  e-Auction
-                </h3>
-                <p className="text-xs text-[#FAF6F0]/90 font-light leading-relaxed">
-                  Bid & win premium products.
-                </p>
-              </div>
-              <Link
-                to="/e-auction"
-                className="inline-flex items-center justify-center gap-1.5 px-5 py-3 text-xs font-bold bg-[#C5A059] text-[#1C032B] border border-[#C5A059] hover:bg-[#D4AF37] transition-all self-start shadow-sm rounded-lg"
-              >
-                Join Auction &rarr;
-              </Link>
-            </div>
-            <div className="w-[45%] h-full relative overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&fit=crop&q=80"
-                alt="E-Auction Gavel"
-                className="absolute inset-0 w-full h-full object-cover object-left"
-              />
-              <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#1C032B] to-transparent z-10" />
-            </div>
-          </div>
-
-          {/* Card 3: Trade Circular */}
-          <div className="border border-[rgba(197,160,89,0.3)] overflow-hidden flex flex-row items-center justify-between shadow-sm h-60 hover:shadow-md transition-all duration-300 relative group bg-gradient-to-r from-[#2A083E] to-[#1C032B] rounded-2xl">
-            <div className="w-[55%] h-full flex flex-col justify-between p-6 sm:p-8 relative z-10 text-left">
-              <div>
-                <h3 className="font-extrabold text-xl sm:text-2xl text-white mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  Trade Circular
-                </h3>
-                <p className="text-xs text-[#FAF6F0]/90 font-light leading-relaxed">
-                  Stay updated with latest offers & schemes.
-                </p>
-              </div>
-              <Link
-                to="/trade-circular"
-                className="inline-flex items-center justify-center gap-1.5 px-5 py-3 text-xs font-bold bg-[#C5A059] text-[#1C032B] border border-[#C5A059] hover:bg-[#D4AF37] transition-all self-start shadow-sm rounded-lg"
-              >
-                View Updates &rarr;
-              </Link>
-            </div>
-            <div className="w-[45%] h-full relative overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&fit=crop&q=80"
-                alt="Trade Circular Bell"
-                className="absolute inset-0 w-full h-full object-cover object-center"
-              />
-              <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#1C032B] to-transparent z-10" />
-            </div>
-          </div>
-
         </div>
       </section>
 

@@ -10,7 +10,7 @@ const circulars = [
 
 const TradeCircular = () => {
   return (
-    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: '#0A0A0C' }}>
+    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: '#1A1B23' }}>
 
       {/* Hero Banner */}
       <div className="relative h-36 sm:h-44 overflow-hidden flex items-center justify-center text-center">
@@ -23,41 +23,41 @@ const TradeCircular = () => {
       </div>
 
       <div className="pb-16 max-w-7xl mx-auto px-4 py-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 text-left">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 text-left">
           {circulars.map((circular) => (
             <motion.div
               key={circular.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="group p-5 bg-[#121216] flex flex-col justify-between transition-all duration-300 hover:shadow-md"
-              style={{ border: '1.5px solid #24252F' }}
+              className="group p-5 bg-[#242530] flex flex-col justify-between transition-all duration-300 hover:shadow-md"
+              style={{ border: '1.5px solid #343545' }}
             >
-              <div className="flex flex-col items-start gap-4 mb-5">
-                <div className="w-12 h-12 flex items-center justify-center shrink-0 transition-all duration-300"
+              <div className="flex flex-col items-start gap-3 sm:gap-4 mb-4 sm:mb-5">
+                <div className="w-8 h-8 sm:w-12 sm:h-12 flex items-center justify-center shrink-0 transition-all duration-300"
                   style={{ background: 'rgba(200, 155, 95, 0.1)', border: '1px solid rgba(200, 155, 95, 0.25)' }}>
-                  <FileText size={20} color="#C89B5F" />
+                  <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-[#C89B5F]" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-base mb-1.5 leading-snug text-[#F3F4F6]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <h3 className="font-bold text-sm sm:text-base mb-1 sm:mb-1.5 leading-snug text-[#F3F4F6] line-clamp-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     {circular.title}
                   </h3>
-                  <div className="text-[11px] font-semibold text-[#9CA3AF]">
+                  <div className="text-[9px] sm:text-[11px] font-semibold text-[#9CA3AF]">
                     Date: {circular.date}
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 pt-4 border-t border-[#24252F] mt-auto">
-                <button className="flex-1 flex items-center justify-center gap-1.5 px-2 py-2 text-[11px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer"
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-3 sm:pt-4 border-t border-[#343545] mt-auto">
+                <button className="flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 sm:py-2 text-[9px] sm:text-[11px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer"
                   style={{ border: '1.5px solid rgba(200, 155, 95, 0.4)', color: '#C89B5F' }}
                   onMouseEnter={e => { e.currentTarget.style.background = '#C89B5F'; e.currentTarget.style.color = 'black'; }}
                   onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#C89B5F'; }}>
-                  <Eye size={14} /> View
+                  <Eye size={12} className="sm:w-3.5 sm:h-3.5" /> View
                 </button>
-                <button className="flex-1 flex items-center justify-center gap-1.5 px-2 py-2 text-[#F3F4F6] border border-[#24252F] hover:border-[#C89B5F] text-[11px] font-bold uppercase tracking-wider transition-all duration-200 hover:text-[#C89B5F] hover:bg-[#C89B5F]/5 cursor-pointer"
+                <button className="flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 sm:py-2 text-[#F3F4F6] border border-[#343545] hover:border-[#C89B5F] text-[9px] sm:text-[11px] font-bold uppercase tracking-wider transition-all duration-200 hover:text-[#C89B5F] hover:bg-[#C89B5F]/5 cursor-pointer"
                   >
-                  <Printer size={14} /> Print
+                  <Printer size={12} className="sm:w-3.5 sm:h-3.5" /> Print
                 </button>
               </div>
             </motion.div>

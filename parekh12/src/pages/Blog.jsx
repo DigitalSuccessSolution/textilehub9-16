@@ -1,57 +1,68 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
 const posts = [
-  { title: "The Future of Sustainable Weaving", date: "June 10, 2026", category: "Innovation", author: "Priya Sharma", readTime: "5 min read", image: "https://images.unsplash.com/photo-1705412877691-70f6913aaa1e?w=600&auto=format&fit=crop&q=60" },
-  { title: "Elegance in Threads: The Fall Collection", date: "May 28, 2026", category: "Collections", author: "Rajiv Kapoor", readTime: "4 min read", image: "https://images.unsplash.com/photo-1599753931952-654e960af582?w=600&auto=format&fit=crop&q=60" },
-  { title: "Behind the Scenes: Crafting the Perfect Saree", date: "May 15, 2026", category: "Craftsmanship", author: "Ananya Patel", readTime: "6 min read", image: "https://plus.unsplash.com/premium_photo-1669977749819-d8737b4408f7?w=600&auto=format&fit=crop&q=60" },
-  { title: "Trends to Watch in Home Furnishing", date: "Apr 22, 2026", category: "Trends", author: "Neha Gupta", readTime: "4 min read", image: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=600&auto=format&fit=crop&q=60" },
+  { title: "The Future of Sustainable Weaving", date: "June 10, 2026", category: "Innovation", author: "Priya Sharma", readTime: "5 min read", description: "Exploring how sustainable weaving practices are reshaping the textile industry and our commitment to eco-friendly production methods.", image: "https://images.unsplash.com/photo-1705412877691-70f6913aaa1e?w=600&auto=format&fit=crop&q=60" },
+  { title: "Elegance in Threads: The Fall Collection", date: "May 28, 2026", category: "Collections", author: "Rajiv Kapoor", readTime: "4 min read", description: "A deep dive into the design and craftsmanship behind our latest Fall Collection, featuring premium silks and rich embroideries.", image: "https://images.unsplash.com/photo-1599753931952-654e960af582?w=600&auto=format&fit=crop&q=60" },
+  { title: "Behind the Scenes: Crafting the Perfect Saree", date: "May 15, 2026", category: "Craftsmanship", author: "Ananya Patel", readTime: "6 min read", description: "Discover the meticulous step-by-step journey of creating our signature sarees, from yarn selection to the final exquisite finish.", image: "https://plus.unsplash.com/premium_photo-1669977749819-d8737b4408f7?w=600&auto=format&fit=crop&q=60" },
 ];
 
 export default function Blog() {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredPosts = posts.filter(post => 
+    activeCategory === "All" || post.category.toLowerCase() === activeCategory.toLowerCase()
+  );
+
   return (
-    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: '#0A0A0C' }}>
+    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: '#1A1B23' }}>
 
       {/* Hero Banner */}
-      <div className="relative pt-16 sm:pt-24 pb-10 flex flex-col items-center justify-center text-center">
+      <div className="relative pt-12 sm:pt-16 pb-4 flex flex-col items-center justify-center text-center">
         <div className="max-w-4xl mx-auto px-6 sm:px-10 w-full flex flex-col items-center">
-          <h1 className="font-bold text-4xl sm:text-5xl text-[#F3F4F6] mb-6"
+          <h1 className="font-bold text-4xl sm:text-5xl text-[#F3F4F6] mb-3"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Blog & Articles
           </h1>
-          
-          <p className="text-[16px] sm:text-[18px] md:text-[20px] italic mb-8 text-[#9CA3AF] leading-relaxed max-w-3xl">
-            "Join and participate in our nation-wide campaign to digitalize the Textile<br className="hidden md:block"/> Sector, one of the largest sectors of India".
-          </p>
-
-          <h2 className="text-base sm:text-lg font-bold tracking-widest mb-2 uppercase text-[#F3F4F6]"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Swastik Textile Mall
-          </h2>
-          
-          <p className="text-[11px] sm:text-[13px] font-bold tracking-wide mb-1 text-[#C89B5F]">
-            Textile Manufacturer & Entrepreneur
-          </p>
-          
-          <p className="text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-8 text-[#9CA3AF]">
-            INDIA
-          </p>
-
-          <div className="w-32 sm:w-48 h-[1px] bg-[#24252F]" />
+          <div className="w-32 sm:w-48 h-[1px] bg-[#343545]" />
         </div>
       </div>
 
-      <div className="pb-20 max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {posts.map((post, idx) => (
+      <div className="pb-20 max-w-7xl mx-auto px-4 pt-4 pb-12">
+        <div className="text-center mb-10">
+          <p className="text-[14px] text-[#9CA3AF] mb-4">Explore insights and stories across various domains.</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {["All", "Innovation", "Collections", "Craftsmanship", "Trends", "News"].map((cat, idx) => {
+              const isActive = activeCategory === cat;
+              return (
+                <span
+                  key={idx}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest rounded-full cursor-pointer transition-colors border ${
+                    isActive
+                      ? "text-black bg-[#C89B5F] border-[#C89B5F]"
+                      : "text-[#C89B5F] bg-[#C89B5F]/10 border-[#C89B5F]/20 hover:bg-[#C89B5F]/20"
+                  }`}
+                >
+                  {cat}
+                </span>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+          {filteredPosts.length > 0 ? (
+            filteredPosts.map((post, idx) => (
             <motion.article
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group flex flex-col overflow-hidden hover:shadow-md transition-all duration-300 bg-[#121216]"
-              style={{ border: '1.5px solid #24252F' }}
+              className="group flex flex-col overflow-hidden hover:shadow-md transition-all duration-300 bg-[#242530]"
+              style={{ border: '1.5px solid #343545' }}
             >
               <div className="relative w-full aspect-[16/10] overflow-hidden">
                 <img src={post.image} alt={post.title}
@@ -67,19 +78,27 @@ export default function Blog() {
                   <span className="w-1 h-1 bg-[#C89B5F]" />
                   <span className="text-[11px] font-semibold text-[#9CA3AF]">{post.readTime}</span>
                 </div>
-                <h3 className="font-bold text-lg mb-2 leading-snug group-hover:text-[#C89B5F] transition-colors"
+                <h3 className="font-bold text-sm sm:text-lg mb-2 leading-snug group-hover:text-[#C89B5F] transition-colors"
                   style={{ fontFamily: "'Cormorant Garamond', serif", color: '#F3F4F6' }}>
                   {post.title}
                 </h3>
-                <p className="text-[12px] mb-4 text-[#9CA3AF] font-semibold">By {post.author}</p>
-                <div className="mt-auto pt-3 border-t border-[#24252F]">
-                  <span className="flex items-center gap-1.5 text-[12px] font-bold tracking-wide text-[#C89B5F]">
+                <p className="text-[10px] sm:text-[12px] mb-2 text-[#9CA3AF] font-semibold">By {post.author}</p>
+                <p className="text-[10px] sm:text-[12.5px] leading-relaxed text-[#D1D5DB] mb-4 line-clamp-3">
+                  {post.description}
+                </p>
+                <div className="mt-auto pt-3 border-t border-[#343545]">
+                  <span className="flex items-center gap-1.5 text-[10px] sm:text-[12px] font-bold tracking-wide text-[#C89B5F]">
                     Read More <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-200" />
                   </span>
                 </div>
               </div>
             </motion.article>
-          ))}
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12">
+              <p className="text-[#9CA3AF] text-sm font-semibold">No articles found in this category.</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

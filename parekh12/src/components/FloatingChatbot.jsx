@@ -11,14 +11,14 @@ const FloatingChatbot = () => {
         <div
           className="mb-4 w-[340px] sm:w-[370px] overflow-hidden shadow-2xl"
           style={{
-            border: '1.5px solid #24252F',
-            background: '#121216',
+            border: '1.5px solid #343545',
+            background: '#242530',
           }}
         >
           {/* Header */}
           <div
             className="px-5 py-4 flex items-center justify-between relative"
-            style={{ background: 'linear-gradient(135deg, #0A0A0C 0%, #1E1F27 100%)' }}
+            style={{ background: 'linear-gradient(135deg, #1A1B23 0%, #1E1F27 100%)' }}
           >
             {/* Theme accent top gold bar */}
             <div
@@ -57,18 +57,18 @@ const FloatingChatbot = () => {
           {/* Chat Body */}
           <div
             className="p-5 h-64 overflow-y-auto"
-            style={{ background: '#0A0A0C' }}
+            style={{ background: '#1A1B23' }}
           >
             {/* Bot message */}
             <div className="flex items-start gap-2.5 mb-4">
               <div
-                className="w-7 h-7 flex items-center justify-center shrink-0 mt-0.5 bg-[#121216] border border-[#C89B5F]/20 text-[#C89B5F]"
+                className="w-7 h-7 flex items-center justify-center shrink-0 mt-0.5 bg-[#242530] border border-[#C89B5F]/20 text-[#C89B5F]"
               >
                 <Sparkles size={11} />
               </div>
               <div
-                className="px-4 py-3 max-w-[82%] shadow-sm bg-[#121216]"
-                style={{ border: '1px solid #24252F' }}
+                className="px-4 py-3 max-w-[82%] shadow-sm bg-[#242530]"
+                style={{ border: '1px solid #343545' }}
               >
                 <p className="text-[13px] leading-relaxed text-[#F3F4F6]">
                   Namaste! 🙏 Welcome to <strong>Swastik Textile Mall</strong>. How can I assist you today?
@@ -84,7 +84,7 @@ const FloatingChatbot = () => {
                   className="text-[11px] font-bold px-3 py-1.5 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
                   style={{
                     background: '#181920',
-                    border: '1.5px solid #24252F',
+                    border: '1.5px solid #343545',
                     color: '#9CA3AF',
                   }}
                   onMouseEnter={e => {
@@ -93,7 +93,7 @@ const FloatingChatbot = () => {
                     e.currentTarget.style.background = '#C89B5F';
                   }}
                   onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = '#24252F';
+                    e.currentTarget.style.borderColor = '#343545';
                     e.currentTarget.style.color = '#9CA3AF';
                     e.currentTarget.style.background = '#181920';
                   }}
@@ -106,8 +106,8 @@ const FloatingChatbot = () => {
 
           {/* Input */}
           <div
-            className="p-3 flex items-center gap-2.5 border-t bg-[#121216]"
-            style={{ borderColor: '#24252F' }}
+            className="p-3 flex items-center gap-2.5 border-t bg-[#242530]"
+            style={{ borderColor: '#343545' }}
           >
             <input
               type="text"
@@ -116,12 +116,12 @@ const FloatingChatbot = () => {
               onChange={e => setMessage(e.target.value)}
               className="flex-grow px-4 py-2.5 text-[13px] outline-none transition-all duration-200"
               style={{
-                background: '#0A0A0C',
-                border: '1.5px solid #24252F',
+                background: '#1A1B23',
+                border: '1.5px solid #343545',
                 color: '#F3F4F6',
               }}
               onFocus={e => e.target.style.borderColor = '#C89B5F'}
-              onBlur={e => e.target.style.borderColor = '#24252F'}
+              onBlur={e => e.target.style.borderColor = '#343545'}
             />
             <button
               className="w-9 h-9 flex items-center justify-center shrink-0 transition-all duration-200 hover:scale-110 hover:shadow-md cursor-pointer"

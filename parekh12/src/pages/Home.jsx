@@ -93,8 +93,8 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           
           {/* LEFT SIDEBAR: Shop by Category */}
-          <aside className="lg:col-span-1 flex flex-col justify-between bg-[#121216] border border-[#24252F] overflow-hidden shadow-sm h-[520px]">
-            <div className="p-5 flex items-center gap-3 border-b border-[#24252F] bg-[#0A0A0C]">
+          <aside className="hidden lg:flex lg:col-span-1 flex-col justify-between bg-[#242530] border border-[#343545] overflow-hidden shadow-sm h-[450px]">
+            <div className="p-5 flex items-center gap-3 border-b border-[#343545] bg-[#1A1B23]">
               <Menu size={18} className="text-[#C89B5F]" />
               <h3 className="font-extrabold text-base tracking-wide text-[#F3F4F6] uppercase" style={{ fontFamily: "'Playfair Display', serif" }}>
                 Shop by Category
@@ -110,7 +110,7 @@ export default function Home() {
                       to={`/products?category=${encodeURIComponent(cat.name)}`}
                       className="flex items-center gap-3 px-4 py-2.5 hover:bg-[#1C1D24] transition-colors group text-left"
                     >
-                      <div className="w-8 h-8 bg-[#C89B5F]/10 text-[#C89B5F] flex items-center justify-center shrink-0 border border-[#24252F] group-hover:bg-[#C89B5F] group-hover:text-black transition-colors duration-200">
+                      <div className="w-8 h-8 bg-[#C89B5F]/10 text-[#C89B5F] flex items-center justify-center shrink-0 border border-[#343545] group-hover:bg-[#C89B5F] group-hover:text-black transition-colors duration-200">
                         <cat.icon size={15} />
                       </div>
                       <div className="flex-grow min-w-0">
@@ -123,19 +123,12 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="p-4 bg-[#0A0A0C] border-t border-[#24252F]">
-              <Link
-                to="/products"
-                className="w-full py-3 px-4 text-xs font-bold text-center text-black bg-[#C89B5F] hover:bg-[#D4AF37] transition-all flex items-center justify-center gap-2 tracking-wider uppercase"
-              >
-                View All Categories <ArrowRight size={13} />
-              </Link>
-            </div>
           </aside>
 
           {/* RIGHT HERO SLIDER */}
-          <div className="lg:col-span-3 relative rounded-3xl overflow-hidden shadow-sm h-[520px] bg-[#EAE3D9]">
-            <AnimatePresence mode="popLayout">
+          <div className="lg:col-span-3 relative h-[280px] sm:h-[320px] lg:h-[450px]">
+            <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-sm bg-[#EAE3D9]">
+              <AnimatePresence mode="popLayout">
               <motion.div
                 key={currentSlide}
                 initial={{ x: '100%' }}
@@ -160,36 +153,36 @@ export default function Home() {
                 <div className="absolute inset-0 bg-black/25 pointer-events-none" />
 
                 {/* Slider Inner Content */}
-                <div className="absolute inset-0 flex flex-col justify-between p-8 sm:p-12 md:p-16 text-left z-10 max-w-2xl">
+                <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-12 md:p-16 text-left z-10 max-w-2xl">
                   
-                  <div className="mt-8">
-                    <p className="text-[#C89B5F] text-[11px] font-extrabold tracking-[0.25em] uppercase mb-3">
+                  <div className="mt-0">
+                    <p className="hidden sm:block text-[#C89B5F] text-[11px] font-extrabold tracking-[0.25em] uppercase mb-3">
                       Welcome to Swastik Textile Mall
                     </p>
                     
-                    <h1 className="leading-[1.1] mb-5 flex flex-col text-left">
-                      <span className="text-[#2C362B] text-4xl sm:text-5xl md:text-6xl font-normal tracking-wide" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    <h1 className="leading-[1.1] mb-4 sm:mb-5 flex flex-col text-left">
+                      <span className="text-[#2C362B] text-2xl sm:text-5xl md:text-6xl font-normal tracking-wide" style={{ fontFamily: "'Playfair Display', serif" }}>
                         {heroSlides[currentSlide].titleMain}
                       </span>
-                      <span className="text-[#8A6F4E] text-4xl sm:text-5xl md:text-6xl font-light italic mt-1" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      <span className="text-[#8A6F4E] text-2xl sm:text-5xl md:text-6xl font-light italic mt-1" style={{ fontFamily: "'Playfair Display', serif" }}>
                         {heroSlides[currentSlide].titleAccent}
                       </span>
                     </h1>
 
-                    <p className="text-[#5D645D] text-xs sm:text-sm font-semibold tracking-wide leading-relaxed mb-8 max-w-md">
+                    <p className="hidden sm:block text-[#5D645D] text-xs sm:text-sm font-semibold tracking-wide leading-relaxed mb-8 max-w-md">
                       India's most trusted textile destination for quality, variety and value. Weaving heritage craftsmanship with contemporary style.
                     </p>
 
-                    <div className="flex flex-wrap items-center gap-4">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
                       <Link
                         to="/products"
-                        className="inline-flex items-center justify-center px-6 py-3.5 text-xs font-extrabold tracking-wider uppercase text-black bg-[#C89B5F] hover:bg-[#D4AF37] transition-all hover:scale-105 shadow-md shadow-[#C89B5F]/20"
+                        className="w-fit sm:w-auto inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3.5 text-[10px] sm:text-xs font-extrabold tracking-wider uppercase text-black bg-[#C89B5F] hover:bg-[#D4AF37] transition-all hover:scale-105 shadow-md shadow-[#C89B5F]/20"
                       >
                         Explore Collections &rarr;
                       </Link>
                       <Link
                         to="/trade-enquiry"
-                        className="inline-flex items-center justify-center px-6 py-3.5 text-xs font-extrabold tracking-wider uppercase text-[#F3F4F6] bg-[#121216] border-2 border-[#24252F] hover:bg-[#1C1D24] transition-all hover:scale-105"
+                        className="w-fit sm:w-auto inline-flex items-center justify-center px-4 py-2.5 sm:px-6 sm:py-3.5 text-[10px] sm:text-xs font-extrabold tracking-wider uppercase text-[#F3F4F6] bg-[#242530] border-2 border-[#343545] hover:bg-[#1C1D24] transition-all hover:scale-105"
                       >
                         Trade Enquiry
                       </Link>
@@ -198,52 +191,34 @@ export default function Home() {
 
                 </div>
               </motion.div>
-            </AnimatePresence>
+              </AnimatePresence>
+            </div>
 
-            {/* Slider Navigation Arrows */}
+            {/* Slider Navigation Arrows - Outside the overflow-hidden container */}
             <button
               onClick={handlePrevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center shadow-md transition-all z-20 cursor-pointer hover:scale-110"
+              className="absolute -left-2 sm:-left-5 lg:left-4 top-1/2 -translate-y-1/2 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shadow-md transition-all z-20 cursor-pointer hover:scale-110"
               style={{
-                background: '#121216',
+                background: '#242530',
                 border: '1.5px solid #C89B5F',
                 color: '#C89B5F',
               }}
               aria-label="Previous slide"
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
             <button
               onClick={handleNextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center shadow-md transition-all z-20 cursor-pointer hover:scale-110"
+              className="absolute -right-2 sm:-right-5 lg:right-4 top-1/2 -translate-y-1/2 w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shadow-md transition-all z-20 cursor-pointer hover:scale-110"
               style={{
-                background: '#121216',
+                background: '#242530',
                 border: '1.5px solid #C89B5F',
                 color: '#C89B5F',
               }}
               aria-label="Next slide"
             >
-              <ChevronRight size={20} />
+              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </button>
-
-            {/* Pagination Indicators "01 02 03" */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 lg:left-16 lg:translate-x-0 z-20 flex items-center gap-4 text-xs font-bold text-[#2C362B]">
-              {heroSlides.map((_, i) => {
-                const isActive = i === currentSlide;
-                return (
-                  <button
-                    key={i}
-                    onClick={() => setCurrentSlide(i)}
-                    className={`transition-all duration-300 py-1 border-b-2 tracking-widest ${
-                      isActive ? 'border-[#4E6C50] text-[#4E6C50]' : 'border-transparent text-[#2C362B]/50'
-                    }`}
-                  >
-                    0{i + 1}
-                  </button>
-                );
-              })}
-            </div>
-
           </div>
         </div>
       </section>
@@ -254,7 +229,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
             
             {/* Column 1 (Why Choose): Width 3/12 */}
-            <div className="lg:col-span-3 flex flex-col justify-between bg-[#121216] border border-[#C89B5F]/30 text-white p-8 shadow-sm text-left relative overflow-hidden">
+            <div className="lg:col-span-3 flex flex-col justify-between bg-[#242530] border border-[#C89B5F]/30 text-white p-8 shadow-sm text-left relative overflow-hidden">
               {/* Elegant floral outline SVG decoration background */}
               <div className="absolute right-0 bottom-0 opacity-15 pointer-events-none translate-x-1/4 translate-y-1/4">
                 <svg width="250" height="250" viewBox="0 0 100 100" fill="currentColor">
@@ -358,10 +333,20 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           {/* Card 1: E-Quotation */}
-          <div className="border border-[#24252F] overflow-hidden flex flex-row items-center justify-between shadow-sm h-60 hover:shadow-md transition-all duration-300 relative group bg-gradient-to-r from-[#1E1F27] to-[#121216]">
-            <div className="w-[55%] h-full flex flex-col justify-between p-6 sm:p-8 relative z-10 text-left">
+          <div className="border border-[#343545] overflow-hidden shadow-sm h-60 hover:shadow-md transition-all duration-300 relative group bg-[#1A1B23]">
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+              <img
+                src="https://images.pexels.com/photos/36730439/pexels-photo-36730439.jpeg"
+                alt="e-Quotation clipboard"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30" />
+            </div>
+            {/* Content */}
+            <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 relative z-10 text-left text-white">
               <div>
-                <h3 className="font-extrabold text-xl sm:text-2xl text-white mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <h3 className="font-extrabold text-xl sm:text-2xl mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
                   e-Quotation
                 </h3>
                 <p className="text-xs text-[#FAF8F5]/90 font-semibold leading-relaxed">
@@ -370,26 +355,28 @@ export default function Home() {
               </div>
               <Link
                 to="/e-quotation"
-                className="inline-flex items-center justify-center gap-1.5 px-5 py-3 text-xs font-bold bg-[#C89B5F] text-[#0A0A0C] border border-[#C89B5F] hover:bg-[#D4AF37] transition-all self-start shadow-sm"
+                className="inline-flex items-center justify-center gap-1.5 px-5 py-3 text-xs font-bold bg-[#C89B5F] text-[#1A1B23] border border-[#C89B5F] hover:bg-[#D4AF37] transition-all self-start shadow-sm"
               >
                 Get Quote &rarr;
               </Link>
             </div>
-            <div className="w-[45%] h-full relative overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&fit=crop&q=80"
-                alt="e-Quotation clipboard"
-                className="absolute inset-0 w-full h-full object-cover object-left"
-              />
-              <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#121216] to-transparent z-10" />
-            </div>
           </div>
 
           {/* Card 2: E-Auction */}
-          <div className="border border-[#24252F] overflow-hidden flex flex-row items-center justify-between shadow-sm h-60 hover:shadow-md transition-all duration-300 relative group bg-gradient-to-r from-[#1E1F27] to-[#121216]">
-            <div className="w-[55%] h-full flex flex-col justify-between p-6 sm:p-8 relative z-10 text-left text-white">
+          <div className="border border-[#343545] overflow-hidden shadow-sm h-60 hover:shadow-md transition-all duration-300 relative group bg-[#1A1B23]">
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+              <img
+                src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&fit=crop&q=80"
+                alt="E-Auction Gavel"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30" />
+            </div>
+            {/* Content */}
+            <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 relative z-10 text-left text-white">
               <div>
-                <h3 className="font-extrabold text-xl sm:text-2xl text-white mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <h3 className="font-extrabold text-xl sm:text-2xl mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
                   e-Auction
                 </h3>
                 <p className="text-xs text-[#FAF8F5]/90 font-semibold leading-relaxed">
@@ -398,26 +385,28 @@ export default function Home() {
               </div>
               <Link
                 to="/e-auction"
-                className="inline-flex items-center justify-center gap-1.5 px-5 py-3 text-xs font-bold bg-[#C89B5F] text-[#0A0A0C] border border-[#C89B5F] hover:bg-[#D4AF37] transition-all self-start shadow-sm"
+                className="inline-flex items-center justify-center gap-1.5 px-5 py-3 text-xs font-bold bg-[#C89B5F] text-[#1A1B23] border border-[#C89B5F] hover:bg-[#D4AF37] transition-all self-start shadow-sm"
               >
                 Join Auction &rarr;
               </Link>
             </div>
-            <div className="w-[45%] h-full relative overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&fit=crop&q=80"
-                alt="E-Auction Gavel"
-                className="absolute inset-0 w-full h-full object-cover object-left"
-              />
-              <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#121216] to-transparent z-10" />
-            </div>
           </div>
 
           {/* Card 3: Trade Circular */}
-          <div className="border border-[#24252F] overflow-hidden flex flex-row items-center justify-between shadow-sm h-60 hover:shadow-md transition-all duration-300 relative group bg-gradient-to-r from-[#1E1F27] to-[#121216]">
-            <div className="w-[55%] h-full flex flex-col justify-between p-6 sm:p-8 relative z-10 text-left">
+          <div className="border border-[#343545] overflow-hidden shadow-sm h-60 hover:shadow-md transition-all duration-300 relative group bg-[#1A1B23]">
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+              <img
+                src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&fit=crop&q=80"
+                alt="Trade Circular Bell"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30" />
+            </div>
+            {/* Content */}
+            <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 relative z-10 text-left text-white">
               <div>
-                <h3 className="font-extrabold text-xl sm:text-2xl text-white mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                <h3 className="font-extrabold text-xl sm:text-2xl mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
                   Trade Circular
                 </h3>
                 <p className="text-xs text-[#FAF8F5]/90 font-semibold leading-relaxed">
@@ -426,18 +415,10 @@ export default function Home() {
               </div>
               <Link
                 to="/trade-circular"
-                className="inline-flex items-center justify-center gap-1.5 px-5 py-3 text-xs font-bold bg-[#C89B5F] text-[#0A0A0C] border border-[#C89B5F] hover:bg-[#D4AF37] transition-all self-start shadow-sm"
+                className="inline-flex items-center justify-center gap-1.5 px-5 py-3 text-xs font-bold bg-[#C89B5F] text-[#1A1B23] border border-[#C89B5F] hover:bg-[#D4AF37] transition-all self-start shadow-sm"
               >
                 View Updates &rarr;
               </Link>
-            </div>
-            <div className="w-[45%] h-full relative overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&fit=crop&q=80"
-                alt="Trade Circular Bell"
-                className="absolute inset-0 w-full h-full object-cover object-center"
-              />
-              <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#121216] to-transparent z-10" />
             </div>
           </div>
 

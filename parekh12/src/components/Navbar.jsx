@@ -64,11 +64,12 @@ export default function Navbar() {
     { name: 'e-Quotation', path: '/e-quotation' },
     { name: 'e-Auction', path: '/e-auction' },
     { name: 'Trade Circular', path: '/trade-circular' },
-    { name: 'Blog Page', path: '/blog' },
+    { name: 'Blog', path: '/blog' },
     { name: 'Notice Board', path: '/notice-board' },
-    { name: 'Career Page', path: '/career' },
+    { name: 'Career', path: '/career' },
     { name: 'Customer Review', path: '/reviews' },
     { name: 'Business Media Gallery', path: '/gallery' },
+    { name: 'FAQ', path: '/faq' },
   ];
 
   const isMoreActive = moreLinks.some(l => location.pathname === l.path);
@@ -76,12 +77,12 @@ export default function Navbar() {
   return (
     <header className="w-full sticky top-0 z-50 transition-all duration-300">
       {/* ── TOP HEADER BANNER ── */}
-      <div className="bg-[#0E0F12] text-white py-2 px-4 sm:px-6 lg:px-8 border-b border-[#C89B5F]/20 hidden md:block">
+      <div className="bg-[#1A1B23] text-white py-2 px-4 sm:px-6 lg:px-8 border-b border-[#C89B5F]/20 hidden md:block">
         <div className="max-w-[90rem] mx-auto flex justify-between items-center text-xs font-semibold tracking-wider">
           <div className="flex items-center gap-2">
-            <span>🎁 FESTIVAL OFFER: Flat 15% OFF on Premium Collections</span>
-            <Link to="/products" className="bg-[#C89B5F] text-[#0A0A0C] px-3 py-0.5 font-bold text-[10px] uppercase ml-2 hover:bg-[#D4AF37] transition-colors">
-              Explore Now &rarr;
+            <span>✨ Swastik Textile Mall — Weaving Tradition with Modern Elegance</span>
+            <Link to="/products" className="bg-[#C89B5F] text-[#1A1B23] px-3 py-0.5 font-bold text-[10px] uppercase ml-2 hover:bg-[#D4AF37] transition-colors">
+              View Collections &rarr;
             </Link>
           </div>
           <div className="flex items-center gap-4">
@@ -196,7 +197,7 @@ export default function Navbar() {
                 </button>
 
                 {isMoreOpen && (
-                  <div className="absolute top-[35px] right-0 w-56 bg-[#121216] border border-[#24252F] shadow-xl overflow-hidden mt-1 py-1 z-50">
+                  <div className="absolute top-[35px] right-0 w-56 bg-[#242530] border border-[#343545] shadow-xl overflow-hidden mt-1 py-1 z-50">
                     {moreLinks.map((link) => {
                       const isActive = location.pathname === link.path;
                       return (
@@ -234,8 +235,43 @@ export default function Navbar() {
 
         {/* Mobile Drawer */}
         {isOpen && (
-          <div className="lg:hidden bg-[#121216] border-t border-[#24252F] max-h-[85vh] overflow-y-auto shadow-lg">
-            <div className="px-4 py-5 space-y-1">
+          <div className="lg:hidden fixed inset-0 z-[100] bg-[#242530] w-screen h-screen flex flex-col overflow-y-auto">
+            {/* Drawer Header */}
+            <div className="flex justify-between items-center h-[75px] px-4 border-b border-[#343545] shrink-0">
+              <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2 group shrink-0">
+                <div className="w-10 h-10 flex items-center justify-center bg-white shadow-sm border border-[#C89B5F]/30 text-[#C89B5F]">
+                  <svg viewBox="0 0 100 100" className="w-6 h-6 text-[#C89B5F]" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="5" y="5" width="90" height="90" stroke="currentColor" strokeWidth="2" />
+                    <rect x="12" y="12" width="76" height="76" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3,3" className="opacity-70" />
+                    <path d="M 50 22 L 50 78 M 22 50 L 78 50" strokeWidth="3" />
+                    <path d="M 50 22 L 78 22" strokeWidth="3" />
+                    <path d="M 78 50 L 78 78" strokeWidth="3" />
+                    <path d="M 50 78 L 22 78" strokeWidth="3" />
+                    <path d="M 22 50 L 22 22" strokeWidth="3" />
+                    <circle cx="36" cy="36" r="2.5" fill="currentColor" stroke="none" />
+                    <circle cx="64" cy="36" r="2.5" fill="currentColor" stroke="none" />
+                    <circle cx="64" cy="64" r="2.5" fill="currentColor" stroke="none" />
+                    <circle cx="36" cy="64" r="2.5" fill="currentColor" stroke="none" />
+                  </svg>
+                </div>
+                <div className="flex flex-col text-left">
+                  <span
+                    style={{ fontFamily: "'Playfair Display', serif" }}
+                    className="text-[#F3F4F6] text-[18px] font-bold tracking-[0.05em] leading-none"
+                  >
+                    SWASTIK TEXTILE MALL
+                  </span>
+                </div>
+              </Link>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-[#F3F4F6] hover:text-[#C89B5F] focus:outline-none p-1 shrink-0"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="px-4 py-6 space-y-1 flex-grow">
               {mainLinks.map((link) => {
                 const isActive = location.pathname === link.path;
                 return (
@@ -243,7 +279,7 @@ export default function Navbar() {
                     key={link.name}
                     to={link.path}
                     onClick={() => setIsOpen(false)}
-                    className={`flex items-center gap-2 px-4 py-3 text-[13px] font-bold tracking-wide uppercase transition-all ${
+                    className={`flex items-center gap-2 px-4 py-3.5 text-[14px] font-bold tracking-wide uppercase transition-all ${
                       isActive
                         ? 'bg-[#C89B5F]/10 text-[#C89B5F] border-l-2 border-[#C89B5F]'
                         : 'text-[#F3F4F6] hover:bg-gray-800 hover:text-[#C89B5F]'
@@ -258,32 +294,34 @@ export default function Navbar() {
               <Link
                 to="/trade-enquiry"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 mt-3 px-4 py-3 text-[12px] font-bold tracking-wider uppercase btn-primary shadow-md w-full"
+                className="flex items-center justify-center gap-2 mt-4 px-4 py-3.5 text-[12px] font-bold tracking-wider uppercase btn-primary shadow-md w-full"
               >
                 <Phone size={13} />
                 Trade Enquiry
               </Link>
 
               {/* More Section */}
-              <div className="mt-4 pt-4 border-t border-[#24252F]">
-                <p className="px-4 text-[9px] font-bold text-[#9CA3AF] tracking-[0.2em] uppercase mb-2">More Pages</p>
-                {moreLinks.map((link) => {
-                  const isActive = location.pathname === link.path;
-                  return (
-                    <Link
-                      key={link.name}
-                      to={link.path}
-                      onClick={() => setIsOpen(false)}
-                      className={`flex items-center gap-2 px-6 py-2.5 text-[12.5px] font-bold tracking-wide transition-all ${
-                        isActive
-                          ? 'bg-[#C89B5F]/10 text-[#C89B5F]'
-                          : 'text-[#C89B5F] hover:bg-gray-800 hover:text-[#F3F4F6]'
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                  );
-                })}
+              <div className="mt-6 pt-6 border-t border-[#343545]">
+                <p className="px-4 text-[9px] font-bold text-[#9CA3AF] tracking-[0.2em] uppercase mb-3">More Pages</p>
+                <div className="grid grid-cols-2 gap-1.5">
+                  {moreLinks.map((link) => {
+                    const isActive = location.pathname === link.path;
+                    return (
+                      <Link
+                        key={link.name}
+                        to={link.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`flex items-center gap-2 px-4 py-2.5 text-[12.5px] font-bold tracking-wide transition-all ${
+                          isActive
+                            ? 'bg-[#C89B5F]/10 text-[#C89B5F]'
+                            : 'text-[#C89B5F] hover:bg-gray-800 hover:text-[#F3F4F6]'
+                        }`}
+                      >
+                        {link.name}
+                      </Link>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>

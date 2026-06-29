@@ -26,26 +26,33 @@ export default function Home() {
   return (
     <div className="space-y-16">
       {/* Top Action Bar & Hero Section with compact spacing */}
-      <div className="space-y-4 -mt-6 lg:-mt-10">
+      <div className="space-y-4 mt-0 lg:-mt-10">
         {/* Top Action Bar */}
-        <div className="flex justify-end">
+        <div className="hidden sm:flex justify-end w-full">
           <a
             href="/trade-enquiry"
-            className="inline-flex items-center gap-3 bg-rosegold-500 hover:bg-rosegold-400 text-white px-8 py-3.5 font-bold uppercase tracking-widest transition-colors shadow-lg text-xs"
+            className="inline-flex items-center gap-3 bg-rosegold-500 hover:bg-rosegold-400 text-white px-8 py-3.5 font-bold uppercase tracking-widest transition-colors shadow-lg text-xs w-full sm:w-auto justify-center"
           >
             Trade Enquiry <ArrowRight size={16} />
           </a>
         </div>
         {/* Hero Section */}
         <section className="relative h-[60vh] min-h-[450px] overflow-hidden shadow-2xl group border border-gray-200">
+          {/* Mobile Hero Image */}
+          <img
+            src="https://images.pexels.com/photos/14789186/pexels-photo-14789186.jpeg"
+            alt="Heritage Garments Hero Mobile"
+            className="block sm:hidden absolute inset-0 w-full h-full object-cover filter brightness-75"
+          />
+          {/* Desktop Hero Image */}
           <img
             src="images/hero.png"
             alt="Heritage Garments Hero"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 filter brightness-75"
+            className="hidden sm:block absolute inset-0 w-full h-full object-cover filter brightness-75"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent" />
 
-          <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 lg:px-24">
+          <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-24">
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -60,7 +67,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="font-playfair text-4xl md:text-6xl text-white leading-tight max-w-3xl font-bold uppercase tracking-wider border-0 pb-0 mb-0"
+              className="font-playfair text-3xl sm:text-4xl md:text-6xl text-white leading-tight max-w-3xl font-bold uppercase tracking-wider border-0 pb-0 mb-0"
             >
               Timeless Threads, <br />
               <span className="text-rosegold-500 italic">Royal Elegance</span>
@@ -70,7 +77,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="mt-6 text-gray-300 text-base md:text-lg max-w-2xl font-outfit leading-relaxed"
+              className="mt-6 text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl font-outfit leading-relaxed"
             >
               Discover a legacy of premium apparel, exquisite handlooms, and bespoke styling designed to define sophistication across generations.
             </motion.p>
@@ -91,7 +98,7 @@ export default function Home() {
 
       {/* Featured Collection Grid */}
       <section>
-        <div className="flex justify-between items-end mb-10 border-b border-gray-200 pb-4">
+        <div className="flex flex-col sm:flex-row justify-between sm:items-end items-start gap-4 mb-10 border-b border-gray-200 pb-4">
           <div>
             <p className="text-rosegold-500 font-bold tracking-widest uppercase text-xs mb-2">Curated Masterpieces</p>
             <h2 className="font-playfair text-3xl text-gray-900 font-bold uppercase tracking-wide">Featured Collection</h2>
@@ -101,7 +108,7 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
           {featuredProducts.map((prod, idx) => (
             <motion.div
               key={idx}
@@ -111,23 +118,23 @@ export default function Home() {
               transition={{ duration: 0.5, delay: idx * 0.15 }}
               className="group flex flex-col bg-pearl-50 border border-gray-200 overflow-hidden hover:border-rosegold-500 transition-all duration-300 shadow-lg"
             >
-              <div className="relative h-[220px] overflow-hidden">
+              <div className="relative h-[140px] sm:h-[220px] overflow-hidden">
                 <img
                   src={prod.image}
                   alt={prod.name}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6" />
-                <span className="absolute top-4 left-4 bg-rosegold-500 text-pearl-100 text-[9px] uppercase tracking-widest px-3 py-1 font-bold">
+                <span className="absolute top-4 left-4 bg-rosegold-500 text-pearl-100 text-[8px] sm:text-[9px] uppercase tracking-widest px-2 sm:px-3 py-1 font-bold">
                   {prod.category}
                 </span>
               </div>
-              <div className="p-6 flex flex-col flex-grow bg-pearl-50">
-                <h3 className="text-gray-900 font-playfair text-xl font-bold mb-2 group-hover:text-rosegold-500 transition-colors uppercase tracking-wide">{prod.name}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-6 flex-grow">{prod.desc}</p>
+              <div className="p-4 sm:p-6 flex flex-col flex-grow bg-pearl-50">
+                <h3 className="text-gray-900 font-playfair text-sm sm:text-xl font-bold mb-2 group-hover:text-rosegold-500 transition-colors uppercase tracking-wide leading-tight">{prod.name}</h3>
+                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 flex-grow line-clamp-3 sm:line-clamp-none">{prod.desc}</p>
                 <a
                   href="/products"
-                  className="inline-flex items-center gap-2 text-rosegold-500 hover:text-rosegold-400 font-bold uppercase text-xs tracking-wider border-b border-transparent hover:border-rosegold-500 w-fit pb-1 transition-all duration-200"
+                  className="inline-flex items-center gap-2 text-rosegold-500 hover:text-rosegold-400 font-bold uppercase text-[10px] sm:text-xs tracking-wider border-b border-transparent hover:border-rosegold-500 w-fit pb-1 transition-all duration-200"
                 >
                   View Details <ArrowRight size={14} />
                 </a>
@@ -144,14 +151,14 @@ export default function Home() {
           <img
             src="/equotation_banner.png"
             alt="e-Quotation"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#f7f4ee]/95 via-[#f7f4ee]/85 to-transparent flex flex-col justify-center p-8 md:p-12" />
-          <div className="absolute inset-0 flex flex-col justify-center p-8 md:p-12">
-            <h3 className="font-playfair text-3xl font-bold text-gray-900 mb-2">
-              <span className="font-outfit text-3xl font-normal lowercase">e</span>-Quotation
+          <div className="absolute inset-0 bg-gradient-to-r from-[#f7f4ee]/95 via-[#f7f4ee]/85 to-transparent flex flex-col justify-center p-6 sm:p-10 md:p-12" />
+          <div className="absolute inset-0 flex flex-col justify-center p-6 sm:p-10 md:p-12">
+            <h3 className="font-playfair text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+              <span className="font-outfit text-2xl md:text-3xl font-normal lowercase">e</span>-Quotation
             </h3>
-            <p className="text-gray-700 text-sm mb-6 max-w-[240px] leading-relaxed">
+            <p className="text-gray-700 text-xs sm:text-sm mb-6 max-w-[240px] leading-relaxed">
               Get instant wholesale prices in seconds.
             </p>
             <a
@@ -168,14 +175,14 @@ export default function Home() {
           <img
             src="/eauction_banner.png"
             alt="e-Auction"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#202720]/90 via-[#202720]/60 to-transparent flex flex-col justify-center p-8 md:p-12" />
-          <div className="absolute inset-0 flex flex-col justify-center p-8 md:p-12">
-            <h3 className="font-playfair text-3xl font-bold text-white mb-2">
-              <span className="font-outfit text-3xl font-normal lowercase">e</span>-Auction
+          <div className="absolute inset-0 bg-gradient-to-r from-[#202720]/90 via-[#202720]/60 to-transparent flex flex-col justify-center p-6 sm:p-10 md:p-12" />
+          <div className="absolute inset-0 flex flex-col justify-center p-6 sm:p-10 md:p-12">
+            <h3 className="font-playfair text-2xl md:text-3xl font-bold text-white mb-2">
+              <span className="font-outfit text-2xl md:text-3xl font-normal lowercase">e</span>-Auction
             </h3>
-            <p className="text-gray-200 text-sm mb-6 max-w-[240px] leading-relaxed">
+            <p className="text-gray-200 text-xs sm:text-sm mb-6 max-w-[240px] leading-relaxed">
               Bid & win premium products.
             </p>
             <a

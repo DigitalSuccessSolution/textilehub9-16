@@ -3,7 +3,7 @@ import { MapPin, Phone, Mail } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#121216', fontFamily: "'Plus Jakarta Sans', sans-serif", borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+    <footer style={{ background: '#242530', fontFamily: "'Plus Jakarta Sans', sans-serif", borderTop: '1px solid rgba(255,255,255,0.05)' }}>
       {/* Accent top gold bar */}
       <div className="h-0.5 w-full" style={{ background: '#C89B5F' }} />
 
@@ -48,7 +48,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {[
                 { name: 'About Us', path: '/about' },
-                { name: 'Product Page', path: '/products' },
+                { name: 'Product', path: '/products' },
                 { name: 'Trade Enquiry', path: '/trade-enquiry' },
                 { name: 'Contact Us', path: '/contact' },
               ].map(link => (
@@ -72,7 +72,7 @@ export default function Footer() {
                 { name: 'e-Quotation', path: '/e-quotation' },
                 { name: 'e-Auction', path: '/e-auction' },
                 { name: 'Trade Circular', path: '/trade-circular' },
-                { name: 'Blog Page', path: '/blog' },
+                { name: 'Blog', path: '/blog' },
               ].map(link => (
                 <li key={link.name}>
                   <Link to={link.path}

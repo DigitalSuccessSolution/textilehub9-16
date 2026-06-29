@@ -2,14 +2,14 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Globe, Users, Phone, ShoppingBag, Image as ImageIcon, 
-  MessageSquare, FileText, Briefcase, Star, Clipboard
+  MessageSquare, FileText, Briefcase, Star, Clipboard, HelpCircle
 } from 'lucide-react';
 
 export default function Sidebar({ closeSidebar }) {
   const location = useLocation();
 
   const navLinks = [
-    { name: 'Home Page', path: '/', icon: Globe },
+    { name: 'Home', path: '/', icon: Globe },
     { name: 'About Us', path: '/about', icon: Users },
     { name: 'Contact Us', path: '/contact', icon: Phone },
     { name: 'Product Page', path: '/products', icon: ShoppingBag },
@@ -23,10 +23,11 @@ export default function Sidebar({ closeSidebar }) {
     { name: 'Career Page', path: '/career', icon: Briefcase },
     { name: 'Customer Review', path: '/reviews', icon: Star },
     { name: 'Business Media Gallery', path: '/gallery', icon: ImageIcon },
+    { name: 'FAQ Page', path: '/faq', icon: HelpCircle },
   ];
 
   return (
-    <div className="flex flex-col h-full bg-pearl-50 border-r border-pearl-100 overflow-y-auto custom-scrollbar">
+    <div className="flex flex-col h-full bg-pearl-50 border-r border-pearl-100 overflow-y-auto custom-scrollbar pt-20 lg:pt-0">
       {/* Logo Area */}
       <div className="px-8 pt-8 pb-6 border-b border-pearl-100 hidden lg:block">
         <div className="flex items-center gap-3">
@@ -72,11 +73,6 @@ export default function Sidebar({ closeSidebar }) {
         </ul>
       </nav>
 
-      {/* Sidebar Footer */}
-      <div className="p-6 border-t border-pearl-100 text-xs text-gray-400">
-        <p>© 2026 HERITAGE GARMENTS.</p>
-        <p>All rights reserved.</p>
-      </div>
     </div>
   );
 }

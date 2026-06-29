@@ -1,49 +1,90 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
 const posts = [
-  { title: "The Future of Sustainable Weaving", date: "June 10, 2026", category: "Innovation", author: "Priya Sharma", readTime: "5 min read", image: "https://images.unsplash.com/photo-1705412877691-70f6913aaa1e?w=600&auto=format&fit=crop&q=60" },
-  { title: "Elegance in Threads: The Fall Collection", date: "May 28, 2026", category: "Collections", author: "Rajiv Kapoor", readTime: "4 min read", image: "https://images.unsplash.com/photo-1599753931952-654e960af582?w=600&auto=format&fit=crop&q=60" },
-  { title: "Behind the Scenes: Crafting the Perfect Saree", date: "May 15, 2026", category: "Craftsmanship", author: "Ananya Patel", readTime: "6 min read", image: "https://plus.unsplash.com/premium_photo-1669977749819-d8737b4408f7?w=600&auto=format&fit=crop&q=60" },
-  { title: "Trends to Watch in Home Furnishing", date: "Apr 22, 2026", category: "Trends", author: "Neha Gupta", readTime: "4 min read", image: "https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=600&auto=format&fit=crop&q=60" },
+  { 
+    title: "The Royal History of Banarasi Silk Sarees", 
+    date: "June 28, 2026", 
+    category: "Heritage", 
+    author: "Priya Sharma", 
+    description: "Unraveling the rich history, intricate weaves, and timeless craftsmanship of the legendary Banarasi sarees.", 
+    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&auto=format&fit=crop&q=80" 
+  },
+  { 
+    title: "Sustaining Craftsmanship in the Modern Era", 
+    date: "June 15, 2026", 
+    category: "Sustainability", 
+    author: "Rajiv Kapoor", 
+    description: "How traditional Indian weavers are adopting sustainable practices while keeping age-old art alive.", 
+    image: "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=600&auto=format&fit=crop&q=80" 
+  },
+  { 
+    title: "Home Decor Trends: Styling with Ethnic Furnishings", 
+    date: "May 30, 2026", 
+    category: "Home Styling", 
+    author: "Neha Gupta", 
+    description: "Transform your living space with Indian jacquards, rich bed linens, and traditional upholstery themes.", 
+    image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&auto=format&fit=crop&q=80" 
+  },
 ];
 
+const categories = ["All", "Heritage", "Sustainability", "Home Styling"];
+
 export default function Blog() {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredPosts = activeCategory === "All"
+    ? posts
+    : posts.filter(post => post.category.toLowerCase() === activeCategory.toLowerCase());
+
   return (
     <div style={{ fontFamily: "'Outfit', sans-serif", background: '#FAF6F0' }}>
 
       {/* Hero Banner */}
-      <div className="relative pt-16 sm:pt-24 pb-10 flex flex-col items-center justify-center text-center">
+      <div className="relative pt-10 sm:pt-14 pb-2 flex flex-col items-center justify-center text-center">
         <div className="max-w-4xl mx-auto px-6 sm:px-10 w-full flex flex-col items-center">
           <h1 className="font-bold text-4xl sm:text-5xl text-[#2A083E] mb-6"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Blog & Articles
           </h1>
           
-          <p className="text-[16px] sm:text-[18px] md:text-[20px] italic mb-8 text-[#504257] leading-relaxed max-w-3xl">
-            "Join and participate in our nation-wide campaign to digitalize the Textile<br className="hidden md:block"/> Sector, one of the largest sectors of India".
-          </p>
-
-          <h2 className="text-base sm:text-lg font-bold tracking-widest mb-2 uppercase text-[#2A083E]"
-              style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Mayura Royal Textile Mall
-          </h2>
-          
-          <p className="text-[11px] sm:text-[13px] font-bold tracking-wide mb-1 text-[#C5A059]">
-            Textile Manufacturer & Entrepreneur
-          </p>
-          
-          <p className="text-[10px] sm:text-[11px] font-bold tracking-widest uppercase mb-8 text-[#786B80]">
-            INDIA
-          </p>
+    
 
           <div className="w-32 sm:w-48 h-[1px] bg-[#EADBC8]" />
         </div>
       </div>
 
-      <div className="pb-20 max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {posts.map((post, idx) => (
+      <div className="max-w-7xl mx-auto px-4 pt-2 pb-6 text-center">
+        {/* Intro half line paragraph above categories */}
+        <p className="text-xs sm:text-sm text-[#786B80] italic mb-4 max-w-lg mx-auto">
+          Explore the rich legacy of Indian handlooms, sustainable weaving methods, and contemporary home decor styles.
+        </p>
+
+        {/* Categories Section */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((cat, idx) => {
+            const isActive = activeCategory === cat;
+            return (
+              <button
+                key={idx}
+                onClick={() => setActiveCategory(cat)}
+                className="px-4 py-1.5 text-xs font-extrabold uppercase rounded-full tracking-wider border cursor-pointer transition-colors duration-200"
+                style={{
+                  borderColor: '#EADBC8',
+                  background: isActive ? '#2A083E' : '#FFFFFF',
+                  color: isActive ? '#FFFFFF' : '#2A083E'
+                }}
+              >
+                {cat}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Blogs Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8 max-w-6xl mx-auto">
+          {filteredPosts.map((post, idx) => (
             <motion.article
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -61,16 +102,17 @@ export default function Blog() {
                   {post.category}
                 </div>
               </div>
-              <div className="p-5 flex flex-col flex-1 text-left">
+              <div className="p-3 sm:p-5 flex flex-col flex-1 text-left">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[11px] font-semibold text-[#786B80]">{post.date}</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
-                  <span className="text-[11px] font-semibold text-[#786B80]">{post.readTime}</span>
+                  <span className="text-[10px] sm:text-[11px] font-semibold text-[#786B80]">{post.date}</span>
                 </div>
-                <h3 className="font-bold text-lg mb-2 leading-snug group-hover:text-[#C5A059] transition-colors"
+                <h3 className="font-bold text-sm sm:text-lg mb-2 leading-snug group-hover:text-[#C5A059] transition-colors"
                   style={{ fontFamily: "'Cormorant Garamond', serif", color: '#2A083E' }}>
                   {post.title}
                 </h3>
+                <p className="text-[11px] sm:text-[12.5px] text-[#504257] leading-relaxed mb-4 flex-grow font-medium line-clamp-3 sm:line-clamp-none">
+                  {post.description}
+                </p>
                 <p className="text-[12px] mb-4 text-[#786B80] font-semibold">By {post.author}</p>
                 <div className="mt-auto pt-3 border-t border-[#EADBC8]">
                   <span className="flex items-center gap-1.5 text-[12px] font-bold tracking-wide text-[#C5A059] cursor-pointer">

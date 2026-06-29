@@ -25,9 +25,9 @@ export default function About() {
             transition={{ duration: 0.7 }}
             className="relative"
           >
-            <div className="absolute -top-4 -left-4 w-full h-full rounded-2xl"
+            <div className="absolute -top-4 -left-4 w-full h-full rounded-tl-[5rem] rounded-br-[5rem] rounded-tr-2xl rounded-bl-2xl"
               style={{ border: '2px solid rgba(197,160,89,0.3)' }} />
-            <div className="relative overflow-hidden shadow-md rounded-2xl">
+            <div className="relative overflow-hidden shadow-md rounded-tl-[5rem] rounded-br-[5rem] rounded-tr-2xl rounded-bl-2xl">
               <img
                 src="images/heromenwomen.png"
                 alt="About Mayura Royal Textile Mall"

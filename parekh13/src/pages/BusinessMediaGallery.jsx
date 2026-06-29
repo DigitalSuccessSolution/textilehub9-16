@@ -1,20 +1,28 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const galleryItems = [
-  { title: "Global Textile Summit 2026", desc: "Our leadership team presenting the future of sustainable fabrics to international delegates and industry leaders.", category: "Event", image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=60" },
-  { title: "New Manufacturing Unit Inauguration", desc: "Expanding our footprint with a state-of-the-art facility in Gujarat, boosting our production capacity by 40%.", category: "Infrastructure", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&auto=format&fit=crop&q=60" },
-  { title: "Award for Excellence in Exports", desc: "Receiving the national award for outstanding contribution to textile exports from the Ministry of Commerce.", category: "Achievement", image: "https://images.unsplash.com/photo-1561489422-45de3d015e3e?w=800&auto=format&fit=crop&q=60" },
-  { title: "Annual Retailers Meet", desc: "Celebrating success and building stronger bonds with our 50,000+ retail partners across India.", category: "Community", image: "https://images.unsplash.com/photo-1515169067868-5387ec356754?w=800&auto=format&fit=crop&q=60" },
-  { title: "Launch of Eco-Weave Collection", desc: "A milestone event marking our commitment to 100% organic materials and environmentally friendly dyes.", category: "Product Launch", image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&auto=format&fit=crop&q=60" },
-  { title: "Skill Development Workshop", desc: "Empowering local artisans and weavers with modern textile technologies to preserve heritage crafts.", category: "CSR Initiative", image: "https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?w=800&auto=format&fit=crop&q=60" },
+  { title: "Grand Showroom Launch", category: "Showrooms", date: "June 25, 2026", image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800&auto=format&fit=crop&q=80" },
+  { title: "Royal Saree Exhibition Delhi", category: "Exhibitions", date: "June 10, 2026", image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=800&auto=format&fit=crop&q=80" },
+  { title: "Sustainable Loom Workshop", category: "Infrastructure", date: "May 20, 2026", image: "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=800&auto=format&fit=crop&q=80" },
+  { title: "Weaver's Guild Summit", category: "Events", date: "April 15, 2026", image: "https://images.unsplash.com/photo-1515169067868-5387ec356754?w=800&auto=format&fit=crop&q=80" },
+  { title: "Festive Collection Unveiling", category: "Events", date: "March 30, 2026", image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&auto=format&fit=crop&q=80" },
 ];
 
+const categories = ["All", "Events", "Showrooms", "Infrastructure", "Exhibitions"];
+
 export default function BusinessMediaGallery() {
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredItems = activeCategory === "All"
+    ? galleryItems
+    : galleryItems.filter(item => item.category.toLowerCase() === activeCategory.toLowerCase());
+
   return (
     <div style={{ fontFamily: "'Outfit', sans-serif", background: '#FAF6F0' }}>
 
       {/* Hero Banner */}
-      <div className="relative h-36 sm:h-44 overflow-hidden flex items-center justify-center text-center">
+      <div className="relative pt-10 sm:pt-14 pb-2 flex flex-col items-center justify-center text-center">
         <div className="relative max-w-7xl mx-auto px-6 sm:px-10 w-full">
           <h1 className="font-bold text-4xl sm:text-5xl text-[#2A083E]"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}>
@@ -23,9 +31,36 @@ export default function BusinessMediaGallery() {
         </div>
       </div>
 
-      <div className="pb-20 max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
-          {galleryItems.map((item, idx) => (
+      <div className="pb-20 max-w-7xl mx-auto px-4 pt-2 text-center">
+        {/* One line paragraph above categories */}
+        <p className="text-xs sm:text-sm text-[#786B80] italic mb-4 max-w-xl mx-auto">
+          Explore our journey through visual highlights of royal fashion exhibitions, modern showrooms, and international summits.
+        </p>
+
+        {/* Categories Section */}
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {categories.map((cat, idx) => {
+            const isActive = activeCategory === cat;
+            return (
+              <button
+                key={idx}
+                onClick={() => setActiveCategory(cat)}
+                className="px-4 py-1.5 text-xs font-extrabold uppercase rounded-full tracking-wider border cursor-pointer transition-colors duration-200"
+                style={{
+                  borderColor: '#EADBC8',
+                  background: isActive ? '#2A083E' : '#FFFFFF',
+                  color: isActive ? '#FFFFFF' : '#2A083E'
+                }}
+              >
+                {cat}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Media Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 text-left max-w-5xl mx-auto">
+          {filteredItems.map((item, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
@@ -47,14 +82,14 @@ export default function BusinessMediaGallery() {
                 </div>
               </div>
 
-              <div className="p-4 flex flex-col flex-1">
-                <h3 className="font-bold text-base mb-1.5 leading-snug transition-colors text-[#2A083E]"
+              <div className="p-3 sm:p-4 flex flex-col flex-1 border-t border-[#FAF6F0]">
+                <span className="text-[9px] sm:text-[10px] font-extrabold text-[#786B80] tracking-wider mb-1 block uppercase">
+                  {item.date}
+                </span>
+                <h3 className="font-bold text-sm sm:text-base leading-snug transition-colors text-[#2A083E]"
                   style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   {item.title}
                 </h3>
-                <p className="text-[12px] leading-relaxed line-clamp-3 text-[#504257] font-medium">
-                  {item.desc}
-                </p>
               </div>
             </motion.div>
           ))}

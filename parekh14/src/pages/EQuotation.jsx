@@ -1,8 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ClipboardCheck, Inbox, FileText, Send, Mail } from 'lucide-react';
+import { ClipboardCheck, FileText, Send } from 'lucide-react';
 
 const EQuotation = () => {
+  const activeQuotations = [
+    {
+      id: 1,
+      title: "Wholesale Cotton Fabric Procurement - Festive Season 2026",
+      description: "Requesting quotation for 10,000 meters of high-density organic cotton fabric. Must support dye-sublimation and natural dyes.",
+      date: "Published: June 25, 2026"
+    },
+    {
+      id: 2,
+      title: "Bespoke Corporate Uniform Supply - Premium Suiting",
+      description: "Quotation request for customized corporate uniforms including premium blazers, trousers, and shirts for 500+ employees.",
+      date: "Published: June 18, 2026"
+    }
+  ];
+
   return (
     <div className="pb-20 -mt-8 max-w-7xl mx-auto px-4 md:px-8">
       {/* Page Header */}
@@ -14,7 +29,7 @@ const EQuotation = () => {
       </div>
 
       {/* Main Content Area */}
-      <div className="bg-[#fcfbf9] rounded-[2rem] p-6 md:p-10 lg:p-12 border border-gray-100 shadow-sm">
+      <div className="space-y-10 mt-8">
         
         {/* Active Quotation Requests Section */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10">
@@ -23,16 +38,24 @@ const EQuotation = () => {
             <h2 className="text-[#2d0a4e] font-bold text-lg md:text-xl uppercase tracking-wide">Active Quotation Requests</h2>
           </div>
           
-          <div className="bg-white rounded-2xl py-16 flex flex-col items-center justify-center border border-gray-100 shadow-sm">
-            <Inbox size={40} className="text-gray-300 mb-4 stroke-1" />
-            <p className="text-[#d8a5ad] font-bold text-xs tracking-widest ">
-              ( At present, No e-Quotation published )
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {activeQuotations.map((quote) => (
+              <div key={quote.id} className="bg-white p-6 border border-gray-200 shadow-sm flex items-start gap-4 rounded-xl">
+                <div className="w-12 h-12 bg-rosegold-500/10 flex items-center justify-center shrink-0 rounded-lg">
+                  <FileText className="text-rosegold-500" size={24} />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-playfair text-lg font-bold text-gray-900 mb-2 leading-tight">{quote.title}</h3>
+                  <p className="text-gray-600 text-sm mb-4 leading-relaxed">{quote.description}</p>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-rosegold-500">{quote.date}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
 
         {/* Request a Price Quote Section */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-lg">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-white rounded-3xl p-8 md:p-12 border border-gray-200 shadow-lg">
           <div className="flex items-center gap-4 mb-8 pb-6 border-b border-gray-100">
             <div className="w-12 h-12 bg-[#d8a5ad]/10 rounded-xl flex items-center justify-center">
               <FileText size={24} className="text-[#d8a5ad]" />
@@ -47,20 +70,20 @@ const EQuotation = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
               <div>
                 <label className="block text-[10px] uppercase tracking-widest text-[#2d0a4e] font-bold mb-2">
-                  Name of the Trader <span className="text-[#d8a5ad]">*</span>
+                  Name of the Trader *
                 </label>
                 <input type="text" className="w-full px-4 py-3 bg-[#fcfbf9] rounded-xl border border-gray-200 focus:outline-none focus:border-[#d8a5ad] transition-colors" required />
               </div>
               <div>
                 <label className="block text-[10px] uppercase tracking-widest text-[#2d0a4e] font-bold mb-2">
-                  Business Name <span className="text-[#d8a5ad]">*</span>
+                  Business Name *
                 </label>
                 <input type="text" className="w-full px-4 py-3 bg-[#fcfbf9] rounded-xl border border-gray-200 focus:outline-none focus:border-[#d8a5ad] transition-colors" required />
               </div>
 
               <div>
                 <label className="block text-[10px] uppercase tracking-widest text-[#2d0a4e] font-bold mb-2">
-                  Business Address with PIN Code <span className="text-[#d8a5ad]">*</span>
+                  Business Address with Pin Code *
                 </label>
                 <input type="text" className="w-full px-4 py-3 bg-[#fcfbf9] rounded-xl border border-gray-200 focus:outline-none focus:border-[#d8a5ad] transition-colors" required />
               </div>
@@ -73,13 +96,13 @@ const EQuotation = () => {
 
               <div>
                 <label className="block text-[10px] uppercase tracking-widest text-[#2d0a4e] font-bold mb-2">
-                  Mobile No. <span className="text-[#d8a5ad]">*</span>
+                  Mobile No. *
                 </label>
                 <input type="tel" className="w-full px-4 py-3 bg-[#fcfbf9] rounded-xl border border-gray-200 focus:outline-none focus:border-[#d8a5ad] transition-colors" required />
               </div>
               <div>
                 <label className="block text-[10px] uppercase tracking-widest text-[#2d0a4e] font-bold mb-2">
-                  Email ID <span className="text-[#d8a5ad]">*</span>
+                  Email ID *
                 </label>
                 <input type="email" className="w-full px-4 py-3 bg-[#fcfbf9] rounded-xl border border-gray-200 focus:outline-none focus:border-[#d8a5ad] transition-colors" required />
               </div>
@@ -87,7 +110,7 @@ const EQuotation = () => {
 
             <div className="pt-2">
               <label className="block text-[10px] uppercase tracking-widest text-[#2d0a4e] font-bold mb-2">
-                Options <span className="text-[#d8a5ad]">*</span>
+                Options *
               </label>
               <select className="w-full px-4 py-3 bg-[#fcfbf9] rounded-xl border border-gray-200 focus:outline-none focus:border-[#d8a5ad] transition-colors appearance-none text-sm text-gray-700" required>
                 <option value="" disabled selected>Select Option</option>
@@ -99,7 +122,7 @@ const EQuotation = () => {
 
             <div className="pt-2">
               <label className="block text-[10px] uppercase tracking-widest text-[#2d0a4e] font-bold mb-2">
-                Particulars of the Products <span className="text-[#d8a5ad]">*</span>
+                Particulars of the Products *
               </label>
               <textarea 
                 rows="4" 
@@ -112,17 +135,10 @@ const EQuotation = () => {
             <div className="pt-6">
               <button
                 type="submit"
-                className="w-full bg-rosegold-500 text-white py-4 rounded-xl text-sm font-bold uppercase tracking-widest hover:bg-rosegold-400 transition-all duration-300 shadow-md flex items-center justify-center gap-3"
+                className="w-full bg-rosegold-500 text-white py-4 text-xs font-bold uppercase tracking-widest hover:bg-rosegold-400 transition-all duration-300 shadow-md flex items-center justify-center gap-3"
               >
-                <Send size={16} /> Submit Quotation Request
+                <Send size={14} /> Submit Quotation Request
               </button>
-            </div>
-
-            <div className="pt-8 text-center flex items-center justify-center gap-2">
-              <Mail size={14} className="text-rosegold-500" />
-              <a href="mailto:info@heritagegarments.com" className="text-rosegold-500 text-[11px] font-bold tracking-widest hover:underline">
-                info@heritagegarments.com
-              </a>
             </div>
           </form>
         </motion.div>

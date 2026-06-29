@@ -10,7 +10,7 @@ const reviews = [
 
 export default function CustomerReview() {
   return (
-    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: '#0A0A0C' }}>
+    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: '#1A1B23' }}>
 
       {/* Hero Banner */}
       <div className="relative h-36 sm:h-44 overflow-hidden flex items-center justify-center text-center">
@@ -31,8 +31,8 @@ export default function CustomerReview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group p-7 flex flex-col bg-[#121216] cursor-pointer transition-all duration-300 hover:shadow-md"
-              style={{ border: '1.5px solid #24252F' }}
+              className="group p-7 flex flex-col bg-[#242530] cursor-pointer transition-all duration-300 hover:shadow-md"
+              style={{ border: '1.5px solid #343545' }}
             >
               {/* Quote Icon */}
               <div className="mb-5">
@@ -45,7 +45,7 @@ export default function CustomerReview() {
               </p>
 
               {/* Footer */}
-              <div className="flex items-center justify-between mt-auto pt-5 border-t border-[#24252F]">
+              <div className="flex items-center justify-between mt-auto pt-5 border-t border-[#343545]">
                 <div className="flex items-center gap-3">
                   <img
                     src={review.image}

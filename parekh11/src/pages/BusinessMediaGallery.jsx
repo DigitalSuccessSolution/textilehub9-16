@@ -49,7 +49,7 @@ export default function BusinessMediaGallery() {
           </div>
         </div>
 
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+        <motion.div layout className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 text-left">
           <AnimatePresence mode="popLayout">
           {filteredItems.map((item, idx) => (
             <motion.div
@@ -69,16 +69,16 @@ export default function BusinessMediaGallery() {
                 />
               </div>
 
-              <div className="p-5 flex flex-col flex-1">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-bold text-[#8A6F4E] uppercase tracking-wider">{item.category}</span>
-                  <span className="text-[11px] font-semibold text-[#7E857E]">{item.date}</span>
+              <div className="p-3 sm:p-5 flex flex-col flex-1">
+                <div className="flex items-center justify-between mb-2 sm:mb-3">
+                  <span className="text-[8px] sm:text-[10px] font-bold text-[#8A6F4E] uppercase tracking-wider truncate mr-2">{item.category}</span>
+                  <span className="text-[8px] sm:text-[11px] font-semibold text-[#7E857E] whitespace-nowrap">{item.date}</span>
                 </div>
-                <h3 className="font-bold text-lg mb-2 leading-snug transition-colors text-[#2C362B]"
+                <h3 className="font-bold text-[13px] sm:text-lg mb-1 sm:mb-2 leading-snug transition-colors text-[#2C362B] line-clamp-2"
                   style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   {item.title}
                 </h3>
-                <p className="text-[12px] leading-relaxed text-[#5D645D] font-medium">
+                <p className="text-[10px] sm:text-[12px] leading-relaxed text-[#5D645D] font-medium line-clamp-2">
                   {item.desc}
                 </p>
               </div>

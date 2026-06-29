@@ -17,13 +17,13 @@
   --color-accent-600: #C89B5F; /* Brand Gold Accent */
   --color-accent-500: #D4AF37;
   --color-accent-400: #E5C07B;
-  --color-accent-100: #121216;
+  --color-accent-100: #242530;
 
   /* ── Dark Theme Backgrounds (Mapped to original cream names so layouts don't break) ── */
-  --color-cream-50: #121216;   /* Card backgrounds (formerly white) */
-  --color-cream-100: #0A0A0C;  /* Main Page Background */
+  --color-cream-50: #242530;   /* Card backgrounds (formerly white) */
+  --color-cream-100: #1A1B23;  /* Main Page Background */
   --color-cream-200: #181920;  /* Card Accent background */
-  --color-cream-300: #24252F;
+  --color-cream-300: #343545;
   --color-cream-450: #30313E;
 
   /* ── Light / Gray Text Tones for Dark Background ── */
@@ -65,10 +65,10 @@
 /* ── Class-level overrides for Tailwind Hardcoded Values ── */
 /* Override white backgrounds to sleek dark backgrounds */
 .bg-white {
-  background-color: #121216 !important;
+  background-color: #242530 !important;
 }
 .bg-\[\#FDFBF7\] {
-  background-color: #0A0A0C !important;
+  background-color: #1A1B23 !important;
 }
 .bg-\[\#F5EFE6\] {
   background-color: #181920 !important;
@@ -102,16 +102,16 @@
 
 /* Border overrides to dark border colors instead of light cream */
 .border-\[\#EAE3D9\] {
-  border-color: #24252F !important;
+  border-color: #343545 !important;
 }
 .border-\[\#E8E3D9\] {
-  border-color: #24252F !important;
+  border-color: #343545 !important;
 }
 .border-gray-100 {
   border-color: #1A1B22 !important;
 }
 .border-gray-200 {
-  border-color: #24252F !important;
+  border-color: #343545 !important;
 }
 
 /* Fix shadows for dark theme */
@@ -236,14 +236,14 @@
 
 /* ── Primary Button ── */
 .btn-primary {
-  background: linear-gradient(135deg, #121216 0%, #20212A 100%) !important;
+  background: linear-gradient(135deg, #242530 0%, #20212A 100%) !important;
   border: 1px solid #C89B5F !important;
   color: #C89B5F !important;
   transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 .btn-primary:hover {
   background: #C89B5F !important;
-  color: #0A0A0C !important;
+  color: #1A1B23 !important;
   transform: translateY(-1px);
   box-shadow: 0 4px 16px rgba(200, 155, 95, 0.4);
 }

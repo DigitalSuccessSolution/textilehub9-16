@@ -2,17 +2,17 @@ import { motion } from 'framer-motion';
 import { ClipboardCheck, Inbox, FileText, Send, Mail } from 'lucide-react';
 
 const inputStyle = {
-  background: '#121216',
-  border: '1.5px solid #24252F',
+  background: '#242530',
+  border: '1.5px solid #343545',
   color: '#F3F4F6',
 };
 
 const EQuotation = () => {
   return (
-    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: '#0A0A0C' }}>
+    <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: '#1A1B23' }}>
 
       {/* Hero Banner */}
-      <div className="relative h-36 sm:h-44 overflow-hidden flex items-center justify-center text-center border-b border-[#24252F] bg-[#0A0A0C]">
+      <div className="relative h-36 sm:h-44 overflow-hidden flex items-center justify-center text-center border-b border-[#343545] bg-[#1A1B23]">
         <div className="relative max-w-7xl mx-auto px-6 sm:px-10 w-full">
           <h1 className="font-bold text-4xl sm:text-5xl text-[#F3F4F6]"
             style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -32,21 +32,26 @@ const EQuotation = () => {
               Active Quotation Requests
             </h2>
           </div>
-          <div className="py-12 flex flex-col items-center justify-center bg-[#121216]"
-            style={{ border: '1.5px solid #24252F' }}>
-            <Inbox size={36} className="mb-3 text-[#C89B5F]" strokeWidth={1.2} />
-            <p className="text-[11px] font-extrabold tracking-widest text-[#9CA3AF] ">
-              At present, No e-Quotation request published
-            </p>
+          <div className="space-y-4">
+            <div className="p-5 bg-[#242530] hover:shadow-md transition-all duration-300" style={{ border: '1.5px solid #343545' }}>
+              <h3 className="text-[15px] font-bold text-[#F3F4F6] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Bulk Raw Cotton Purchase</h3>
+              <p className="text-[12px] text-[#9CA3AF] mb-3 leading-relaxed">Looking for 5000kg of premium quality raw cotton (Shankar-6 variety) for our new manufacturing unit.</p>
+              <div className="text-[10px] uppercase tracking-widest font-bold text-[#C89B5F]">Date: Oct 12, 2026</div>
+            </div>
+            <div className="p-5 bg-[#242530] hover:shadow-md transition-all duration-300" style={{ border: '1.5px solid #343545' }}>
+              <h3 className="text-[15px] font-bold text-[#F3F4F6] mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Premium Silk Fabric Quotation</h3>
+              <p className="text-[12px] text-[#9CA3AF] mb-3 leading-relaxed">Requirement for 2000 meters of pure Banarasi silk fabric in assorted festive colors.</p>
+              <div className="text-[10px] uppercase tracking-widest font-bold text-[#C89B5F]">Date: Oct 05, 2026</div>
+            </div>
           </div>
         </motion.div>
 
         {/* Form */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-          className="shadow-sm overflow-hidden bg-[#121216] text-left"
-          style={{ border: '1.5px solid #24252F' }}>
+          className="shadow-sm overflow-hidden bg-[#242530] text-left"
+          style={{ border: '1.5px solid #343545' }}>
           <div className="p-8 md:p-10">
-            <div className="flex items-center gap-4 mb-8 pb-5 border-b border-[#24252F]">
+            <div className="flex items-center gap-4 mb-8 pb-5 border-b border-[#343545]">
               <div className="w-11 h-11 flex items-center justify-center bg-[#C89B5F]/10 border border-[#C89B5F]/20">
                 <FileText size={20} className="text-[#C89B5F]" />
               </div>
@@ -77,7 +82,7 @@ const EQuotation = () => {
                       className="w-full px-4 py-3 text-sm outline-none transition-all duration-200"
                       style={inputStyle}
                       onFocus={e => e.target.style.borderColor = '#C89B5F'}
-                      onBlur={e => e.target.style.borderColor = '#24252F'}
+                      onBlur={e => e.target.style.borderColor = '#343545'}
                     />
                   </div>
                 ))}
@@ -105,7 +110,7 @@ const EQuotation = () => {
                   className="w-full px-4 py-3 text-sm outline-none resize-none"
                   style={inputStyle}
                   onFocus={e => e.target.style.borderColor = '#C89B5F'}
-                  onBlur={e => e.target.style.borderColor = '#24252F'}
+                  onBlur={e => e.target.style.borderColor = '#343545'}
                 />
               </div>
 
@@ -114,15 +119,6 @@ const EQuotation = () => {
               >
                 <Send size={14} /> Submit Quotation Request
               </button>
-
-              <div className="pt-2 text-center flex items-center justify-center gap-2">
-                <Mail size={14} className="text-[#C89B5F]" />
-                <a href="mailto:info@swastiktextilemall.com"
-                  className="text-[11px] font-bold tracking-widest hover:underline text-[#C89B5F]"
-                >
-                  info@swastiktextilemall.com
-                </a>
-              </div>
             </form>
           </div>
         </motion.div>
