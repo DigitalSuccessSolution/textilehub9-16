@@ -20,7 +20,7 @@ export default function BusinessMediaGallery() {
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: '#FAF8F5' }}>
 
       {/* Hero Banner */}
-      <div className="relative h-36 sm:h-44 overflow-hidden flex items-center justify-center text-center">
+      <div className="relative h-24 sm:h-32 overflow-hidden flex items-end pb-4 sm:pb-6 justify-center text-center">
         <div className="relative max-w-7xl mx-auto px-6 sm:px-10 w-full">
           <h1 className="font-bold text-4xl sm:text-5xl text-[#2C362B]"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}>
