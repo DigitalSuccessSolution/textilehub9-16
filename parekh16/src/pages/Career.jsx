@@ -75,7 +75,7 @@ const Career = () => {
             </div>
 
             {/* Right Button Panel */}
-            <div className="px-8 pb-8 md:p-10 md:w-64 flex items-center justify-center border-t md:border-t-0 md:border-l border-gray-100 shrink-0">
+            <div className="px-8 pb-8 md:p-10 md:w-64 flex items-center justify-center shrink-0">
               <button className="w-full border-2 border-rosegold-500 text-rosegold-500 py-3.5 text-xs font-semibold uppercase tracking-widest hover:bg-rosegold-500 hover:text-white transition-all duration-300">
                 Apply Now
               </button>

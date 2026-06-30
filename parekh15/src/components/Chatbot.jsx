@@ -49,6 +49,41 @@ export default function Chatbot() {
     }
   }, [messages]);
 
+  useEffect(() => {
+    if (isOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.overflow = 'hidden';
+      document.body.style.width = '100%';
+    } else {
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+      document.body.style.width = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+      }
+    }
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+      document.body.style.width = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+      }
+    };
+  }, [isOpen]);
+
   return (
     <>
       {/* Floating Chat Trigger Button */}
@@ -81,7 +116,7 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed bottom-[130px] right-6 w-80 sm:w-96 h-[480px] bg-white border border-gray-200 shadow-2xl z-50 flex flex-col overflow-hidden"
+            className="fixed bottom-[130px] right-6 w-80 sm:w-96 h-[390px] bg-white border border-gray-200 shadow-2xl z-50 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-rosegold-500 text-white px-6 py-4 flex items-center justify-between shadow-md shrink-0">
@@ -132,7 +167,7 @@ export default function Chatbot() {
                   <button
                     key={i}
                     onClick={() => handleSend(reply.reply)}
-                    className="text-[10px] uppercase tracking-wider font-semibold border border-rosegold-500/30 text-rosegold-500 hover:bg-rosegold-500/5 px-2.5 py-1.5 transition-colors cursor-pointer"
+                    className="text-[10px]  tracking-wider font-semibold border border-rosegold-500/30 text-rosegold-500 hover:bg-rosegold-500/5 px-2.5 py-1.5 transition-colors cursor-pointer"
                   >
                     {reply.text}
                   </button>

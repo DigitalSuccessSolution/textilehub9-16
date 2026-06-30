@@ -5,21 +5,21 @@ import { Link } from 'react-router-dom';
 
 const slides = [
   {
-    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1000&auto=format&fit=crop&q=80",
+    image: "https://images.pexels.com/photos/8886962/pexels-photo-8886962.jpeg",
     subtitle: "PREMIUM BY TRADITION",
     title: "Woven with Heritage, & Designed for You",
     desc: "Discover luxury textiles crafted with tradition, passion and perfection.",
     link: "/products"
   },
   {
-    image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=1000&auto=format&fit=crop&q=80",
+    image: "https://images.pexels.com/photos/7679682/pexels-photo-7679682.jpeg",
     subtitle: "ARTISANAL QUALITY",
     title: "Handloom Heritage & Pure Silk Weaves",
     desc: "Woven with pure gold zari and fine mulberry silk, embodying traditional luxury and unmatched craftsmanship.",
     link: "/products"
   },
   {
-    image: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=1000&auto=format&fit=crop&q=80",
+    image: "https://images.pexels.com/photos/5264903/pexels-photo-5264903.jpeg",
     subtitle: "GLOBAL ECOSYSTEM",
     title: "B2B Bulk Trade & Custom Fabrics",
     desc: "Experience world-class apparel designed with state-of-the-art manufacturing standards and raw hand-selected fibers.",
@@ -201,7 +201,7 @@ export default function Home() {
               {/* Left Arrow button (vertically centered relative to image container) */}
               <button
                 onClick={prevSlide}
-                className="absolute -left-8 sm:-left-10 top-1/2 -translate-y-1/2 bg-white hover:bg-[#132C20] text-[#132C20] hover:text-[#eedec9] p-2.5 transition-all duration-300 z-20 rounded-full cursor-pointer flex shadow-md border border-[#ebdcb9]"
+                className="absolute -left-12 sm:-left-10 top-1/2 -translate-y-1/2 bg-white hover:bg-[#132C20] text-[#132C20] hover:text-[#eedec9] p-2.5 transition-all duration-300 z-20 rounded-full cursor-pointer flex shadow-md border border-[#ebdcb9]"
                 aria-label="Previous Slide"
               >
                 <ChevronLeft size={16} />
@@ -210,7 +210,7 @@ export default function Home() {
               {/* Right Arrow button (vertically centered relative to image container) */}
               <button
                 onClick={nextSlide}
-                className="absolute -right-8 sm:-right-10 top-1/2 -translate-y-1/2 bg-white hover:bg-[#132C20] text-[#132C20] hover:text-[#eedec9] p-2.5 transition-all duration-300 z-20 rounded-full cursor-pointer flex shadow-md border border-[#ebdcb9]"
+                className="absolute -right-12 sm:-right-10 top-1/2 -translate-y-1/2 bg-white hover:bg-[#132C20] text-[#132C20] hover:text-[#eedec9] p-2.5 transition-all duration-300 z-20 rounded-full cursor-pointer flex shadow-md border border-[#ebdcb9]"
                 aria-label="Next Slide"
               >
                 <ChevronRight size={16} />

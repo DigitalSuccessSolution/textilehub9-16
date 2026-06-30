@@ -47,7 +47,7 @@ export default function Blog() {
       <div className="w-full bg-rosegold-500 text-white py-10 px-6 mb-8 text-center relative overflow-hidden border-b-4 border-rosegold-400 shadow-md">
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/40 via-transparent to-slate-900/40 z-0" />
         <div className="relative z-10">
-          <h1 className="text-white border-0 pb-0 text-3xl md:text-4xl tracking-wider uppercase font-semibold m-0">The Journal</h1>
+          <h1 className="text-white border-0 pb-0 text-3xl md:text-4xl tracking-wider uppercase font-semibold m-0">Blog & Insights</h1>
           <p className="text-teal-100 text-[10px] md:text-xs uppercase tracking-widest mt-2 font-medium">Insights, News & Collections</p>
         </div>
       </div>

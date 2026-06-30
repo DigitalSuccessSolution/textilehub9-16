@@ -9,13 +9,20 @@ export default function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
+    const preventDefault = (e) => e.preventDefault();
     if (isSidebarOpen) {
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      document.addEventListener('touchmove', preventDefault, { passive: false });
     } else {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.removeEventListener('touchmove', preventDefault);
     }
     return () => {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.removeEventListener('touchmove', preventDefault);
     };
   }, [isSidebarOpen]);
 
