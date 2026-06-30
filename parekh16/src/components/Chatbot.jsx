@@ -49,6 +49,17 @@ export default function Chatbot() {
     }
   }, [messages]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   return (
     <>
       {/* Floating Chat Trigger Button - Styled with theme */}
@@ -68,7 +79,7 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed bottom-40 right-6 w-80 sm:w-96 h-[480px] bg-[#f5f2eb] border border-[#ebdcb9] shadow-2xl z-50 flex flex-col overflow-hidden rounded-2xl"
+            className="fixed bottom-24 right-6 w-80 sm:w-96 h-[480px] bg-[#f5f2eb] border border-[#ebdcb9] shadow-2xl z-50 flex flex-col overflow-hidden rounded-2xl"
           >
             {/* Header - Forest Green */}
             <div className="bg-[#132C20] text-white px-6 py-4 flex items-center justify-between shadow-md shrink-0">
@@ -119,7 +130,7 @@ export default function Chatbot() {
                   <button
                     key={i}
                     onClick={() => handleSend(reply.reply)}
-                    className="text-[10px] uppercase tracking-wider font-semibold border border-[#C3A87E]/30 text-[#132C20] hover:bg-[#132C20]/5 px-2.5 py-1.5 transition-colors cursor-pointer rounded-lg"
+                    className="text-[10px]  tracking-wider font-semibold border border-[#C3A87E]/30 text-[#132C20] hover:bg-[#132C20]/5 px-2.5 py-1.5 transition-colors cursor-pointer rounded-lg"
                   >
                     {reply.text}
                   </button>

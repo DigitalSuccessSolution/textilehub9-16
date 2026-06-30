@@ -34,8 +34,8 @@ export default function CustomerReview() {
         </div>
       </div>
 
-      {/* 1 Column Layout of Wide Testimonial Cards */}
-      <div className="flex flex-col gap-6 max-w-3xl mx-auto">
+      {/* Grid Layout of Testimonial Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {reviews.map((review, idx) => (
           <motion.div
             key={idx}
@@ -43,7 +43,7 @@ export default function CustomerReview() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.1 }}
-            className="bg-white p-8 border border-gray-200 shadow-lg flex flex-col relative"
+            className="bg-white p-6 border border-gray-200 shadow-lg flex flex-col justify-between relative"
           >
             {/* Quote Icon */}
             <Quote className="text-rosegold-500 mb-4 fill-current rotate-180" size={32} />

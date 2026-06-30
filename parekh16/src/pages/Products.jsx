@@ -13,12 +13,18 @@ export default function Products() {
   ];
 
   const allProducts = [
-    { id: 101, name: 'Premium Silk Saree', category: 'Sarees', image: 'https://images.unsplash.com/photo-1609748340041-f5d61e061ebc?w=600&auto=format&fit=crop&q=60' },
-    { id: 105, name: 'Embroidered Silk Saree', category: 'Sarees', image: 'https://images.unsplash.com/photo-1610189013233-0498b89d4fb9?w=600&auto=format&fit=crop&q=60' },
-    { id: 102, name: 'Designer Kurti Set', category: 'Kurtis', image: 'https://images.unsplash.com/photo-1741847639057-b51a25d42892?w=600&auto=format&fit=crop&q=60' },
-    { id: 106, name: 'Printed Cotton Kurti', category: 'Kurtis', image: 'https://images.unsplash.com/photo-1745313452052-0e4e341f326c?w=600&auto=format&fit=crop&q=60' },
-    { id: 103, name: 'Luxury Cotton Bedsheet', category: 'Bedsheets & Linen', image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&auto=format&fit=crop&q=60' },
-    { id: 104, name: 'Classic Men Suit Fabric', category: 'Suiting', image: 'https://images.unsplash.com/photo-1611937663641-5cef5189d71b?w=600&auto=format&fit=crop&q=60' },
+    { id: 101, name: 'Premium Banarasi Silk Saree', category: 'Sarees', image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&auto=format&fit=crop&q=60' },
+    { id: 102, name: 'Comfort Fit Cotton Leggings', category: 'Leggings', image: 'https://images.unsplash.com/photo-1506152983158-b4a74a01c721?w=600&auto=format&fit=crop&q=60' },
+    { id: 103, name: 'Artisanal Jaipuri Printed Kurti', category: 'Kurtis', image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=600&auto=format&fit=crop&q=60' },
+    { id: 104, name: 'Elegant Georgette Salwar Suit', category: 'Dress Suits', image: 'https://images.unsplash.com/photo-1608748010899-18f300247112?w=600&auto=format&fit=crop&q=60' },
+    { id: 105, name: 'Luxury Satin Cotton Bedsheet', category: 'Bedsheets & Linen', image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&auto=format&fit=crop&q=60' },
+    { id: 106, name: 'Premium Cotton Daily Hosiery', category: 'Hosiery Items', image: 'https://images.unsplash.com/photo-1582966772680-860e372bb558?w=600&auto=format&fit=crop&q=60' },
+    { id: 107, name: 'Italian Premium Wool Suiting', category: 'Suiting', image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&auto=format&fit=crop&q=60' },
+    { id: 108, name: 'Executive Oxford Cotton Shirting', category: 'Shirting', image: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&auto=format&fit=crop&q=60' },
+    { id: 109, name: 'Designer Wedding Lehenga Choli', category: 'Formal & Ethnic Wear for Women', image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600&auto=format&fit=crop&q=60' },
+    { id: 110, name: 'Royal Silk Sherwani Set', category: 'Formal & Ethnic Wear for Men', image: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&auto=format&fit=crop&q=60' },
+    { id: 111, name: 'Kids Festive Kurta Pyjama', category: 'Formal & Ethnic Wear for Children', image: 'https://images.unsplash.com/photo-1519457431-44ccd64a579b?w=600&auto=format&fit=crop&q=60' },
+    { id: 112, name: 'Bespoke Curtains & Drapes', category: 'Home Upholstery & Furnishing', image: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&auto=format&fit=crop&q=60' },
   ];
 
   const categoryDetails = {
@@ -145,135 +151,42 @@ export default function Products() {
                   </p>
                 </div>
 
-                {/* Live Search Bar */}
-                <div className="relative my-5 shrink-0">
-                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                    <Search size={16} />
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="Search categories..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-pearl-100 border border-gray-200 pl-11 pr-10 py-3 text-xs uppercase tracking-widest font-semibold text-gray-900 placeholder-gray-400 focus:outline-none focus:border-rosegold-500 focus:bg-white transition-all"
-                  />
-                  {searchQuery && (
-                    <button 
-                      onClick={() => setSearchQuery("")}
-                      className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-400 hover:text-rosegold-500 cursor-pointer"
-                    >
-                      <X size={16} />
-                    </button>
-                  )}
-                </div>
-
                 {/* Categories Scrollable Grid */}
-                <div className="flex-grow overflow-y-auto py-2 pr-1 custom-scrollbar">
+                <div className="flex-grow overflow-y-auto py-4 pr-1 custom-scrollbar">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {/* "All" Card */}
-                    {("All Products".toLowerCase().includes(searchQuery.toLowerCase()) || searchQuery === "") && (
-                      <button
-                        onClick={() => {
-                          setActiveCategory("All");
-                          setIsFilterOpen(false);
-                        }}
-                        className={`group relative text-left p-5 border transition-all duration-300 flex flex-col justify-between h-36 cursor-pointer ${
-                          activeCategory === "All"
-                            ? "bg-rosegold-500 border-rosegold-500 text-white shadow-md"
-                            : "bg-pearl-100 border-gray-200 text-gray-800 hover:border-rosegold-500 hover:bg-white hover:shadow-lg"
-                        }`}
-                      >
-                        <div className="flex justify-between items-start w-full">
-                          {/* Monogram Box */}
-                          <div className={`w-10 h-10 border flex items-center justify-center font-playfair font-bold text-xs uppercase transition-colors duration-300 ${
-                            activeCategory === "All"
-                              ? "bg-white/20 border-white/30 text-white"
-                              : "bg-white border-gray-200 text-slate-800 group-hover:border-rosegold-500"
-                          }`}>
-                            ALL
-                          </div>
-                          {/* Count Badge */}
-                          <span className={`text-[10px] uppercase tracking-widest font-bold px-2 py-1 transition-colors duration-300 ${
-                            activeCategory === "All"
-                              ? "bg-white/25 text-white"
-                              : "bg-gray-200/70 text-gray-500"
-                          }`}>
-                            {getProductCount("All")} Items
-                          </span>
-                        </div>
-                        <div className="mt-3">
-                          <h4 className={`text-xs font-semibold uppercase tracking-widest transition-colors duration-300 ${
-                            activeCategory === "All" ? "text-white" : "text-gray-900"
-                          }`}>
-                            All Collections
-                          </h4>
-                          <p className={`text-[10px] mt-1 transition-colors duration-300 ${
-                            activeCategory === "All" ? "text-teal-100" : "text-gray-400 font-medium"
-                          }`}>
-                            {categoryDetails["All"].desc}
-                          </p>
-                        </div>
-                      </button>
-                    )}
+                    <button
+                      onClick={() => {
+                        setActiveCategory("All");
+                        setIsFilterOpen(false);
+                      }}
+                      className={`group relative text-center p-5 border transition-all duration-300 flex items-center justify-center rounded-xl cursor-pointer ${
+                        activeCategory === "All"
+                          ? "bg-rosegold-500 border-rosegold-500 text-white shadow-md font-bold"
+                          : "bg-pearl-100 border-gray-200 text-gray-800 hover:border-rosegold-500 hover:bg-white hover:shadow-lg font-semibold"
+                      }`}
+                    >
+                      <span className="text-xs uppercase tracking-widest">All Collections</span>
+                    </button>
 
-                    {/* Filtered Categories Cards */}
-                    {filteredCategories.map(cat => (
+                    {/* Categories Cards */}
+                    {categories.map(cat => (
                       <button
                         key={cat}
                         onClick={() => {
                           setActiveCategory(cat);
                           setIsFilterOpen(false);
                         }}
-                        className={`group relative text-left p-5 border transition-all duration-300 flex flex-col justify-between h-36 cursor-pointer ${
+                        className={`group relative text-center p-5 border transition-all duration-300 flex items-center justify-center rounded-xl cursor-pointer ${
                           activeCategory === cat
-                            ? "bg-rosegold-500 border-rosegold-500 text-white shadow-md"
-                            : "bg-pearl-100 border-gray-200 text-gray-800 hover:border-rosegold-500 hover:bg-white hover:shadow-lg"
-                        }`}
+                            ? "bg-rosegold-500 border-rosegold-500 text-white shadow-md font-bold"
+                            : "bg-pearl-100 border-gray-200 text-gray-800 hover:border-rosegold-500 hover:bg-white hover:shadow-lg font-semibold"
+                      }`}
                       >
-                        <div className="flex justify-between items-start w-full">
-                          {/* Monogram Box */}
-                          <div className={`w-10 h-10 border flex items-center justify-center font-playfair font-bold text-xs uppercase transition-colors duration-300 ${
-                            activeCategory === cat
-                              ? "bg-white/20 border-white/30 text-white"
-                              : "bg-white border-gray-200 text-slate-800 group-hover:border-rosegold-500"
-                          }`}>
-                            {categoryDetails[cat]?.monogram || cat.substring(0, 2).toUpperCase()}
-                          </div>
-                          {/* Count Badge */}
-                          <span className={`text-[9px] uppercase tracking-widest font-bold px-2 py-1 transition-colors duration-300 ${
-                            activeCategory === cat
-                              ? "bg-white/25 text-white"
-                              : getProductCount(cat) > 0 
-                                ? "bg-rosegold-500/10 text-rosegold-500" 
-                                : "bg-gray-200/70 text-gray-400"
-                          }`}>
-                            {getProductCount(cat) > 0 ? `${getProductCount(cat)} Items` : "Coming Soon"}
-                          </span>
-                        </div>
-                        <div className="mt-3">
-                          <h4 className={`text-xs font-semibold uppercase tracking-widest transition-colors duration-300 truncate ${
-                            activeCategory === cat ? "text-white" : "text-gray-900"
-                          }`}>
-                            {cat}
-                          </h4>
-                          <p className={`text-[10px] mt-1 transition-colors duration-300 line-clamp-2 ${
-                            activeCategory === cat ? "text-teal-100" : "text-gray-400 font-medium"
-                          }`}>
-                            {categoryDetails[cat]?.desc || "Explore this collection"}
-                          </p>
-                        </div>
+                        <span className="text-xs uppercase tracking-widest">{cat}</span>
                       </button>
                     ))}
                   </div>
-
-                  {/* Empty Search State */}
-                  {filteredCategories.length === 0 && !("All Products".toLowerCase().includes(searchQuery.toLowerCase())) && (
-                    <div className="text-center py-12">
-                      <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold">
-                        No categories found matching "{searchQuery}"
-                      </p>
-                    </div>
-                  )}
                 </div>
 
                 {/* Footer */}
@@ -296,27 +209,27 @@ export default function Products() {
       <div className="space-y-16">
         {activeCategory === "All" ? (
           <div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               {filteredProducts.map(product => (
                 <motion.div 
                   key={product.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="bg-white overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg hover:border-rosegold-500 transition-all duration-300"
+                  className="bg-white overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg hover:border-rosegold-500 transition-all duration-300 rounded-3xl"
                 >
-                  <div className="h-64 w-full relative">
+                  <div className="h-32 sm:h-48 w-full relative rounded-t-3xl overflow-hidden">
                     <img 
                       src={product.image} 
                       alt={product.name} 
                       className="absolute inset-0 w-full h-full object-cover"
                     />
                   </div>
-                  <div className="p-5 text-center bg-white border-t border-gray-100">
-                    <p className="text-[10px] uppercase tracking-widest text-gray-400 mb-2 font-semibold">
+                  <div className="p-3 sm:p-5 text-center bg-white border-t border-gray-100 rounded-b-3xl">
+                    <p className="text-[9px] sm:text-[10px] uppercase tracking-widest text-gray-400 mb-1.5 sm:mb-2 font-semibold">
                       {product.category}
                     </p>
-                    <h3 className="font-playfair text-base text-gray-900 font-semibold uppercase tracking-wide">
+                    <h3 className="font-playfair text-xs sm:text-base text-gray-900 font-semibold uppercase tracking-wide line-clamp-1">
                       {product.name}
                     </h3>
                   </div>
@@ -328,27 +241,27 @@ export default function Products() {
           Object.entries(groupedProducts).map(([categoryName, products]) => (
             <div key={categoryName}>
               <h2 className="font-playfair text-xl text-gray-900 font-semibold uppercase tracking-wider mb-6 border-b border-gray-200 pb-2">{categoryName}</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
                 {products.map(product => (
                   <motion.div 
                     key={product.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="bg-white overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg hover:border-rosegold-500 transition-all duration-300"
+                    className="bg-white overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg hover:border-rosegold-500 transition-all duration-300 rounded-3xl"
                   >
-                    <div className="h-64 w-full relative">
+                    <div className="h-32 sm:h-48 w-full relative rounded-t-3xl overflow-hidden">
                       <img 
                         src={product.image} 
                         alt={product.name} 
                         className="absolute inset-0 w-full h-full object-cover"
                       />
                     </div>
-                    <div className="p-5 text-center bg-white border-t border-gray-100">
-                      <p className="text-[10px] uppercase tracking-widest text-gray-400 mb-2 font-semibold">
+                    <div className="p-3 sm:p-5 text-center bg-white border-t border-gray-100 rounded-b-3xl">
+                      <p className="text-[9px] sm:text-[10px] uppercase tracking-widest text-gray-400 mb-1.5 sm:mb-2 font-semibold">
                         {product.category}
                       </p>
-                      <h3 className="font-playfair text-base text-gray-900 font-semibold uppercase tracking-wide">
+                      <h3 className="font-playfair text-xs sm:text-base text-gray-900 font-semibold uppercase tracking-wide line-clamp-1">
                         {product.name}
                       </h3>
                     </div>

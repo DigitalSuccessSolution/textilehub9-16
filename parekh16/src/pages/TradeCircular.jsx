@@ -30,7 +30,7 @@ const TradeCircular = () => {
         {circulars.map((circular) => (
           <div
             key={circular.id}
-            className="bg-white border border-gray-200 shadow-md p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-xl hover:border-rosegold-500 transition-all duration-300 group"
+            className="bg-white border border-gray-200 shadow-md p-6 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:shadow-xl hover:border-rosegold-500 transition-all duration-300 group rounded-3xl"
           >
             {/* Left Info Area */}
             <div className="flex items-start gap-4">

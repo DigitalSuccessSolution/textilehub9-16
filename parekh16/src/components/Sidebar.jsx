@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Globe, Users, Phone, ShoppingBag, Image as ImageIcon,
-  MessageSquare, FileText, Briefcase, Star, Clipboard, Headphones
+  MessageSquare, FileText, Briefcase, Star, Clipboard, Headphones, HelpCircle
 } from 'lucide-react';
 
 export default function Sidebar({ closeSidebar }) {
@@ -18,11 +18,12 @@ export default function Sidebar({ closeSidebar }) {
     { name: 'e-Quotation', path: '/e-quotation', icon: FileText },
     { name: 'e-Auction', path: '/e-auction', icon: FileText },
     { name: 'Trade Circular', path: '/trade-circular', icon: FileText },
-    { name: 'Blog Page', path: '/blog', icon: MessageSquare },
+    { name: 'Blog', path: '/blog', icon: MessageSquare },
     { name: 'Notice Board', path: '/notice-board', icon: Clipboard },
-    { name: 'Career Page', path: '/career', icon: Briefcase },
+    { name: 'Career', path: '/career', icon: Briefcase },
     { name: 'Customer Review', path: '/reviews', icon: Star },
     { name: 'Business Media Gallery', path: '/gallery', icon: ImageIcon },
+    { name: 'FAQ', path: '/faq', icon: HelpCircle },
   ];
 
   const getDisplayName = (name) => {
@@ -33,8 +34,8 @@ export default function Sidebar({ closeSidebar }) {
 
   return (
     <div className="flex flex-col h-full bg-[#132C20] border-r border-[#ebdcb9]/10 overflow-y-auto custom-scrollbar">
-      {/* Logo Area - Styled exactly like the reference image with compact padding */}
-      <div className="px-6 pt-6 pb-4 text-center border-b border-[#ebdcb9]/10">
+      {/* Logo Area - Styled exactly like the reference image with compact padding (Hidden on mobile) */}
+      <div className="px-6 pt-6 pb-4 text-center border-b border-[#ebdcb9]/10 hidden lg:block">
         {/* Elegant Gold Medallion Ornament SVG (Compact w-12 h-12) */}
         <svg className="w-12 h-12 mx-auto mb-2 text-[#C3A87E]" viewBox="0 0 100 100" fill="currentColor">
           <path d="M50 5C52 20 62 30 77 33C62 36 52 46 50 61C48 46 38 36 23 33C38 30 48 20 50 5Z" fill="none" stroke="currentColor" strokeWidth="2"/>
@@ -43,9 +44,11 @@ export default function Sidebar({ closeSidebar }) {
           <path d="M50 20 L50 25 M50 73 L50 78 M21 49 L26 49 M74 49 L79 49" stroke="currentColor" strokeWidth="1.5"/>
         </svg>
 
-        <h1 className="font-playfair text-lg tracking-[0.12em] text-[#C3A87E] font-bold uppercase mb-0.5 border-0 pb-0 w-full text-center">
-          ROYAL WEAVES
-        </h1>
+        <Link to="/" className="block cursor-pointer hover:opacity-90">
+          <h1 className="font-playfair text-lg tracking-[0.12em] text-[#C3A87E] font-bold uppercase mb-0.5 border-0 pb-0 w-full text-center">
+            ROYAL WEAVES
+          </h1>
+        </Link>
         
         {/* Subtitle with gold lines */}
         <div className="flex items-center justify-center gap-2 mt-1">

@@ -81,8 +81,8 @@ export default function BusinessMediaGallery() {
         ))}
       </div>
 
-      {/* 1 Column Layout of Wide Horizontal Cards */}
-      <div className="flex flex-col gap-8">
+      {/* Grid Layout of Cards */}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
         <AnimatePresence mode="popLayout">
           {filteredItems.map((item) => (
             <motion.div 
@@ -91,10 +91,10 @@ export default function BusinessMediaGallery() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              className="group flex flex-col md:flex-row bg-white border border-gray-200 overflow-hidden hover:border-rosegold-500 hover:shadow-xl transition-all duration-300"
+              className="group flex flex-col bg-white border border-gray-200 overflow-hidden hover:border-rosegold-500 hover:shadow-xl transition-all duration-300"
             >
               {/* Image Section */}
-              <div className="relative h-60 md:h-44 md:w-2/5 overflow-hidden bg-pearl-100 shrink-0">
+              <div className="relative h-36 sm:h-56 w-full overflow-hidden bg-pearl-100 shrink-0">
                 <img 
                   src={item.image} 
                   alt={item.title}
@@ -106,12 +106,14 @@ export default function BusinessMediaGallery() {
               </div>
 
               {/* Text details */}
-              <div className="p-6 md:p-8 flex flex-col justify-center flex-grow bg-white">
-                <span className="text-[10px] text-rosegold-500 font-bold uppercase tracking-widest mb-1.5">{item.date}</span>
-                <h3 className="font-playfair text-lg text-gray-900 font-semibold mb-1 group-hover:text-rosegold-500 transition-colors uppercase tracking-wide">
-                  {item.title}
-                </h3>
-                <span className="text-[10px] text-gray-400 font-medium uppercase tracking-wider block">
+              <div className="p-4 sm:p-5 flex flex-col justify-between flex-grow bg-white">
+                <div>
+                  <span className="text-[10px] text-rosegold-500 font-bold uppercase tracking-widest mb-1 block">{item.date}</span>
+                  <h3 className="font-playfair text-xs sm:text-base text-gray-900 font-semibold mb-2 group-hover:text-rosegold-500 transition-colors uppercase tracking-wide leading-snug line-clamp-2">
+                    {item.title}
+                  </h3>
+                </div>
+                <span className="text-[9px] text-gray-400 font-bold uppercase tracking-wider block mt-2 pt-2 border-t border-gray-100">
                   Category: {item.category}
                 </span>
               </div>

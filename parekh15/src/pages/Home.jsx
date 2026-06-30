@@ -18,7 +18,7 @@ const slides = [
     link: "/products"
   },
   {
-    image: "/hero_fabric_1781069270214.png",
+    image: "https://images.pexels.com/photos/6358795/pexels-photo-6358795.jpeg?auto=compress&cs=tinysrgb&w=1200",
     subtitle: "GLOBAL ECOSYSTEM",
     title: "B2B Trade & Custom Fabrics",
     desc: "Experience world-class apparel designed with state-of-the-art manufacturing standards and raw hand-selected fibers.",
@@ -87,11 +87,11 @@ export default function Home() {
     <div className="space-y-16">
       {/* Hero Section with compact spacing - No Top Action Bar */}
       <div className="-mt-6 lg:-mt-10">
-        {/* Hero Section Split Layout with fixed heights to prevent layout shifts during slide changes */}
-        <section className="relative h-[580px] sm:h-[520px] md:h-[480px] overflow-hidden group border border-gray-200 bg-[#01312b] p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+        {/* Hero Section Split Layout with auto-height and reduced padding on mobile */}
+        <section className="relative h-auto md:h-[480px] overflow-hidden group border border-gray-200 bg-[#01312b] py-8 px-5 md:p-12 lg:p-16 flex flex-col md:flex-row items-center gap-6 md:gap-12">
           
-          {/* Left Column (Text Content) with min-height to prevent collapsing during slide transitions */}
-          <div className="w-full md:w-7/12 flex flex-col justify-center z-10 text-left text-white min-h-[260px] sm:min-h-[200px] md:min-h-[280px]">
+          {/* Left Column (Text Content) - ordered second on mobile with reduced min-height */}
+          <div className="w-full md:w-7/12 flex flex-col justify-center z-10 text-left text-white min-h-[160px] sm:min-h-[200px] md:min-h-[280px] order-2 md:order-1">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -99,35 +99,36 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="space-y-5"
+                className="space-y-4"
               >
                 <div className="inline-flex items-center gap-2 text-rosegold-400 bg-rosegold-500/10 px-3.5 py-1.5 border border-rosegold-500/20">
                   <Sparkles size={14} className="text-rosegold-500" />
                   <span className="text-[10px] uppercase tracking-[0.2em] font-semibold">{slides[current].subtitle}</span>
                 </div>
 
-                <h1 className="font-playfair text-3xl md:text-4xl lg:text-5xl text-white leading-tight font-semibold uppercase tracking-wider border-0 pb-0 mb-0">
+                <h1 className="font-playfair text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white leading-tight font-semibold uppercase tracking-wider border-0 pb-0 mb-0">
                   {slides[current].title}
                 </h1>
 
-                <p className="text-gray-300 text-xs md:text-sm font-outfit leading-relaxed max-w-xl">
+                {/* Hidden on mobile to keep vertical footprint small */}
+                <p className="text-gray-300 text-xs md:text-sm font-outfit leading-relaxed max-w-xl hidden sm:block">
                   {slides[current].desc}
                 </p>
 
-                <div className="flex flex-wrap gap-4 pt-2">
-                  <a href={slides[current].link} className="inline-flex items-center gap-3 bg-rosegold-500 text-pearl-100 px-6 py-3.5 font-semibold tracking-widest uppercase hover:bg-rosegold-400 transition-colors text-xs">
-                    Explore Collection <ArrowRight size={14} />
+                <div className="flex flex-wrap gap-3 pt-1 justify-center md:justify-start">
+                  <a href={slides[current].link} className="inline-flex items-center gap-3 bg-rosegold-500 text-pearl-100 px-5 py-3 font-semibold tracking-widest uppercase hover:bg-rosegold-400 transition-colors text-xs">
+                    Explore Collection <ArrowRight size={12} />
                   </a>
-                  <a href="/trade-enquiry" className="inline-flex items-center gap-3 border border-gray-650 text-white px-6 py-3.5 font-semibold tracking-widest uppercase hover:bg-white hover:text-slate-950 transition-all text-xs">
-                    Enquire Now <ArrowRight size={14} />
+                  <a href="/trade-enquiry" className="inline-flex items-center gap-3 border border-gray-650 text-white px-5 py-3 font-semibold tracking-widest uppercase hover:bg-white hover:text-slate-950 transition-all text-xs">
+                    Enquire Now <ArrowRight size={12} />
                   </a>
                 </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Right Column (Image Card - No shadow overlays and No box shadow) */}
-          <div className="w-full md:w-5/12 relative h-64 md:h-[350px] overflow-hidden bg-slate-900 border border-gray-800 shrink-0 flex items-center justify-center">
+          {/* Right Column (Image Card) - ordered first on mobile with reduced height */}
+          <div className="w-full md:w-5/12 relative h-60 sm:h-80 md:h-[400px] bg-slate-900 border border-gray-800 shrink-0 flex items-center justify-center order-1 md:order-2">
             <AnimatePresence initial={false} custom={direction}>
               <motion.img
                 key={current}
@@ -145,24 +146,42 @@ export default function Home() {
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </AnimatePresence>
+
+            {/* Left Chevron Button (outside the image container - hidden on desktop) */}
+            <button
+              onClick={prevSlide}
+              className="absolute -left-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-rosegold-500 hover:text-white text-white p-1.5 transition-all duration-300 z-20 shadow-md cursor-pointer md:hidden"
+              aria-label="Previous Slide"
+            >
+              <ChevronLeft size={14} />
+            </button>
+
+            {/* Right Chevron Button (outside the image container - hidden on desktop) */}
+            <button
+              onClick={nextSlide}
+              className="absolute -right-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-rosegold-500 hover:text-white text-white p-1.5 transition-all duration-300 z-20 shadow-md cursor-pointer md:hidden"
+              aria-label="Next Slide"
+            >
+              <ChevronRight size={14} />
+            </button>
           </div>
 
-          {/* Left Arrow */}
+          {/* Desktop Left Chevron (outside on the left of the entire hero section) */}
           <button
             onClick={prevSlide}
-            className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-rosegold-500 hover:text-white text-white p-2.5 transition-all duration-300 z-10 opacity-0 group-hover:opacity-100"
+            className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-rosegold-500 hover:text-white text-white p-1.5 transition-all duration-300 z-20 shadow-md cursor-pointer"
             aria-label="Previous Slide"
           >
-            <ChevronLeft size={16} />
+            <ChevronLeft size={14} />
           </button>
 
-          {/* Right Arrow */}
+          {/* Desktop Right Chevron (outside on the right of the entire hero section) */}
           <button
             onClick={nextSlide}
-            className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-rosegold-500 hover:text-white text-white p-2.5 transition-all duration-300 z-10 opacity-0 group-hover:opacity-100"
+            className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-rosegold-500 hover:text-white text-white p-1.5 transition-all duration-300 z-20 shadow-md cursor-pointer"
             aria-label="Next Slide"
           >
-            <ChevronRight size={16} />
+            <ChevronRight size={14} />
           </button>
 
           {/* Bullet Indicators */}
@@ -196,7 +215,7 @@ export default function Home() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
           {featuredProducts.map((prod, idx) => (
             <motion.div
               key={idx}
@@ -206,7 +225,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: idx * 0.15 }}
               className="group flex flex-col bg-pearl-50 border border-gray-200 overflow-hidden hover:border-rosegold-500 transition-all duration-300 shadow-lg"
             >
-              <div className="relative h-[220px] overflow-hidden">
+              <div className="relative h-[150px] sm:h-[220px] overflow-hidden">
                 <img
                   src={prod.image}
                   alt={prod.name}
@@ -217,9 +236,9 @@ export default function Home() {
                   {prod.category}
                 </span>
               </div>
-              <div className="p-6 flex flex-col flex-grow bg-pearl-50">
+              <div className="p-4 sm:p-6 flex flex-col flex-grow bg-pearl-50">
                 <h3 className="text-gray-900 font-playfair text-xl font-semibold mb-2 group-hover:text-rosegold-500 transition-colors uppercase tracking-wide">{prod.name}</h3>
-                <p className="text-gray-655 text-sm leading-relaxed mb-6 flex-grow">{prod.desc}</p>
+                <p className="text-gray-655 text-sm leading-relaxed mb-4 flex-grow hidden sm:block">{prod.desc}</p>
                 <a
                   href="/products"
                   className="inline-flex items-center gap-2 text-rosegold-500 hover:text-rosegold-400 font-semibold uppercase text-xs tracking-wider border-b border-transparent hover:border-rosegold-500 w-fit pb-1 transition-all duration-200"

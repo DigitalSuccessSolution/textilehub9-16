@@ -1,18 +1,31 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import Chatbot from './Chatbot';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 export default function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  useEffect(() => {
+    if (isSidebarOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isSidebarOpen]);
+
   return (
     <div className="flex min-h-screen bg-pearl-100 text-gray-800">
       {/* Mobile Header / Hamburger */}
       <div className="lg:hidden fixed top-0 w-full bg-[#f5f2eb] text-[#132C20] z-50 flex items-center justify-between px-6 py-4 shadow-sm border-b border-[#ebdcb9]">
-        <span className="font-playfair text-lg tracking-widest font-bold text-[#132C20] border-b-0 pb-0 mb-0">ROYAL WEAVES</span>
+        <Link to="/" className="cursor-pointer hover:opacity-85">
+          <span className="font-playfair text-lg tracking-widest font-bold text-[#132C20] border-b-0 pb-0 mb-0">ROYAL WEAVES</span>
+        </Link>
         <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="text-[#132C20]">
           {isSidebarOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -21,7 +34,7 @@ export default function Layout() {
       {/* Sidebar Navigation */}
       <div
         className={`fixed inset-y-0 left-0 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-          } lg:translate-x-0 transition duration-300 ease-in-out z-40 w-72 bg-pearl-50 shadow-lg flex flex-col`}
+          } lg:translate-x-0 transition duration-300 ease-in-out z-40 w-72 bg-[#132C20] shadow-2xl flex flex-col pt-20 lg:pt-0 rounded-r-3xl lg:rounded-r-none`}
       >
         <Sidebar closeSidebar={() => setIsSidebarOpen(false)} />
       </div>

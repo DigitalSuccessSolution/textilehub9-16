@@ -12,16 +12,16 @@ export default function Products() {
 
   const allProducts = [
     { id: 101, name: 'Royal Kanjivaram Silk Saree', category: 'Sarees', image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&auto=format&fit=crop&q=60' },
-    { id: 102, name: 'Premium Cotton Leggings', category: 'Leggings', image: 'https://images.unsplash.com/photo-1506152983158-b4a74a01c721?w=600&auto=format&fit=crop&q=60' },
-    { id: 103, name: 'Artisanal Designer Kurti', category: 'Kurtis', image: 'https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?w=600&auto=format&fit=crop&q=60' },
-    { id: 104, name: 'Elegant Salwar Kameez Suit', category: 'Dress Suits', image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=600&auto=format&fit=crop&q=60' },
+    { id: 102, name: 'Premium Cotton Leggings', category: 'Leggings', image: 'https://images.pexels.com/photos/16701769/pexels-photo-16701769.jpeg?auto=compress&cs=tinysrgb&w=600' },
+    { id: 103, name: 'Artisanal Designer Kurti', category: 'Kurtis', image: 'https://images.pexels.com/photos/20702674/pexels-photo-20702674.jpeg?auto=compress&cs=tinysrgb&w=600' },
+    { id: 104, name: 'Elegant Salwar Kameez Suit', category: 'Dress Suits', image: 'https://images.pexels.com/photos/25184999/pexels-photo-25184999.jpeg?auto=compress&cs=tinysrgb&w=600' },
     { id: 105, name: 'Luxury Cotton Bedsheet Set', category: 'Bedsheets & Linen', image: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&auto=format&fit=crop&q=60' },
-    { id: 106, name: 'Soft-Knit Hosiery Collection', category: 'Hosiery Items', image: 'https://images.unsplash.com/photo-1619134778706-7015533a6150?w=600&auto=format&fit=crop&q=60' },
+    { id: 106, name: 'Soft-Knit Hosiery Collection', category: 'Hosiery Items', image: 'https://images.unsplash.com/photo-1582966772680-860e372bb558?w=600&auto=format&fit=crop&q=60' },
     { id: 107, name: 'Premium Blazer & Suiting Fabric', category: 'Suiting', image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&auto=format&fit=crop&q=60' },
     { id: 108, name: 'Classic Linen Shirting Fabric', category: 'Shirting', image: 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=600&auto=format&fit=crop&q=60' },
     { id: 109, name: 'Bridal Heritage Lehenga Choli', category: 'Formal & Ethnic Wear for Women', image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=600&auto=format&fit=crop&q=60' },
-    { id: 110, name: 'Handcrafted Men Sherwani Set', category: 'Formal & Ethnic Wear for Men', image: 'https://images.unsplash.com/photo-1617626002779-51a866bdd2d1?w=600&auto=format&fit=crop&q=60' },
-    { id: 111, name: 'Kids Festive Kurta Pajama', category: 'Formal & Ethnic Wear for Children', image: 'https://images.unsplash.com/photo-1607990283143-e81e7a2c93ab?w=600&auto=format&fit=crop&q=60' },
+    { id: 110, name: 'Handcrafted Men Sherwani Set', category: 'Formal & Ethnic Wear for Men', image: 'https://images.pexels.com/photos/16199169/pexels-photo-16199169.jpeg?auto=compress&cs=tinysrgb&w=600' },
+    { id: 111, name: 'Kids Festive Kurta Pajama', category: 'Formal & Ethnic Wear for Children', image: 'https://images.pexels.com/photos/17015449/pexels-photo-17015449.jpeg?auto=compress&cs=tinysrgb&w=600' },
     { id: 112, name: 'Luxury Drapes & Cushion Covers', category: 'Home Upholstery & Furnishing', image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&auto=format&fit=crop&q=60' }
   ];
 
@@ -134,144 +134,64 @@ export default function Products() {
                 </button>
 
                 {/* Header */}
-                <div className="pb-5 border-b border-gray-200 shrink-0 pr-10">
+                <div className="pb-5 border-b border-gray-200 shrink-0 pr-10 mb-6">
                   <h3 className="font-playfair text-xl text-gray-900 font-semibold uppercase tracking-wider border-b-2 border-rosegold-500 pb-1.5 w-fit">
                     Explore Collections
                   </h3>
-                  <p className="text-[10px] text-gray-400 uppercase tracking-widest mt-2 font-medium">
-                    Choose a product category to filter the catalogue below
-                  </p>
-                </div>
-
-                {/* Live Search Bar */}
-                <div className="relative my-5 shrink-0">
-                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-                    <Search size={16} />
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="Search categories..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full bg-pearl-100 border border-gray-200 pl-11 pr-10 py-3 text-xs uppercase tracking-widest font-semibold text-gray-900 placeholder-gray-400 focus:outline-none focus:border-rosegold-500 focus:bg-white transition-all"
-                  />
-                  {searchQuery && (
-                    <button 
-                      onClick={() => setSearchQuery("")}
-                      className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-400 hover:text-rosegold-500 cursor-pointer"
-                    >
-                      <X size={16} />
-                    </button>
-                  )}
                 </div>
 
                 {/* Categories Scrollable Grid */}
                 <div className="flex-grow overflow-y-auto py-2 pr-1 custom-scrollbar">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {/* "All" Card */}
-                    {("All Products".toLowerCase().includes(searchQuery.toLowerCase()) || searchQuery === "") && (
-                      <button
-                        onClick={() => {
-                          setActiveCategory("All");
-                          setIsFilterOpen(false);
-                        }}
-                        className={`group relative text-left p-5 border transition-all duration-300 flex flex-col justify-between h-36 cursor-pointer ${
-                          activeCategory === "All"
-                            ? "bg-rosegold-500 border-rosegold-500 text-white shadow-md"
-                            : "bg-pearl-100 border-gray-200 text-gray-800 hover:border-rosegold-500 hover:bg-white hover:shadow-lg"
-                        }`}
-                      >
-                        <div className="flex justify-between items-start w-full">
-                          {/* Monogram Box */}
-                          <div className={`w-10 h-10 border flex items-center justify-center font-playfair font-bold text-xs uppercase transition-colors duration-300 ${
-                            activeCategory === "All"
-                              ? "bg-white/20 border-white/30 text-white"
-                              : "bg-white border-gray-200 text-slate-800 group-hover:border-rosegold-500"
-                          }`}>
-                            ALL
-                          </div>
-                          {/* Count Badge */}
-                          <span className={`text-[10px] uppercase tracking-widest font-bold px-2 py-1 transition-colors duration-300 ${
-                            activeCategory === "All"
-                              ? "bg-white/25 text-white"
-                              : "bg-gray-200/70 text-gray-500"
-                          }`}>
-                            {getProductCount("All")} Items
-                          </span>
-                        </div>
-                        <div className="mt-3">
-                          <h4 className={`text-xs font-semibold uppercase tracking-widest transition-colors duration-300 ${
-                            activeCategory === "All" ? "text-white" : "text-gray-900"
-                          }`}>
-                            All Collections
-                          </h4>
-                          <p className={`text-[10px] mt-1 transition-colors duration-300 ${
-                            activeCategory === "All" ? "text-teal-100" : "text-gray-400 font-medium"
-                          }`}>
-                            {categoryDetails["All"].desc}
-                          </p>
-                        </div>
-                      </button>
-                    )}
+                    <button
+                      onClick={() => {
+                        setActiveCategory("All");
+                        setIsFilterOpen(false);
+                      }}
+                      className={`group relative text-left p-4 border transition-all duration-300 flex items-center justify-between cursor-pointer ${
+                        activeCategory === "All"
+                          ? "bg-rosegold-500 border-rosegold-500 text-white shadow-md"
+                          : "bg-pearl-100 border-gray-200 text-gray-800 hover:border-rosegold-500 hover:bg-white hover:shadow-md"
+                      }`}
+                    >
+                      <span className="text-xs font-semibold uppercase tracking-widest">
+                        All Collections
+                      </span>
+                      <span className={`text-[10px] uppercase tracking-widest font-bold px-2.5 py-1 ${
+                        activeCategory === "All" ? "bg-white/20 text-white" : "bg-gray-200/70 text-gray-500"
+                      }`}>
+                        {getProductCount("All")} Items
+                      </span>
+                    </button>
 
                     {/* Filtered Categories Cards */}
-                    {filteredCategories.map(cat => (
+                    {categories.map(cat => (
                       <button
                         key={cat}
                         onClick={() => {
                           setActiveCategory(cat);
                           setIsFilterOpen(false);
                         }}
-                        className={`group relative text-left p-5 border transition-all duration-300 flex flex-col justify-between h-36 cursor-pointer ${
+                        className={`group relative text-left p-4 border transition-all duration-300 flex items-center justify-between cursor-pointer ${
                           activeCategory === cat
                             ? "bg-rosegold-500 border-rosegold-500 text-white shadow-md"
-                            : "bg-pearl-100 border-gray-200 text-gray-800 hover:border-rosegold-500 hover:bg-white hover:shadow-lg"
-                        }`}
+                            : "bg-pearl-100 border-gray-200 text-gray-800 hover:border-rosegold-500 hover:bg-white hover:shadow-md"
+                      }`}
                       >
-                        <div className="flex justify-between items-start w-full">
-                          {/* Monogram Box */}
-                          <div className={`w-10 h-10 border flex items-center justify-center font-playfair font-bold text-xs uppercase transition-colors duration-300 ${
-                            activeCategory === cat
-                              ? "bg-white/20 border-white/30 text-white"
-                              : "bg-white border-gray-200 text-slate-800 group-hover:border-rosegold-500"
-                          }`}>
-                            {categoryDetails[cat]?.monogram || cat.substring(0, 2).toUpperCase()}
-                          </div>
-                          {/* Count Badge */}
-                          <span className={`text-[9px] uppercase tracking-widest font-bold px-2 py-1 transition-colors duration-300 ${
-                            activeCategory === cat
-                              ? "bg-white/25 text-white"
-                              : getProductCount(cat) > 0 
-                                ? "bg-rosegold-500/10 text-rosegold-500" 
-                                : "bg-gray-200/70 text-gray-400"
-                          }`}>
-                            {getProductCount(cat) > 0 ? `${getProductCount(cat)} Items` : "Coming Soon"}
-                          </span>
-                        </div>
-                        <div className="mt-3">
-                          <h4 className={`text-xs font-semibold uppercase tracking-widest transition-colors duration-300 truncate ${
-                            activeCategory === cat ? "text-white" : "text-gray-900"
-                          }`}>
-                            {cat}
-                          </h4>
-                          <p className={`text-[10px] mt-1 transition-colors duration-300 line-clamp-2 ${
-                            activeCategory === cat ? "text-teal-100" : "text-gray-400 font-medium"
-                          }`}>
-                            {categoryDetails[cat]?.desc || "Explore this collection"}
-                          </p>
-                        </div>
+                        <span className="text-xs font-semibold uppercase tracking-widest truncate pr-2">
+                          {cat}
+                        </span>
+                        <span className={`text-[10px] uppercase tracking-widest font-bold px-2.5 py-1 ${
+                          activeCategory === cat
+                            ? "bg-white/20 text-white"
+                            : "bg-rosegold-500/10 text-rosegold-500"
+                        }`}>
+                          {getProductCount(cat)} Items
+                        </span>
                       </button>
                     ))}
                   </div>
-
-                  {/* Empty Search State */}
-                  {filteredCategories.length === 0 && !("All Products".toLowerCase().includes(searchQuery.toLowerCase())) && (
-                    <div className="text-center py-12">
-                      <p className="text-gray-400 text-xs uppercase tracking-widest font-semibold">
-                        No categories found matching "{searchQuery}"
-                      </p>
-                    </div>
-                  )}
                 </div>
 
                 {/* Footer */}

@@ -25,27 +25,56 @@ const EAuction = () => {
       </div>
 
       {/* Main Content Area */}
-      <div className="bg-pearl-100 p-6 md:p-10 border border-gray-200 shadow-sm flex flex-col gap-8">
+      <div className="flex flex-col gap-8">
 
         {/* Active e-Auctions Section */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-2">
           <div className="flex items-center gap-3 mb-4">
             <Gavel size={20} className="text-rosegold-500" />
-            <h2 className="text-gray-900 font-semibold text-lg  tracking-wider">
+            <h2 className="text-gray-900 font-semibold text-lg tracking-wider">
               Active e-Auctions
             </h2>
           </div>
 
-          <div className="bg-white py-16 flex flex-col items-center justify-center border border-gray-200 shadow-sm">
-            <Inbox size={40} className="text-gray-300 mb-4 stroke-1" />
-            <p className="text-rosegold-500 font-semibold text-xs tracking-widest ">
-              At present, No e-Auction published
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white border border-gray-200 overflow-hidden shadow-sm hover:border-rosegold-500 transition-all duration-300 flex flex-col rounded-3xl">
+              <div className="h-48 w-full relative rounded-t-3xl overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=60"
+                  alt="Linen rolls"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-6 bg-white rounded-b-3xl flex-grow">
+                <span className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Auction Date: July 05, 2026</span>
+                <h3 className="font-playfair text-base text-gray-900 font-bold uppercase tracking-wide mt-1 mb-2">Surplus Linen Material Clearance</h3>
+                <p className="text-gray-505 text-xs leading-relaxed">
+                  Bidding for 5,000 meters of high-density premium linen fabric rolls, suitable for apparel and curtains.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white border border-gray-200 overflow-hidden shadow-sm hover:border-rosegold-500 transition-all duration-300 flex flex-col rounded-3xl">
+              <div className="h-48 w-full relative rounded-t-3xl overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=600&auto=format&fit=crop&q=60"
+                  alt="Shirting fabric"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-6 bg-white rounded-b-3xl flex-grow">
+                <span className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Auction Date: July 12, 2026</span>
+                <h3 className="font-playfair text-base text-gray-900 font-bold uppercase tracking-wide mt-1 mb-2">Export-Quality Shirting Fabric Rolls</h3>
+                <p className="text-gray-505 text-xs leading-relaxed">
+                  Liquidation bidding for premium executive cotton shirting weaves, pre-cut and packed.
+                </p>
+              </div>
+            </div>
           </div>
         </motion.div>
 
         {/* Participation Registration Section */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-white p-8 md:p-12 border border-gray-200 shadow-lg">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-white p-8 md:p-12 border border-gray-200 shadow-lg rounded-3xl">
           <div className="flex items-center gap-4 mb-8 pb-6 border-b border-gray-100">
             <div className="w-12 h-12 bg-rosegold-500/10 flex items-center justify-center">
               <Gavel size={24} className="text-rosegold-500" />
@@ -100,7 +129,7 @@ const EAuction = () => {
 
             <div className="pt-4">
               <label className="block text-[10px] uppercase tracking-widest text-gray-750 font-bold mb-3">
-                Upload GST Certificate
+                Upload GST Certificate <span className="text-rosegold-500">*</span>
               </label>
 
               <input
@@ -109,6 +138,7 @@ const EAuction = () => {
                 onChange={handleFileChange}
                 accept=".pdf,.jpg,.jpeg,.png"
                 className="hidden"
+                required
               />
 
               <div
@@ -137,13 +167,6 @@ const EAuction = () => {
               >
                 <Send size={14} /> Submit Registration
               </button>
-            </div>
-
-            <div className="pt-6 text-center flex items-center justify-center gap-2">
-              <Mail size={14} className="text-rosegold-500" />
-              <a href="mailto:info@urbantextilehub.com" className="text-rosegold-500 text-[10px] font-semibold tracking-widest hover:underline uppercase">
-                info@urbantextilehub.com
-              </a>
             </div>
           </form>
         </motion.div>

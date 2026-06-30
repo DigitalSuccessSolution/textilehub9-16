@@ -1,20 +1,44 @@
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import SocialSidebar from './SocialSidebar';
 import Chatbot from './Chatbot';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 export default function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  // Lock background body scroll when mobile menu is active
+  useEffect(() => {
+    const handleScrollLock = () => {
+      const isMobile = window.innerWidth < 1024;
+      if (isSidebarOpen && isMobile) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'unset';
+      }
+    };
+    handleScrollLock();
+    window.addEventListener('resize', handleScrollLock);
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('resize', handleScrollLock);
+    };
+  }, [isSidebarOpen]);
+
   return (
     <div className="flex min-h-screen bg-pearl-100 text-gray-800">
       {/* Mobile Header / Hamburger */}
       <div className="lg:hidden fixed top-0 w-full bg-pearl-50 text-sapphire-900 z-50 flex items-center justify-between px-6 py-4 shadow-sm border-b border-gray-200">
-        <span className="font-playfair text-lg tracking-wider font-bold text-rosegold-500 border-b-0 pb-0 mb-0">URBAN TEXTILE HUB</span>
-        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="text-gray-600">
+        <Link 
+          to="/" 
+          onClick={() => setIsSidebarOpen(false)} 
+          className="font-playfair text-lg tracking-wider font-bold text-rosegold-500 border-b-0 pb-0 mb-0 hover:text-rosegold-400 transition-colors"
+        >
+          URBAN TEXTILE HUB
+        </Link>
+        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="text-gray-600 cursor-pointer">
           {isSidebarOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
@@ -22,7 +46,7 @@ export default function Layout() {
       {/* Sidebar Navigation */}
       <div
         className={`fixed inset-y-0 left-0 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-          } lg:translate-x-0 transition duration-300 ease-in-out z-40 w-72 bg-pearl-50 shadow-lg flex flex-col`}
+          } lg:translate-x-0 transition duration-300 ease-in-out z-40 w-full lg:w-72 bg-pearl-50 shadow-lg flex flex-col`}
       >
         <Sidebar closeSidebar={() => setIsSidebarOpen(false)} />
       </div>

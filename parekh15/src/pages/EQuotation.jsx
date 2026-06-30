@@ -30,7 +30,7 @@ const EQuotation = () => {
       </div>
 
       {/* Main Content Area */}
-      <div className="bg-pearl-100 p-6 md:p-10 border border-gray-200 shadow-sm flex flex-col gap-8">
+      <div className="flex flex-col gap-10">
 
         {/* Active Quotation Requests Section */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-2">

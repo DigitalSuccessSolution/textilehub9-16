@@ -42,6 +42,18 @@ function App() {
     }
   }, [loading]);
 
+  // Lock body scroll when popup is open
+  useEffect(() => {
+    if (showPopup) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showPopup]);
+
   return (
     <Router>
       <ScrollToTop />
@@ -88,45 +100,58 @@ function App() {
                   animate={{ scale: 1, y: 0, opacity: 1 }}
                   exit={{ scale: 0.9, y: 20, opacity: 0 }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className="bg-white max-w-md w-full p-8 border border-gray-200 shadow-2xl relative text-center z-10 flex flex-col items-center"
+                  className="bg-white max-w-md w-full border border-gray-200 shadow-2xl relative z-10 flex flex-col overflow-hidden"
                 >
-                  {/* Close icon */}
-                  <button
-                    onClick={() => setShowPopup(false)}
-                    className="absolute top-4 right-4 text-gray-400 hover:text-rosegold-500 transition-colors p-1"
-                    aria-label="Close modal"
-                  >
-                    <X size={18} />
-                  </button>
-
-                  {/* Sparkles icon header */}
-                  <div className="w-12 h-12 bg-rosegold-500/10 flex items-center justify-center mb-5 rounded-full">
-                    <Sparkles size={20} className="text-rosegold-500" />
+                  {/* Premium Header Image */}
+                  <div className="relative h-48 w-full bg-pearl-100 overflow-hidden shrink-0">
+                    <img 
+                      src="https://images.pexels.com/photos/6065984/pexels-photo-6065984.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Urban Textile Hub Welcome"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    
+                    {/* Floating circular close button */}
+                    <button
+                      onClick={() => setShowPopup(false)}
+                      className="absolute top-3 right-3 bg-white/90 hover:bg-rosegold-500 hover:text-white text-gray-800 transition-all p-1.5 rounded-full z-20 shadow-md cursor-pointer flex items-center justify-center border border-gray-100"
+                      aria-label="Close modal"
+                    >
+                      <X size={16} />
+                    </button>
                   </div>
 
-                  {/* Brand name */}
-                  <h3 className="font-playfair text-xl tracking-wider text-gray-900 font-bold leading-none mb-1.5 uppercase">
-                    URBAN TEXTILE HUB
-                  </h3>
-                  <span className="block text-[9px] tracking-widest uppercase text-rosegold-500 font-semibold mb-4">
-                    Tradition & Trade Excellence
-                  </span>
+                  {/* Modal Body Content with Padding */}
+                  <div className="p-8 flex flex-col items-center text-center bg-white">
+                    {/* Sparkles icon header */}
+                    <div className="w-10 h-10 bg-rosegold-500/10 flex items-center justify-center mb-4 rounded-full">
+                      <Sparkles size={18} className="text-rosegold-500" />
+                    </div>
 
-                  {/* Divider line */}
-                  <div className="w-12 h-0.5 bg-rosegold-500/30 mb-5" />
+                    {/* Brand name */}
+                    <h3 className="font-playfair text-lg tracking-wider text-gray-900 font-bold leading-none mb-1.5 uppercase">
+                      URBAN TEXTILE HUB
+                    </h3>
+                    <span className="block text-[9px] tracking-widest uppercase text-rosegold-500 font-semibold mb-4">
+                      Tradition & Trade Excellence
+                    </span>
 
-                  {/* Content body */}
-                  <p className="text-gray-650 text-xs md:text-sm font-outfit leading-relaxed mb-6">
-                    Welcome to India's premier B2B and retail textile marketplace. Explore our exquisite collection of handloom sarees, custom fabrics, and sustainable clothing today.
-                  </p>
+                    {/* Divider line */}
+                    <div className="w-10 h-0.5 bg-rosegold-500/30 mb-4" />
 
-                  {/* Close button */}
-                  <button
-                    onClick={() => setShowPopup(false)}
-                    className="bg-rosegold-500 hover:bg-rosegold-400 text-white w-full py-3 text-xs font-semibold uppercase tracking-widest transition-colors shadow-md"
-                  >
-                    Explore Collection
-                  </button>
+                    {/* Content body */}
+                    <p className="text-gray-655 text-xs md:text-sm font-outfit leading-relaxed mb-6">
+                      Welcome to India's premier B2B and retail textile marketplace. Explore our exquisite collection of handloom sarees, custom fabrics, and sustainable clothing today.
+                    </p>
+
+                    {/* Close button */}
+                    <button
+                      onClick={() => setShowPopup(false)}
+                      className="bg-rosegold-500 hover:bg-rosegold-400 text-white w-full py-3 text-xs font-semibold uppercase tracking-widest transition-colors shadow-md cursor-pointer"
+                    >
+                      Explore Collection
+                    </button>
+                  </div>
                 </motion.div>
               </div>
             )}

@@ -30,8 +30,8 @@ const slides = [
 const categoryList = [
   { name: 'Sarees', image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&auto=format&fit=crop&q=60', count: '1200+ Items' },
   { name: 'Leggings', image: 'https://images.unsplash.com/photo-1506152983158-b4a74a01c721?w=600&auto=format&fit=crop&q=60', count: '450+ Items' },
-  { name: 'Kurtis', image: 'https://images.unsplash.com/photo-1705164453472-e1cbfe8eb5a5?w=600&auto=format&fit=crop&q=60', count: '950+ Items' },
-  { name: 'Dress Suits', image: 'https://images.unsplash.com/photo-1631857455684-a54a2f03665f?w=600&auto=format&fit=crop&q=60', count: '1800+ Items' },
+  { name: 'Kurtis', image: 'https://images.pexels.com/photos/20702676/pexels-photo-20702676.jpeg', count: '950+ Items' },
+  { name: 'Dress Suits', image: 'https://images.pexels.com/photos/20593534/pexels-photo-20593534.jpeg', count: '1800+ Items' },
   { name: 'Bedsheets & Linen', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&auto=format&fit=crop&q=60', count: '1500+ Items' },
   { name: 'Hosiery Items', image: 'https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=600&auto=format&fit=crop&q=60', count: '800+ Items' },
   { name: 'Suiting', image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&auto=format&fit=crop&q=60', count: '1100+ Items' },
@@ -101,23 +101,24 @@ export default function Home() {
 
   return (
     <div className="space-y-12 pb-12">
-      {/* 1. Hero Section - Wrapped in a compact max-w-5xl container with reduced height and padding */}
-      <div className="-mt-6 lg:-mt-10 max-w-5xl mx-auto w-full">
-        <section className="relative min-h-[380px] md:min-h-[400px] overflow-hidden bg-[#eae3d5] p-6 md:p-8 lg:p-10 flex flex-col lg:flex-row items-center gap-8 rounded-3xl shadow-sm border border-[#ebdcb9]">
+      {/* 1. Hero Section - Wrapped in a compact max-w-5xl container with stable height */}
+      <div className="-mt-6 lg:-mt-10 max-w-5xl mx-auto w-full relative">
+        <section className="relative h-auto py-8 lg:py-0 lg:h-[410px] overflow-hidden bg-[#eae3d5] p-6 md:p-8 lg:p-10 flex flex-col lg:flex-row items-center gap-6 lg:gap-8 rounded-3xl shadow-sm border border-[#ebdcb9]">
           
           {/* Left Column (Text Content) */}
-          <div className="w-full lg:w-7/12 flex flex-col justify-center z-10 text-left">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.4 }}
-                className="space-y-4"
-              >
+          <div className="w-full lg:w-7/12 flex flex-col justify-center items-center lg:items-start z-10 text-center lg:text-left h-auto order-2 lg:order-1">
+            <div className="min-h-0 lg:min-h-[220px] flex flex-col justify-center items-center lg:items-start w-full">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.4 }}
+                  className="space-y-3.5 lg:space-y-4 flex flex-col items-center lg:items-start w-full"
+                >
                 {/* Premium Trad Subtitle */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 justify-center lg:justify-start">
                   <div className="w-6 h-[1px] bg-[#132C20]/40"></div>
                   <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-[#132C20]">
                     {slides[current].subtitle}
@@ -126,7 +127,7 @@ export default function Home() {
                 </div>
 
                 {/* Main Heading - Split colors style */}
-                <h1 className="font-playfair text-3xl md:text-4xl lg:text-[42px] text-[#132C20] leading-tight font-bold tracking-wide border-0 pb-0 mb-0">
+                <h1 className="font-playfair text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-[#132C20] leading-tight font-bold tracking-wide border-0 pb-0 mb-0 text-center lg:text-left">
                   {slides[current].title.split('&').map((text, idx) => {
                     if (idx === 0) {
                       return <span key={idx} className="block">{text.trim()}</span>;
@@ -136,25 +137,26 @@ export default function Home() {
                   })}
                 </h1>
 
-                {/* Description */}
-                <p className="text-[#384C40] text-xs md:text-sm font-outfit leading-relaxed max-w-xl">
+                {/* Description - Hidden on small mobile screens for clean UI */}
+                <p className="text-[#384C40] text-xs md:text-sm font-outfit leading-relaxed max-w-xl hidden sm:block text-center lg:text-left">
                   {slides[current].desc}
                 </p>
 
                 {/* Explore button with arrow */}
-                <div className="flex flex-wrap gap-4 pt-2">
+                <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-1.5 lg:pt-2 w-full">
                   <Link 
                     to={slides[current].link} 
-                    className="inline-flex items-center gap-2.5 bg-[#132C20] hover:bg-[#204532] text-[#eedec9] hover:text-white px-6 py-3 font-semibold tracking-widest uppercase transition-all duration-300 text-[10px] rounded-xl shadow-md"
+                    className="inline-flex items-center gap-2.5 bg-[#132C20] hover:bg-[#204532] text-[#eedec9] hover:text-white px-6 py-3 font-semibold tracking-widest uppercase transition-all duration-300 text-[10px] rounded-xl shadow-md mx-auto lg:mx-0"
                   >
                     Explore Collection <ArrowRight size={13} className="text-[#C3A87E]" />
                   </Link>
                 </div>
               </motion.div>
             </AnimatePresence>
+            </div>
 
             {/* Custom Slide Indicators */}
-            <div className="flex gap-5 items-center text-[10px] font-semibold tracking-widest mt-8">
+            <div className="flex gap-5 items-center justify-center lg:justify-start text-[10px] font-semibold tracking-widest mt-6 lg:mt-8 w-full">
               {slides.map((_, idx) => (
                 <button
                   key={idx}
@@ -173,10 +175,10 @@ export default function Home() {
           </div>
 
           {/* Right Column (Palace Arch-style Compact portrait image card) */}
-          <div className="w-full lg:w-5/12 flex justify-center shrink-0">
-            <div className="w-full max-w-[260px] aspect-[3/4] relative overflow-hidden bg-white/20 border border-[#ebdcb9] rounded-[2rem] shadow-xl p-2.5">
-              <div className="absolute inset-0 bg-[#ebdcb9]/10 rounded-[2rem] z-0"></div>
-              <div className="w-full h-full relative overflow-hidden rounded-[1.5rem] z-10 bg-slate-100">
+          <div className="w-full lg:w-5/12 flex justify-center shrink-0 order-1 lg:order-2">
+            <div className="relative w-full max-w-[260px] sm:max-w-[290px]">
+              {/* Image Card Wrapper */}
+              <div className="w-full aspect-[3/3.7] relative overflow-hidden rounded-[1.5rem] shadow-xl bg-slate-100 border border-[#ebdcb9]/50">
                 <AnimatePresence initial={false} custom={direction}>
                   <motion.img
                     key={current}
@@ -195,26 +197,26 @@ export default function Home() {
                   />
                 </AnimatePresence>
               </div>
+
+              {/* Left Arrow button (vertically centered relative to image container) */}
+              <button
+                onClick={prevSlide}
+                className="absolute -left-8 sm:-left-10 top-1/2 -translate-y-1/2 bg-white hover:bg-[#132C20] text-[#132C20] hover:text-[#eedec9] p-2.5 transition-all duration-300 z-20 rounded-full cursor-pointer flex shadow-md border border-[#ebdcb9]"
+                aria-label="Previous Slide"
+              >
+                <ChevronLeft size={16} />
+              </button>
+
+              {/* Right Arrow button (vertically centered relative to image container) */}
+              <button
+                onClick={nextSlide}
+                className="absolute -right-8 sm:-right-10 top-1/2 -translate-y-1/2 bg-white hover:bg-[#132C20] text-[#132C20] hover:text-[#eedec9] p-2.5 transition-all duration-300 z-20 rounded-full cursor-pointer flex shadow-md border border-[#ebdcb9]"
+                aria-label="Next Slide"
+              >
+                <ChevronRight size={16} />
+              </button>
             </div>
           </div>
-
-          {/* Left Arrow button */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/35 hover:bg-[#132C20] text-[#132C20] hover:text-[#eedec9] p-2.5 transition-all duration-300 z-10 rounded-full cursor-pointer hidden md:flex"
-            aria-label="Previous Slide"
-          >
-            <ChevronLeft size={16} />
-          </button>
-
-          {/* Right Arrow button */}
-          <button
-            onClick={nextSlide}
-            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/35 hover:bg-[#132C20] text-[#132C20] hover:text-[#eedec9] p-2.5 transition-all duration-300 z-10 rounded-full cursor-pointer hidden md:flex"
-            aria-label="Next Slide"
-          >
-            <ChevronRight size={16} />
-          </button>
         </section>
       </div>
 
@@ -288,17 +290,17 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Responsive 3-Column Grid for Categories (No scrollbar) */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full">
-          {categoryList.slice(0, 3).map((cat, idx) => (
+        {/* Responsive 6-Column Grid for Categories (No scrollbar) */}
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-3 w-full">
+          {categoryList.slice(0, 6).map((cat, idx) => (
             <Link
               to="/products"
               state={{ category: cat.name }}
               key={idx}
-              className="bg-white border border-[#ebdcb9]/40 rounded-2xl overflow-hidden hover:border-[#C3A87E] hover:shadow-md transition-all duration-300 flex flex-col group w-full"
+              className="bg-white border border-[#ebdcb9]/40 rounded-xl overflow-hidden hover:border-[#C3A87E] hover:shadow-md transition-all duration-300 flex flex-col group w-full"
             >
               {/* Category Portrait Image */}
-              <div className="h-44 overflow-hidden relative bg-slate-50">
+              <div className="h-20 sm:h-24 overflow-hidden relative bg-slate-50">
                 <img 
                   src={cat.image} 
                   alt={cat.name} 
@@ -308,18 +310,15 @@ export default function Home() {
               </div>
               
               {/* Category Text & Action */}
-              <div className="p-3.5 text-center flex flex-col flex-grow justify-between">
-                <div className="space-y-1">
-                  <h4 className="font-playfair text-[11px] text-[#132C20] font-bold uppercase tracking-wider group-hover:text-[#C3A87E] transition-colors truncate">
+              <div className="p-2 text-center flex flex-col flex-grow justify-between">
+                <div className="space-y-0.5">
+                  <h4 className="font-playfair text-[9px] sm:text-[10px] text-[#132C20] font-bold uppercase tracking-wider group-hover:text-[#C3A87E] transition-colors truncate">
                     {cat.name}
                   </h4>
-                  <p className="text-[8px] text-[#5A6E62] font-bold tracking-widest uppercase">
-                    {cat.count}
-                  </p>
                 </div>
-                <div className="mt-3.5">
-                  <div className="w-7 h-7 rounded-full border border-[#ebdcb9] flex items-center justify-center text-[#132C20] group-hover:bg-[#132C20] group-hover:text-[#eedec9] group-hover:border-[#132C20] mx-auto transition-all duration-300">
-                    <ArrowRight size={11} />
+                <div className="mt-2">
+                  <div className="w-5 h-5 rounded-full border border-[#ebdcb9] flex items-center justify-center text-[#132C20] group-hover:bg-[#132C20] group-hover:text-[#eedec9] group-hover:border-[#132C20] mx-auto transition-all duration-300">
+                    <ArrowRight size={8} />
                   </div>
                 </div>
               </div>
@@ -332,72 +331,68 @@ export default function Home() {
       <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
         
         {/* Left Card: Exclusive Offer (With matching green shadow) */}
-        <div className="bg-[#132C20] text-white p-8 rounded-3xl flex flex-col justify-between relative overflow-hidden min-h-[320px] shadow-[0_15px_35px_rgba(19,44,32,0.35)] border border-[#ebdcb9]/10 text-left">
-          {/* Subtle gold floral corner background details */}
-          <div className="absolute top-0 right-0 w-24 h-24 border-r-2 border-t-2 border-[#C3A87E]/10 rounded-tr-3xl"></div>
+        <div className="text-white p-6 sm:p-8 rounded-3xl flex flex-col justify-between relative overflow-hidden min-h-[220px] sm:min-h-[280px] shadow-[0_15px_35px_rgba(19,44,32,0.25)] border border-[#ebdcb9]/10 text-left group">
+          {/* Background Image */}
+          <img 
+            src="https://images.unsplash.com/photo-1623310658847-33f12eaab710?w=800&auto=format&fit=crop&q=60" 
+            alt="Wholesale Fabrics Stack" 
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 z-0" 
+          />
+          {/* Overlay scrim */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#132C20]/95 via-[#132C20]/80 to-[#132C20]/45 z-10"></div>
           
-          <div className="space-y-4">
+          <div className="space-y-2 sm:space-y-4 relative z-20">
             <span className="text-[10px] uppercase font-bold text-[#C3A87E] tracking-[0.2em]">EXCLUSIVE OFFER</span>
-            <h3 className="font-playfair text-3xl font-bold leading-tight text-white uppercase tracking-wider">
+            <h3 className="font-playfair text-xl sm:text-2xl font-bold leading-tight text-white uppercase tracking-wider max-w-[240px] sm:max-w-xs">
               Wholesale Excellence
             </h3>
-            <p className="text-[#eedec9]/75 text-xs font-outfit leading-relaxed max-w-[190px]">
+            <p className="text-[#eedec9]/75 text-xs font-outfit leading-relaxed max-w-[195px] hidden sm:block">
               Special pricing for retailers & bulk buyers
             </p>
           </div>
 
-          <div className="z-10 mt-6">
+          <div className="mt-4 sm:mt-6 relative z-20">
             <Link 
               to="/trade-enquiry" 
-              className="inline-flex items-center gap-2 bg-[#eedec9] hover:bg-white text-[#132C20] px-5 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 rounded-xl shadow-md"
+              className="inline-flex items-center gap-2 bg-[#eedec9] hover:bg-white text-[#132C20] px-5 py-3 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider transition-all duration-300 rounded-xl shadow-md w-fit"
             >
-              Enquire Now <ArrowRight size={13} />
+              Enquire Now <ArrowRight size={12} />
             </Link>
-          </div>
-
-          {/* Luxury fabric bottom alignment */}
-          <div className="absolute right-0 bottom-0 left-0 h-44 overflow-hidden rounded-t-3xl z-0">
-            <img 
-              src="https://images.unsplash.com/photo-1623310658847-33f12eaab710?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGNsb3RoZXMlMjBmYWJyaWNzfGVufDB8fDB8fHww" 
-              alt="Wholesale Fabrics Stack" 
-              className="w-full h-full object-cover object-top border-t border-[#ebdcb9]/20 shadow-inner" 
-            />
           </div>
         </div>
 
         {/* Right Card: New Arrivals */}
-        <div className="bg-[#eaddca] text-[#132C20] p-8 rounded-3xl flex flex-col justify-between relative overflow-hidden min-h-[320px] shadow-sm border border-[#ebdcb9]/40 text-left">
+        <div className="text-[#132C20] p-6 sm:p-8 rounded-3xl flex flex-col justify-between relative overflow-hidden min-h-[220px] sm:min-h-[280px] shadow-sm border border-[#ebdcb9]/40 text-left group">
+          {/* Background Image */}
+          <img 
+            src="https://images.pexels.com/photos/7679863/pexels-photo-7679863.jpeg" 
+            alt="New Collection Textiles" 
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 z-0" 
+          />
+          {/* Overlay scrim */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#eaddca]/98 via-[#eaddca]/85 to-[#eaddca]/30 z-10"></div>
           
-          <div className="space-y-4 z-10">
+          <div className="space-y-2 sm:space-y-4 relative z-20">
             <span className="text-[10px] uppercase font-bold text-[#132C20]/60 tracking-[0.2em]">NEW ARRIVALS</span>
-            <h3 className="font-playfair text-3xl font-bold leading-tight text-[#132C20] uppercase tracking-wider">
+            <h3 className="font-playfair text-xl sm:text-2xl font-bold leading-tight text-[#132C20] uppercase tracking-wider max-w-[240px] sm:max-w-xs">
               Discover Our Latest Collection
             </h3>
           </div>
 
-          <div className="z-10 mt-6">
+          <div className="mt-4 sm:mt-6 relative z-20">
             <Link 
               to="/products" 
-              className="inline-flex items-center gap-2 bg-[#132C20] hover:bg-[#204532] text-white px-5 py-3 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 rounded-xl shadow-md"
+              className="inline-flex items-center gap-2 bg-[#132C20] hover:bg-[#204532] text-white px-5 py-3 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider transition-all duration-300 rounded-xl shadow-md w-fit"
             >
-              Shop Now <ArrowRight size={13} className="text-[#C3A87E]" />
+              Shop Now <ArrowRight size={12} className="text-[#C3A87E]" />
             </Link>
-          </div>
-
-          {/* Luxury fabric roll bottom alignment */}
-          <div className="absolute right-0 bottom-0 left-0 h-44 overflow-hidden rounded-t-3xl z-0">
-            <img 
-              src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=500&auto=format&fit=crop&q=60" 
-              alt="New Collection Textiles" 
-              className="w-full h-full object-cover object-top border-t border-[#ebdcb9]/40 shadow-inner" 
-            />
           </div>
         </div>
 
       </section>
 
       {/* 5. Featured Collection Grid (Preserving existing content & logic) */}
-      <section className="bg-white/50 border border-[#ebdcb9]/45 p-8 rounded-3xl mt-4">
+      <section className="mt-8">
         <div className="flex justify-between items-end mb-8 border-b border-[#ebdcb9]/30 pb-4 text-left">
           <div>
             <p className="text-[#C3A87E] font-bold tracking-[0.2em] uppercase text-[10px] mb-1.5">Curated Masterpieces</p>
@@ -407,11 +402,11 @@ export default function Home() {
             to="/products" 
             className="inline-flex items-center gap-1.5 text-[#132C20] hover:text-[#C3A87E] transition-colors font-bold uppercase text-[10px] tracking-wider"
           >
-            View Catalogue <ArrowRight size={13} className="text-[#C3A87E]" />
+            View All <ArrowRight size={13} className="text-[#C3A87E]" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {featuredProducts.map((prod, idx) => (
             <motion.div
               key={idx}
@@ -421,28 +416,28 @@ export default function Home() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="group flex flex-col bg-white border border-[#ebdcb9]/30 overflow-hidden hover:border-[#C3A87E] hover:shadow-lg transition-all duration-300 rounded-2xl text-left"
             >
-              <div className="relative h-[220px] overflow-hidden bg-slate-50">
+              <div className="relative h-28 sm:h-40 overflow-hidden bg-slate-50">
                 <img
                   src={prod.image}
                   alt={prod.name}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <span className="absolute top-4 left-4 bg-[#132C20] text-[#eedec9] text-[8px] uppercase tracking-widest px-3 py-1 font-bold rounded-lg shadow-sm border border-[#C3A87E]/20">
+                <span className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-[#132C20] text-[#eedec9] text-[7px] sm:text-[8px] uppercase tracking-widest px-2 sm:px-3 py-0.5 sm:py-1 font-bold rounded-lg shadow-sm border border-[#C3A87E]/20">
                   {prod.category}
                 </span>
               </div>
-              <div className="p-6 flex flex-col flex-grow bg-white">
-                <h3 className="text-[#132C20] font-playfair text-lg font-bold mb-2 group-hover:text-[#C3A87E] transition-colors uppercase tracking-wide">
+              <div className="p-3.5 sm:p-5 flex flex-col flex-grow bg-white">
+                <h3 className="text-[#132C20] font-playfair text-xs sm:text-base font-bold mb-1.5 group-hover:text-[#C3A87E] transition-colors uppercase tracking-wide truncate">
                   {prod.name}
                 </h3>
-                <p className="text-[#5A6E62] text-xs leading-relaxed mb-6 flex-grow">
+                <p className="text-[#5A6E62] text-[10px] sm:text-[11px] leading-relaxed mb-3 flex-grow line-clamp-2">
                   {prod.desc}
                 </p>
                 <Link
                   to="/products"
-                  className="inline-flex items-center gap-1.5 text-[#C3A87E] hover:text-[#132C20] font-bold uppercase text-[10px] tracking-wider border-b border-transparent hover:border-[#132C20] w-fit pb-0.5 transition-all duration-250"
+                  className="inline-flex items-center gap-1.5 text-[#C3A87E] hover:text-[#132C20] font-bold uppercase text-[9px] tracking-wider border-b border-transparent hover:border-[#132C20] w-fit pb-0.5 transition-all duration-250"
                 >
-                  View Details <ArrowRight size={12} />
+                  View Details <ArrowRight size={11} />
                 </Link>
               </div>
             </motion.div>

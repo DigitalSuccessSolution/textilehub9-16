@@ -1,56 +1,52 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function BusinessMediaGallery() {
+  const [activeCategory, setActiveCategory] = useState("All");
+
   const galleryItems = [
     {
       id: 1,
-      title: "State-of-the-Art Spinning Mill",
-      category: "Manufacturing",
-      date: "October 2026",
-      desc: "Our automated spinning facilities where premium raw fibers are transformed into high-tenacity yarns.",
-      image: "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=600&auto=format&fit=crop&q=60"
+      title: "Luxury Weaving Loom Operations",
+      category: "Weaving",
+      date: "June 2026",
+      image: "https://images.pexels.com/photos/8886948/pexels-photo-8886948.jpeg"
     },
     {
       id: 2,
-      title: "Artisanal Handloom Heritage",
-      category: "Weaving",
-      date: "September 2026",
-      desc: "Honoring traditional weaving practices where master craftsmen hand-weave intricate silk borders.",
-      image: "https://images.unsplash.com/photo-1598971861713-54ad16a7e72e?w=600&auto=format&fit=crop&q=60"
+      title: "Premium Silk Thread Dyeing",
+      category: "Dyeing",
+      date: "May 2026",
+      image: "https://images.pexels.com/photos/5377395/pexels-photo-5377395.jpeg"
     },
     {
       id: 3,
-      title: "Fabric Inspection & Quality Check",
-      category: "Quality Control",
-      date: "August 2026",
-      desc: "Ensuring zero defects through rigorous multi-point inspection of every single fabric lot before dispatch.",
-      image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=60"
+      title: "Traditional Zari Hand-Embroidery",
+      category: "Embroidery",
+      date: "April 2026",
+      image: "https://images.pexels.com/photos/37757334/pexels-photo-37757334.jpeg"
     },
     {
       id: 4,
-      title: "Flagship Luxury Retail Outlet",
-      category: "Retail Experience",
-      date: "July 2026",
-      desc: "Providing a world-class shopping environment with customized bridal consult rooms and tailoring suites.",
-      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&auto=format&fit=crop&q=60"
+      title: "Quality Control and Fabric Inspection",
+      category: "Quality Control",
+      date: "March 2026",
+      image: "https://images.pexels.com/photos/31259255/pexels-photo-31259255.jpeg"
     },
     {
       id: 5,
-      title: "Bespoke Styling & Design Room",
-      category: "Design R&D",
-      date: "June 2026",
-      desc: "Where our design experts sketch contemporary silhouettes and draft custom patterns for the season.",
-      image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&auto=format&fit=crop&q=60"
-    },
-    {
-      id: 6,
-      title: "Yarn Dyeing & Color Labs",
-      category: "Dyeing",
-      date: "May 2026",
-      desc: "Creating rich, long-lasting colors with eco-friendly dyes and digital color matching technology.",
-      image: "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=600&auto=format&fit=crop&q=60"
+      title: "Royal Weaves Boutique Showcase",
+      category: "Retail Showcase",
+      date: "February 2026",
+      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&auto=format&fit=crop&q=60"
     }
   ];
+
+  const categories = ["All", "Weaving", "Dyeing", "Embroidery", "Quality Control", "Retail Showcase"];
+
+  const filteredItems = activeCategory === "All"
+    ? galleryItems
+    : galleryItems.filter(item => item.category === activeCategory);
 
   return (
     <div className="pb-16 -mt-6 lg:-mt-10 max-w-4xl mx-auto px-4">
@@ -63,43 +59,57 @@ export default function BusinessMediaGallery() {
         </div>
       </div>
 
-      {/* 1 Column Layout of Wide Horizontal Cards */}
-      <div className="flex flex-col gap-8">
-        {galleryItems.map((item, idx) => (
+      {/* Categories Header Section */}
+      <div className="mb-10 text-center">
+        <p className="text-gray-505 text-xs sm:text-sm italic mb-4 max-w-lg mx-auto">
+          Take a visual journey through our state-of-the-art weaving looms, dye labs, and luxury boutique.
+        </p>
+        <div className="flex flex-wrap justify-center gap-2">
+          {categories.map((cat, i) => (
+            <button 
+              key={i} 
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 py-1.5 text-xs font-semibold uppercase tracking-wider shadow-sm border transition-all cursor-pointer rounded-full ${
+                activeCategory === cat
+                  ? "bg-[#132C20] text-[#eedec9] border-[#132C20]"
+                  : "bg-white text-gray-700 border-gray-200 hover:border-[#132C20] hover:text-[#132C20]"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* 3-Column Grid of Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        {filteredItems.map((item, idx) => (
           <motion.div 
             key={item.id}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
-            className="group flex flex-col md:flex-row bg-white border border-gray-200 overflow-hidden hover:border-rosegold-500 hover:shadow-xl transition-all duration-300"
+            className="group flex flex-col bg-white border border-gray-200 overflow-hidden hover:border-rosegold-500 hover:shadow-xl transition-all duration-300 rounded-3xl"
           >
             {/* Image section */}
-            <div className="relative h-60 md:h-auto md:w-2/5 overflow-hidden bg-pearl-100 shrink-0">
+            <div className="relative h-48 w-full overflow-hidden bg-pearl-100 shrink-0 rounded-t-3xl">
               <img 
                 src={item.image} 
                 alt={item.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
-                <span className="bg-white text-rosegold-500 px-5 py-2 text-xs uppercase tracking-wider font-bold shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  View Full Size
-                </span>
-              </div>
               <span className="absolute top-4 left-4 bg-rosegold-500 text-pearl-100 text-[9px] uppercase tracking-widest px-3 py-1 font-bold">
                 {item.category}
               </span>
             </div>
 
             {/* Text details below image */}
-            <div className="p-8 flex flex-col justify-center flex-grow bg-white">
+            <div className="p-6 flex flex-col justify-center flex-grow bg-white rounded-b-3xl">
               <span className="text-[10px] text-rosegold-500 font-bold uppercase tracking-widest mb-1.5">{item.date}</span>
-              <h3 className="font-playfair text-lg md:text-xl text-gray-900 font-semibold mb-2 group-hover:text-rosegold-500 transition-colors uppercase tracking-wide">
+              <h3 className="font-playfair text-base text-gray-900 font-bold group-hover:text-rosegold-500 transition-colors uppercase tracking-wide line-clamp-2">
                 {item.title}
               </h3>
-              <p className="text-gray-650 text-sm leading-relaxed">
-                {item.desc}
-              </p>
             </div>
           </motion.div>
         ))}

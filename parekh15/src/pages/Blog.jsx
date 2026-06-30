@@ -74,8 +74,8 @@ export default function Blog() {
         ))}
       </div>
 
-      {/* 1 Column Stack of Wide Horizontal Cards */}
-      <div className="flex flex-col gap-8">
+      {/* Grid Layout of Cards */}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
         <AnimatePresence mode="popLayout">
           {filteredPosts.map((post) => (
             <motion.article 
@@ -84,10 +84,10 @@ export default function Blog() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              className="group cursor-pointer bg-white overflow-hidden shadow-lg hover:shadow-2xl hover:border-rosegold-500 border border-gray-200 transition-all duration-300 flex flex-col md:flex-row"
+              className="group cursor-pointer bg-white overflow-hidden shadow-lg hover:shadow-2xl hover:border-rosegold-500 border border-gray-200 transition-all duration-300 flex flex-col"
             >
               {/* Image Section */}
-              <div className="h-60 md:h-auto md:w-2/5 overflow-hidden relative shrink-0">
+              <div className="h-36 sm:h-56 w-full overflow-hidden relative shrink-0">
                 <img 
                   src={post.image} 
                   alt={post.title}
@@ -98,23 +98,26 @@ export default function Blog() {
                 </div>
               </div>
               {/* Content Section */}
-              <div className="p-8 flex flex-col justify-center flex-grow bg-white">
-                <div className="flex flex-wrap items-center gap-2.5 text-[10px] text-gray-400 font-semibold uppercase tracking-wider mb-2">
-                  <span>{post.publishDate}</span>
-                  <span>•</span>
-                  <span>By {post.author}</span>
-                  <span>•</span>
-                  <span className="text-rosegold-500 font-bold">{post.category}</span>
+              <div className="p-4 sm:p-6 flex flex-col justify-between flex-grow bg-white">
+                <div>
+                  <div className="flex flex-wrap items-center gap-1.5 text-[9px] text-gray-400 font-semibold uppercase tracking-wider mb-2">
+                    <span>{post.publishDate}</span>
+                    <span className="hidden sm:inline">•</span>
+                    <span className="text-rosegold-500 font-bold hidden sm:inline">{post.category}</span>
+                  </div>
+                  <h3 className="font-playfair text-xs sm:text-lg text-gray-900 mb-2 sm:mb-3 group-hover:text-rosegold-500 transition-colors uppercase tracking-wide leading-snug line-clamp-2">
+                    {post.title}
+                  </h3>
+                  <p className="text-gray-550 text-[10px] sm:text-xs leading-relaxed mb-4 line-clamp-2 sm:line-clamp-3">
+                    {post.description}
+                  </p>
                 </div>
-                <h3 className="font-playfair text-xl md:text-2xl text-gray-900 mb-3 group-hover:text-rosegold-500 transition-colors uppercase tracking-wide">
-                  {post.title}
-                </h3>
-                <p className="text-gray-500 text-xs md:text-sm leading-relaxed mb-4">
-                  {post.description}
-                </p>
-                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-rosegold-500 group-hover:text-rosegold-400 transition-colors">
-                  Read Article <ArrowRight size={14} />
-                </p>
+                <div className="pt-2 flex items-center justify-between border-t border-gray-100">
+                  <span className="text-[9px] sm:text-[10px] text-gray-400 font-semibold truncate max-w-[80px] sm:max-w-none">By {post.author}</span>
+                  <p className="flex items-center gap-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-rosegold-500 group-hover:text-rosegold-400 transition-colors">
+                    Read <ArrowRight size={10} />
+                  </p>
+                </div>
               </div>
             </motion.article>
           ))}

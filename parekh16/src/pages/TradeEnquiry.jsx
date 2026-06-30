@@ -18,7 +18,7 @@ export default function TradeEnquiry() {
         </p>
       </div>
 
-      <div className="max-w-3xl mx-auto bg-white p-8 md:p-12 border border-gray-200 shadow-xl">
+      <div className="max-w-3xl mx-auto bg-white p-8 md:p-12 border border-gray-200 shadow-xl rounded-3xl">
         <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
           <div className="space-y-6">
             <h3 className="font-playfair text-xl text-gray-900 border-b border-gray-200 pb-3 font-semibold uppercase tracking-wider">Company Details</h3>

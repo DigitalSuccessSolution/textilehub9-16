@@ -17,7 +17,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white shadow-xl p-8 md:p-12 border-t-8 border-rosegold-500 flex flex-col gap-8"
+          className="bg-white shadow-xl p-8 md:p-12 border border-gray-200 rounded-3xl flex flex-col gap-8"
         >
           {/* Minimal Text Content */}
           <div className="max-w-3xl mx-auto text-center space-y-4">
@@ -33,7 +33,7 @@ export default function About() {
           </div>
 
           {/* Wide Landscape Image Content */}
-          <div className="w-full relative h-64 md:h-80 lg:h-96 overflow-hidden border border-gray-200">
+          <div className="w-full relative h-64 md:h-80 lg:h-96 overflow-hidden border border-gray-200 rounded-3xl">
             <img
               src="images/about.png"
               alt="About URBAN TEXTILE HUB"

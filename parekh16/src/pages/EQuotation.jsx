@@ -15,7 +15,7 @@ const EQuotation = () => {
       </div>
 
       {/* Main Content Area */}
-      <div className="bg-pearl-100 p-6 md:p-10 border border-gray-200 shadow-sm flex flex-col gap-8">
+      <div className="flex flex-col gap-8">
 
         {/* Active Quotation Requests Section */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-2">
@@ -24,16 +24,37 @@ const EQuotation = () => {
             <h2 className="text-gray-900 font-semibold text-lg uppercase tracking-wider">Active Quotation Requests</h2>
           </div>
 
-          <div className="bg-white py-16 flex flex-col items-center justify-center border border-gray-200 shadow-sm">
-            <Inbox size={40} className="text-gray-300 mb-4 stroke-1" />
-            <p className="text-rosegold-500 font-semibold text-xs tracking-widest ">
-              ( At present, No e-Quotation published )
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white p-6 border border-gray-200 shadow-sm flex items-start gap-4 hover:border-rosegold-500 transition-all duration-300 rounded-3xl">
+              <div className="w-12 h-12 bg-rosegold-500/10 flex items-center justify-center shrink-0">
+                <FileText size={22} className="text-rosegold-500" />
+              </div>
+              <div>
+                <span className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Posted: June 28, 2026</span>
+                <h3 className="font-playfair text-base text-gray-900 font-bold uppercase tracking-wide mt-1 mb-2">Requirement for Banarasi Silk Sarees</h3>
+                <p className="text-gray-505 text-xs leading-relaxed">
+                  Urgent bulk procurement request of 500 units of custom Banarasi silk sarees for wedding season stock.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 border border-gray-200 shadow-sm flex items-start gap-4 hover:border-rosegold-500 transition-all duration-300 rounded-3xl">
+              <div className="w-12 h-12 bg-rosegold-500/10 flex items-center justify-center shrink-0">
+                <FileText size={22} className="text-rosegold-500" />
+              </div>
+              <div>
+                <span className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Posted: June 20, 2026</span>
+                <h3 className="font-playfair text-base text-gray-900 font-bold uppercase tracking-wide mt-1 mb-2">Bulk Cotton Fabric Supply</h3>
+                <p className="text-gray-505 text-xs leading-relaxed">
+                  Request for price quotation of 1,200 meters of combed cotton shirting material (180 GSM) for business outfits.
+                </p>
+              </div>
+            </div>
           </div>
         </motion.div>
 
         {/* Request a Price Quote Section */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-white p-8 md:p-12 border border-gray-200 shadow-lg">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-white p-8 md:p-12 border border-gray-200 shadow-lg rounded-3xl">
           <div className="flex items-center gap-4 mb-8 pb-6 border-b border-gray-100">
             <div className="w-12 h-12 bg-rosegold-500/10 flex items-center justify-center">
               <FileText size={24} className="text-rosegold-500" />
@@ -117,13 +138,6 @@ const EQuotation = () => {
               >
                 <Send size={14} /> Submit Quotation Request
               </button>
-            </div>
-
-            <div className="pt-6 text-center flex items-center justify-center gap-2">
-              <Mail size={14} className="text-rosegold-500" />
-              <a href="mailto:info@urbantextilehub.com" className="text-rosegold-500 text-[10px] font-semibold tracking-widest hover:underline uppercase">
-                info@urbantextilehub.com
-              </a>
             </div>
           </form>
         </motion.div>

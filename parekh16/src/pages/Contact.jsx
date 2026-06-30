@@ -19,7 +19,7 @@ export default function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white border border-gray-200 p-8 md:p-12 shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-8"
+          className="bg-white border border-gray-200 p-8 md:p-12 shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-8 rounded-3xl"
         >
           <div className="md:w-1/2 space-y-4">
             <h2 className="font-playfair text-2xl md:text-3xl text-gray-900 font-semibold uppercase tracking-wide leading-tight">
@@ -60,7 +60,7 @@ export default function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white border border-gray-200 p-8 md:p-12 shadow-lg flex flex-col md:flex-row gap-8"
+          className="bg-white border border-gray-200 p-8 md:p-12 shadow-lg flex flex-col md:flex-row gap-8 rounded-3xl"
         >
           {/* Details Card */}
           <div className="md:w-1/2 flex flex-col justify-center">
@@ -94,7 +94,7 @@ export default function Contact() {
           </div>
 
           {/* Interactive Map */}
-          <div className="md:w-1/2 overflow-hidden shadow-md h-64 border border-gray-200 bg-pearl-100">
+          <div className="md:w-1/2 overflow-hidden shadow-md h-64 border border-gray-200 bg-pearl-100 rounded-3xl">
             <iframe
               src="https://maps.google.com/maps?q=Chennai&t=&z=13&ie=UTF8&iwloc=&output=embed"
               width="100%"
